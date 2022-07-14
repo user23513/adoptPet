@@ -18,9 +18,15 @@ public class MemberLogin implements Command {
 		vo.setMemberId(request.getParameter("memberId"));
 		vo.setMemberPassword(request.getParameter("memberPassword"));
 		
-		//vo = memberDao.memberLogin(vo);
-		
-		
+		vo = memberDao.memberLogin(vo);
+		if(vo.getMemberName() != null) {
+			session.setAttribute("id", vo.getMemberId());
+			session.setAttribute("author", vo.getMemberAuthor());
+			session.setAttribute("name", vo.getMemberName());
+			request.setAttribute("message", vo.getMemberName() + " 님 환영합니다.");
+		}else {
+			request.setAttribute("message", "아이디 또는 패스워드가 일치하지 않습니다.");
+		}
 		return "member/memberLogin";
 	}
 

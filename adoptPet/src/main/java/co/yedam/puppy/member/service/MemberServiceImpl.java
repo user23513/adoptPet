@@ -57,6 +57,35 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	@Override
+	public MemberVO memberLogin(MemberVO vo) {
+		//회원 로그인
+		String sql = "SELECT * FROM MEMBER WHERE MEMBER_ID = ? AND MEMBER_PASSWORD = ?";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getMemberId());
+			psmt.setString(2, vo.getMemberPassword());
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo.setMemberId(rs.getString("member_id"));
+				vo.setMemberName(rs.getString("member_name"));
+				vo.setMemberAuthor(rs.getString("member_author"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return vo;
+	}
+	
+	
+	//@Override
+	
+	
+	
 
 	private void close() {
 		try {
