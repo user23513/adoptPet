@@ -1,4 +1,4 @@
-package co.yedam.puppy.board.vo;
+package co.yedam.puppy.vo;
 
 import java.sql.Date;
 

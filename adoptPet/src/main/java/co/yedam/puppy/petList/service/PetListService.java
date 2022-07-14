@@ -2,8 +2,9 @@ package co.yedam.puppy.petList.service;
 
 import java.util.List;
 
-import co.yedam.puppy.files.vo.FilesVO;
-import co.yedam.puppy.petList.vo.PetListVO;
+import co.yedam.puppy.vo.FilesVO;
+import co.yedam.puppy.vo.PetListVO;
+
 
 public interface PetListService {
 

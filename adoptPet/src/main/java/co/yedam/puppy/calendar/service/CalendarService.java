@@ -2,7 +2,8 @@ package co.yedam.puppy.calendar.service;
 
 import java.util.List;
 
-import co.yedam.puppy.calendar.vo.CalendarVO;
+import co.yedam.puppy.vo.CalendarVO;
+
 
 
 public interface CalendarService {

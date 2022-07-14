@@ -2,9 +2,10 @@ package co.yedam.puppy.admin.service;
 
 import java.util.List;
 
-import co.yedam.puppy.calendar.vo.CalendarVO;
-import co.yedam.puppy.member.vo.MemberVO;
-import co.yedam.puppy.petList.vo.PetListVO;
+import co.yedam.puppy.vo.CalendarVO;
+import co.yedam.puppy.vo.MemberVO;
+import co.yedam.puppy.vo.PetListVO;
+
 
 public interface AdminService {
 	//경아

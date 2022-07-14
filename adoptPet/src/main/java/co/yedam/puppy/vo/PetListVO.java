@@ -1,4 +1,4 @@
-package co.yedam.puppy.petList.vo;
+package co.yedam.puppy.vo;
 
 import lombok.Getter;
 import lombok.Setter;

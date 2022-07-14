@@ -2,8 +2,9 @@ package co.yedam.puppy.volunteerSubscription.service;
 
 import java.util.List;
 
-import co.yedam.puppy.adoptSubscription.vo.AdoptSubscriptionVO;
-import co.yedam.puppy.petList.vo.PetListVO;
+import co.yedam.puppy.vo.AdoptSubscriptionVO;
+import co.yedam.puppy.vo.PetListVO;
+
 
 public interface VolunteerSubscriptionService {
 	//경아

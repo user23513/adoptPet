@@ -1,6 +1,6 @@
 package co.yedam.puppy.member.service;
 
-import co.yedam.puppy.member.vo.MemberVO;
+import co.yedam.puppy.vo.MemberVO;
 
 public interface MemberService {
 

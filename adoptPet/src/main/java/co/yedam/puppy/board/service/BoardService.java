@@ -2,7 +2,8 @@ package co.yedam.puppy.board.service;
 
 import java.util.List;
 
-import co.yedam.puppy.board.vo.BoardVO;
+import co.yedam.puppy.vo.BoardVO;
+
 
 public interface BoardService {
 	// 봉사활동 후기 게시판

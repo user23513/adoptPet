@@ -2,7 +2,8 @@ package co.yedam.puppy.petAdd.service;
 
 import java.util.List;
 
-import co.yedam.puppy.petAdd.vo.PetAddVO;
+import co.yedam.puppy.vo.PetAddVO;
+
 
 public interface PetAddService {
 	
