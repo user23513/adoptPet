@@ -25,7 +25,7 @@ public class PetAddServiceImpl implements PetAddService {
 	public int petAddInsert(PetAddVO vo) {
 		//입양동물 등록
 		int r = 0;
-		String sql = "insert into pet_add values(pet_add_seq,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO PET_ADD VALUES(PET_ADD_SEQ,?,?,?,?,?,?,?)";
 		
 		try {
 			conn = dao.getConnection();
@@ -53,8 +53,8 @@ public class PetAddServiceImpl implements PetAddService {
 	public int petAddUpdate(PetAddVO vo) {
 		//입양동물 수정
 		int r = 0;
-		String sql = "update pet_add "
-				+ " set PET_ADD_NAME=?, PET_ADD_AGE=?, PET_ADD_GENDER=?, "
+		String sql = "UPDATE PET_ADD "
+				+ " SET PET_ADD_NAME=?, PET_ADD_AGE=?, PET_ADD_GENDER=?, "
 				+ " PET_ADD_WEIGHT=?, PET_ADD_HEALTH=?, PET_ADD_ADOPT_STATE=?, PET_ADD_TYPE=?";
 		
 		try {
@@ -83,7 +83,7 @@ public class PetAddServiceImpl implements PetAddService {
 	public int petAddDelete(PetAddVO vo) {
 		//입양동물 삭제
 		int r = 0;
-		String sql = "delete from pet_add where PET_ADD_NO=?";
+		String sql = "DELETE FROM PET_ADD WHERE PET_ADD_NO=?";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
