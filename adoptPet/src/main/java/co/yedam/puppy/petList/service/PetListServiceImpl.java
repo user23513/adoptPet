@@ -53,15 +53,28 @@ public class PetListServiceImpl implements PetListService {
 	@Override
 	public int petListInsert(PetListVO listVO, FilesVO fileVO) {
 		//입양동물소개게시판 등록(파일까지)
-		int l = 0;
-		int f = 0;
-		int allInsert = 0;
+		int r = 0;
 		String sql = "insert all "
 						+ " into add_list values (pet_list_seq,?,?,?,?,?,?) "
 						+ " into files values (files_seq,?,?,?,?,?,?)"
 					+ "select * from dual;";
 		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, listVO.getBoardId());
+			psmt.setString(2, listVO.getPetListTitle());
+			psmt.setString(3, listVO.getPetListContent());
+			psmt.setString(4, listVO.getPetListWriter());
+			psmt.setString(5, listVO.getPetListState());
+			psmt.setString(6, listVO.getPetListType());
+			psmt.setInt(7, fileVO.getBoardId());
+			psmt.setString(8, fileVO.getFilesName());
+			psmt.setString(9, fileVO.getFilesPath());
+			psmt.setString(10, fileVO.getFilesType());
+			psmt.setInt(11, fileVO.getBoardNo());
+			psmt.setInt(12, fileVO.getPetListNo());
 			
+			r = psmt.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,7 +82,7 @@ public class PetListServiceImpl implements PetListService {
 			close();
 		}
 		
-		return allInsert;
+		return r;
 	}
 
 	@Override

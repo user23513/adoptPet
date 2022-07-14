@@ -32,9 +32,11 @@ public class MemberServiceImpl implements MemberService {
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				vo.setMemberId(rs.getString("member_id"));
+				vo.setMemberPassword(rs.getString("member_password"));
 				vo.setMemberName(rs.getString("member_name"));
 				vo.setMemberTel(rs.getString("member_tel"));
-				vo.setMemberEmail(rs.getString("member_job"));
+				vo.setMemberEmail(rs.getString("member_email"));
+				vo.setMemberJob(rs.getString("member_job"));
 				vo.setMemberGender(rs.getString("member_gender"));
 				vo.setMemberAuthor(rs.getString("member_author"));
 			}
@@ -48,8 +50,28 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int memberUpdate(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		// 한명정보수정하기
+		String sql = "UPDATE MEMBER SET MEMBER_PASSWORD=? , "
+				+ "MEMBER_TEL= ? , MEMBER_EMAIL= ? , MEMBER_JOB= ? , MEMBER_AUTHOR= ? "
+				+ "WHERE MEMBER_ID= ? ";
+		int r = 0;
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getMemberPassword());
+			psmt.setString(2, vo.getMemberTel());
+			psmt.setString(3, vo.getMemberEmail());
+			psmt.setString(4, vo.getMemberJob());
+			psmt.setString(5, vo.getMemberAuthor());
+			psmt.setString(6, vo.getMemberId());
+			r = psmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return r;
+
 	}
 
 	@Override

@@ -13,12 +13,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.puppy.MainCommand;
+import co.yedam.puppy.calendar.service.Calendar;
 import co.yedam.puppy.comm.Command;
+
 import co.yedam.puppy.member.service.MemberJoin;
 import co.yedam.puppy.member.service.MemberJoinForm;
 import co.yedam.puppy.member.service.MemberLogin;
 import co.yedam.puppy.member.service.MemberLoginForm;
 import co.yedam.puppy.member.service.MemberLogout;
+
+import co.yedam.puppy.member.command.MemberDelete;
+import co.yedam.puppy.member.command.MemberUpdateForm;
+
 import co.yedam.puppy.member.command.MyPage;
 
 
@@ -42,7 +48,11 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/main.do", new MainCommand());//처음접근하는곳
 		map.put("/myPage.do", new MyPage()); //로그인후 마이페이지
+		map.put("/calendar.do", new Calendar()); // 캘린더 페이지
+		map.put("/memberDelete.do", new MemberDelete());
+		map.put("/memberUpdateForm.do", new MemberUpdateForm()); 
 		
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

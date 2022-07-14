@@ -16,4 +16,5 @@ public class CalendarVO {
 	private Date calendarStartDate;
 	private Date calendarEndDate;
 	
+	
 }
