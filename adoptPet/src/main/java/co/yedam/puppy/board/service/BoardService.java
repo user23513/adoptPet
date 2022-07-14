@@ -15,7 +15,7 @@ public interface BoardService {
 	List<BoardVO> volReviewAddSelectList(int startRow, int pageSize); // 게시판 전체 조회
 
 	//공지게시판
-	List<BoardVO> boardSelectList(int startRow, int pageSize);// 게시판 목록
+	List<BoardVO> boardSelectList(int startRow, int pageSize);// 공지 목록
 	BoardVO boardSelect(BoardVO vo);
 	int noticeInsert(BoardVO vo);//글쓰기
 	int noticeUpdate(BoardVO vo);//수정
