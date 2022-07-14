@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.puppy.MainCommand;
 import co.yedam.puppy.comm.Command;
+import co.yedam.puppy.member.command.MemberDelete;
+import co.yedam.puppy.member.command.MemberUpdateForm;
 import co.yedam.puppy.member.command.MyPage;
 
 
@@ -30,6 +32,8 @@ public class FrontController extends HttpServlet {
 		// 요청과 수행할 command연결
 		map.put("/main.do", new MainCommand());//처음접근하는곳
 		map.put("/myPage.do", new MyPage()); //로그인후 마이페이지
+		map.put("/memberDelete.do", new MemberDelete());
+		map.put("/memberUpdateForm.do", new MemberUpdateForm()); 
 		
 	}
 
