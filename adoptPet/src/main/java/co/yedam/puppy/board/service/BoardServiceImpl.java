@@ -20,7 +20,6 @@ public class BoardServiceImpl implements BoardService {
 	private PreparedStatement psmt;
 	private ResultSet rs;
 
-
 	@Override
 	public List<BoardVO> volReviewSelectList() {
 		// TODO Auto-generated method stub
@@ -60,15 +59,15 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> boardSelectList(int startRow, int pageSize) {
 		// 공지 전체목록
-		List<BoardVO>list = new ArrayList<BoardVO>();
+		List<BoardVO> list = new ArrayList<BoardVO>();
 		BoardVO vo;
 		String sql = "SELECT * FROM BOARD where board_id=10 ORDER BY BOARD_NO DESC";
-		
+
 		conn = dao.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				vo = new BoardVO();
 				vo.setBoardNo(rs.getInt("board_no"));
 				vo.setBoardId(rs.getInt("board_Id"));
@@ -81,22 +80,60 @@ public class BoardServiceImpl implements BoardService {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
-		
+
 		return list;
 	}
 
 	@Override
 	public BoardVO boardSelect(BoardVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		// 글 상세보기
+		String sql = "SELECT * FROM BOARD WHERE NOTICE_NO = ?";
+		
+		conn = dao.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getBoardNo());
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo.setBoardNo(rs.getInt("board_no"));
+				vo.setBoardId(rs.getInt("board_Id"));
+				vo.setBoardTitle(rs.getString("board_title"));
+				vo.setBoardWriter(rs.getString("board_writer"));
+				vo.setBoardContent(rs.getString("board_content"));
+				vo.setBoardDate(rs.getDate("board_date"));
+				vo.setBoardHit(rs.getInt("board_hit"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return vo;
 	}
 
 	@Override
 	public int noticeInsert(BoardVO vo) {
-		// TODO Auto-generated method stub
+		// 공지 글쓰기
+		int n = 0;
+		String sql = "INSERT all INTO Board VALUES(1,10,'안녕하세요','ff','안녕하세요',SYSDATE,0)\r\n"
+				+ "            into files VALUES(1,10,'파일','앙ㅁ','jpg')\r\n"
+				+ "select * from dual";
+		
+		conn = dao.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getBoardNo());
+			psmt.setInt(2, vo.getBoardId());
+			psmt.setString(3, vo.getBoardTitle());
+			psmt.setString(4, vo.getBoardTitle());
+			psmt.setString(5, vo.getBoardTitle());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return 0;
 	}
 
@@ -154,4 +191,16 @@ public class BoardServiceImpl implements BoardService {
 		return null;
 	}
 
+	private void close() {
+		try {
+			if (rs != null)
+				rs.close();
+			if (psmt != null)
+				psmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
