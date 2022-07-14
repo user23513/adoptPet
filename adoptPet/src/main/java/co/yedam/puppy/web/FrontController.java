@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.puppy.comm.Command;
+import co.yedam.puppy.member.service.MemberLogin;
+import co.yedam.puppy.member.service.MemberLoginForm;
 
 
 @WebServlet("*.do")
@@ -26,7 +28,8 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		// 요청과 수행할 command연결
-		
+		map.put("memberLoginForm.do", new MemberLoginForm()); // 로그인폼 호출
+		map.put("memberLogin", new MemberLogin()); // 로그인
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
