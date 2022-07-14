@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>입양동물 소개 게시판</title>
 </head>
 <body>
-
+	입양동물 소개 게시판
 </body>
 </html>
