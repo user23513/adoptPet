@@ -8,6 +8,5 @@ import lombok.Setter;
 public class BoardPartVO {
 	private int boardId;
 	private String boardName;
-	
-	//머지테스트테스트
+
 }
