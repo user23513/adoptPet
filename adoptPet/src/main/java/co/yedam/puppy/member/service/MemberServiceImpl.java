@@ -32,6 +32,7 @@ public class MemberServiceImpl implements MemberService {
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				vo.setMemberId(rs.getString("member_id"));
+				vo.setMemberPassword(rs.getString("member_password"));
 				vo.setMemberName(rs.getString("member_name"));
 				vo.setMemberTel(rs.getString("member_tel"));
 				vo.setMemberEmail(rs.getString("member_job"));
