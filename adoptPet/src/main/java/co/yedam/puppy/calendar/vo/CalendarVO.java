@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class calendarVO {
+public class CalendarVO {
 	
 	// 필드
 	private int calendarNo;
