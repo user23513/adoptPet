@@ -12,6 +12,7 @@ import javax.swing.border.Border;
 
 import co.yedam.puppy.comm.DataSource;
 import co.yedam.puppy.vo.BoardVO;
+import co.yedam.puppy.vo.FilesVO;
 import oracle.ons.Closable;
 
 public class BoardServiceImpl implements BoardService {
@@ -115,31 +116,42 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int noticeInsert(BoardVO vo) {
+	public int noticeInsert(BoardVO bvo,FilesVO fvo) {
 		// 공지 글쓰기
 		int n = 0;
-		String sql = "INSERT all INTO Board VALUES(1,10,'안녕하세요','ff','안녕하세요',SYSDATE,0)\r\n"
-				+ "            into files VALUES(1,10,'파일','앙ㅁ','jpg')\r\n"
+		String sql = "INSERT all INTO Board VALUES(board_seq.nextval,?,?,?,?,SYSDATE,0)\r\n"
+				+ "            into files VALUES(?,?,?,?,?)\r\n"
 				+ "select * from dual";
 		
 		conn = dao.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getBoardNo());
-			psmt.setInt(2, vo.getBoardId());
-			psmt.setString(3, vo.getBoardTitle());
-			psmt.setString(4, vo.getBoardTitle());
-			psmt.setString(5, vo.getBoardTitle());
+//			psmt.setInt(1, bvo.getBoardNo());
+			psmt.setInt(1, bvo.getBoardId());
+			psmt.setString(2, bvo.getBoardTitle());
+			psmt.setString(3, bvo.getBoardWriter());
+			psmt.setString(4, bvo.getBoardContent());
+			psmt.setInt(5, fvo.getFilesNo());
+			psmt.setInt(6, bvo.getBoardId());
+			psmt.setString(7, fvo.getFilesName());
+			psmt.setString(8, fvo.getFilesPath());
+			psmt.setString(9, fvo.getFilesType());
+			
+			n = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close();
 		}
 		
-		return 0;
+		return n;
 	}
 
 	@Override
-	public int noticeUpdate(BoardVO vo) {
-		// TODO Auto-generated method stub
+	public int noticeUpdate(BoardVO bvo,FilesVO fvo) {
+		//공지 수정
+		int n = 0;
+		String sql = "update board set board";
 		return 0;
 	}
 
