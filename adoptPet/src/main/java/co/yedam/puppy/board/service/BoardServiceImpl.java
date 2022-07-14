@@ -84,7 +84,6 @@ public class BoardServiceImpl implements BoardService {
 		} finally {
 			close();
 		}
-
 		return list;
 	}
 
