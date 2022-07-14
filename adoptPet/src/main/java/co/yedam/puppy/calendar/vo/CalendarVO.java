@@ -1,18 +1,20 @@
 package co.yedam.puppy.calendar.vo;
 
+import java.sql.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class calendarVO {
+public class CalendarVO {
 	
 	// 필드
 	private int calendarNo;
 	private String calendarWriter;
-	private String calendarTitle;
-	private String calendarStartDate;
-	private String calendarEndDate;
+	private Date calendarTitle;
+	private Date calendarStartDate;
+	private Date calendarEndDate;
 	
 	
 }
