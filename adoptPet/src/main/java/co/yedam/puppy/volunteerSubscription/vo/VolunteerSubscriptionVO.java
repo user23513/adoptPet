@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class volunteerSubscriptionVO {
+public class VolunteerSubscriptionVO {
 	
 	// 필드
 	private String memberId;
