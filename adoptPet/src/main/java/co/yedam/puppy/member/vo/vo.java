@@ -1,5 +1,18 @@
 package co.yedam.puppy.member.vo;
 
-public class vo {
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+public class vo {
+	private String memberId;
+	private String memberPassword;
+	private String memberName;
+	private String memberTel;
+	private String memberEmail;
+	private String memberJob;
+	private String memberGender;
+	private String memberAuthor;
+	
 }
