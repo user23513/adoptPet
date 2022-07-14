@@ -1,5 +1,7 @@
 package co.yedam.puppy.calendar.vo;
 
+
+import java.sql.Date;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,8 +13,7 @@ public class CalendarVO {
 	private int calendarNo;
 	private String calendarWriter;
 	private String calendarTitle;
-	private String calendarStartDate;
-	private String calendarEndDate;
-	
+	private Date calendarStartDate;
+	private Date calendarEndDate;
 	
 }
