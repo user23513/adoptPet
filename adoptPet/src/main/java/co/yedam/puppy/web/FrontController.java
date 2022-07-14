@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.puppy.MainCommand;
 import co.yedam.puppy.comm.Command;
+import co.yedam.puppy.member.service.MemberJoin;
 import co.yedam.puppy.member.service.MemberJoinForm;
 import co.yedam.puppy.member.service.MemberLogin;
 import co.yedam.puppy.member.service.MemberLoginForm;
@@ -35,7 +36,9 @@ public class FrontController extends HttpServlet {
 		map.put("memberLoginForm.do", new MemberLoginForm()); // 로그인 폼 호출
 		map.put("memberLogin", new MemberLogin()); // 로그인
 		map.put("memberLogout.do", new MemberLogout()); // 로그아웃
-		map.put("memberJoinForm.do", new MemberJoinForm()); // 회원가입 폼 호출
+		map.put("memberJoinForm.do", new MemberJoinForm()); // 회원가입 화면
+		map.put("memberJoin.do", new MemberJoin()); // 회원가입 처리
+//		map.put("ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
 		
 		map.put("/main.do", new MainCommand());//처음접근하는곳
 		map.put("/myPage.do", new MyPage()); //로그인후 마이페이지

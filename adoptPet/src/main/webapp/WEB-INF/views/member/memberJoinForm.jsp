@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div align="center">
+	<div><h1>회원가입 해보자</h1></div>
+	<div>
+		
+	</div>
+</div>
 
 </body>
 </html>
