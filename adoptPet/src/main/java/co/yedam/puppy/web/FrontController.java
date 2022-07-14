@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.puppy.MainCommand;
 import co.yedam.puppy.comm.Command;
+import co.yedam.puppy.member.command.MyPage;
 
 
 @WebServlet("*.do")
@@ -26,6 +28,8 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		// 요청과 수행할 command연결
+		map.put("/main.do", new MainCommand());//처음접근하는곳
+		map.put("/myPage.do", new MyPage()); //로그인후 마이페이지
 		
 	}
 
@@ -47,7 +51,8 @@ public class FrontController extends HttpServlet {
 				response.getWriter().append(viewPage.substring(5));
 				return;
 			}
-			viewPage = viewPage + ".tiles";
+			//viewPage = viewPage + ".tiles";
+			viewPage = "/WEB-INF/views/"+viewPage + ".jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
 		} else {

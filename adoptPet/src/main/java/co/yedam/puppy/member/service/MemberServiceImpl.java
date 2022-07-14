@@ -14,7 +14,7 @@ public class MemberServiceImpl implements MemberService {
 	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
-	
+
 	@Override
 	public int memberInsert(MemberVO vo) {
 		// 회원등록(회원가입)
@@ -30,7 +30,7 @@ public class MemberServiceImpl implements MemberService {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getMemberId());
 			rs = psmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				vo.setMemberId(rs.getString("member_id"));
 				vo.setMemberName(rs.getString("member_name"));
 				vo.setMemberTel(rs.getString("member_tel"));
@@ -38,31 +38,64 @@ public class MemberServiceImpl implements MemberService {
 				vo.setMemberGender(rs.getString("member_gender"));
 				vo.setMemberAuthor(rs.getString("member_author"));
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return vo;
+	}
+
+	@Override
+	public int memberUpdate(MemberVO vo) {
+		// 한명정보수정하기
+		String sql = "UPDATE MEMBER SET MEMBER_PASSWORD=? , "
+				+ "MEMBER_TEL= ? ,MEMBER_JOB= ? , MEMBER_AUTHOR= ? "
+				+ "WHERE MEMBER_ID= ? ";
+		int r = 0;
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getMemberPassword());
+			psmt.setString(2, vo.getMemberTel());
+			psmt.setString(3, vo.getMemberJob());
+			psmt.setString(4, vo.getMemberAuthor());
+			psmt.setString(5, vo.getMemberId());
+			r = psmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			close();
 		}
-		return null;
-	}
-
-	@Override
-	public int memberUpdate(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return r;
 	}
 
 	@Override
 	public int memberDelete(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		// 한명정보삭제(탈퇴)
+		String sql = "DELETE FROM MEMBER WHERE MEMBER_ID=?";
+		int r =0;
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getMemberId());
+			r = psmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return r;
 	}
 
 	private void close() {
 		try {
-			if(rs != null) rs.close();
-			if(psmt != null) psmt.close();
-			if(conn != null) conn.close();
+			if (rs != null)
+				rs.close();
+			if (psmt != null)
+				psmt.close();
+			if (conn != null)
+				conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
