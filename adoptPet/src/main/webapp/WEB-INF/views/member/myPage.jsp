@@ -16,7 +16,7 @@
 	<p>${member.memberJob}</p>
 	<p>${member.memberGender }</p>
 	<p>${member.memberAuthor }</p>
-	<button onclick="location.href='memberUpdate.do'">내정보수정하기</button>
+	<button onclick="location.href='memberUpdateForm.do'">내정보수정하기</button>
 	<button onclick="memberDelete()">내정보삭제하기</button>
 	
 <script type="text/javascript">

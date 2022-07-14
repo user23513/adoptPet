@@ -8,7 +8,7 @@ import co.yedam.puppy.member.service.MemberService;
 import co.yedam.puppy.member.service.MemberServiceImpl;
 import co.yedam.puppy.vo.MemberVO;
 
-public class MemberUpdate implements Command {
+public class MemberUpdateForm implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
@@ -22,7 +22,7 @@ public class MemberUpdate implements Command {
 
 		//int n = memberDao.memberUpdate(vo);
 		
-		return "member/memberUpdate.do";
+		return "member/memberUpdateForm";
 	}
 
 }
