@@ -20,18 +20,21 @@ import co.yedam.puppy.board.command.NoticeList;
 import co.yedam.puppy.board.command.NoticeSelect;
 import co.yedam.puppy.calendar.service.Calendar;
 import co.yedam.puppy.comm.Command;
-
-import co.yedam.puppy.member.service.MemberJoin;
-import co.yedam.puppy.member.service.MemberJoinForm;
-import co.yedam.puppy.member.service.MemberLogin;
-import co.yedam.puppy.member.service.MemberLoginForm;
-import co.yedam.puppy.member.service.MemberLogout;
 import co.yedam.puppy.petAdd.command.PetAddForm;
 import co.yedam.puppy.petAdd.command.PetAddList;
 import co.yedam.puppy.petList.command.PetList;
+
+import co.yedam.puppy.member.command.AjaxMemberIdCheck;
+
 import co.yedam.puppy.petList.command.PetListForm;
 import co.yedam.puppy.petList.command.PetListInsert;
+
 import co.yedam.puppy.member.command.MemberDelete;
+import co.yedam.puppy.member.command.MemberJoin;
+import co.yedam.puppy.member.command.MemberJoinForm;
+import co.yedam.puppy.member.command.MemberLogin;
+import co.yedam.puppy.member.command.MemberLoginForm;
+import co.yedam.puppy.member.command.MemberLogout;
 import co.yedam.puppy.member.command.MemberUpdateForm;
 
 import co.yedam.puppy.member.command.MemberMyPage;
@@ -52,16 +55,23 @@ public class FrontController extends HttpServlet {
 		map.put("/main.do", new MainCommand());//처음접근하는곳
 		
 		map.put("/memberLoginForm.do", new MemberLoginForm()); // 로그인 폼 호출
-		map.put("/memberLogin", new MemberLogin()); // 로그인
+		map.put("/memberLogin.do", new MemberLogin()); // 로그인
 		map.put("/memberLogout.do", new MemberLogout()); // 로그아웃
 		map.put("/memberJoinForm.do", new MemberJoinForm()); // 회원가입 화면
 		map.put("/memberJoin.do", new MemberJoin()); // 회원가입 처리
+
+		map.put("/ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
+		
+		map.put("/main.do", new MainCommand());//처음접근하는곳
+		map.put("/myPage.do", new MyPage()); //로그인후 마이페이지
+
 //		map.put("ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
 		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
 		map.put("/memberDelete.do", new MemberDelete()); //회원자진탈퇴
 		map.put("/memberUpdateForm.do", new MemberUpdateForm());  //회원정보수정화면
 		map.put("/memberUpdate.do", new MemberUpdate()); //회원정보수정
 				 
+
 		map.put("/calendar.do", new Calendar()); // 캘린더 페이지
 		
 		map.put("/petAddForm.do", new PetAddForm()); //입양동물 등록 폼 페이지로 이동
@@ -99,8 +109,8 @@ public class FrontController extends HttpServlet {
 				response.getWriter().append(viewPage.substring(5));
 				return;
 			}
-			//viewPage = viewPage + ".tiles";
-			viewPage = "/WEB-INF/views/"+viewPage + ".jsp";
+			viewPage = viewPage + ".tiles";
+			//viewPage = "/WEB-INF/views/"+viewPage + ".jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
 		} else {

@@ -18,9 +18,54 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int memberInsert(MemberVO vo) {
 		// 회원등록(회원가입)
-		return 0;
+		int n = 0;
+		String sql = "INSERT INTO MEMBER(MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, "
+				+ "MEMBER_TEL, MEMBER_EMAIL, MEMBER_JOB, MEMBER_GENDER, MEMBER_AUTHOR)"
+				+ " VALUES(?,?,?,?,?,?,?,?)";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getMemberId());
+			psmt.setString(2, vo.getMemberPassword());
+			psmt.setString(3, vo.getMemberName());
+			psmt.setString(4, vo.getMemberTel());
+			psmt.setString(5, vo.getMemberEmail());
+			psmt.setString(6, vo.getMemberJob());
+			psmt.setString(7, vo.getMemberGender());
+			psmt.setString(8, vo.getMemberAuthor());
+			n = psmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return n;
 	}
 
+	@Override
+	public boolean isMemberIdcheck(String id) {
+		// 회원 아이디 중복체크
+		boolean b = false;
+		String sql = "SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = ?";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			if(!rs.next()) {
+				b=true;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return b;
+	}
+	
+	
+	
+	
 	@Override
 	public MemberVO memberSelectOne(MemberVO vo) {
 		// 한명정보불러오기
@@ -116,7 +161,6 @@ public class MemberServiceImpl implements MemberService {
 		return vo;
 	}
 
-	
 	
 
 	private void close() {

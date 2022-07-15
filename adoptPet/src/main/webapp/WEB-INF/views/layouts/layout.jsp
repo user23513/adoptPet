@@ -18,7 +18,7 @@ body {
 
 /* Style the header */
 header {
-  background-color: #666;
+  background-color: #8FBBE7;
   padding: 30px;
   text-align: center;
   font-size: 35px;

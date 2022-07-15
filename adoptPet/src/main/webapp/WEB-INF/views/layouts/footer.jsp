@@ -18,7 +18,7 @@ body {
 
 /* Style the header */
 header {
-  background-color: #666;
+  background-color: #CEECF5;
   padding: 30px;
   text-align: center;
   font-size: 35px;
@@ -28,9 +28,9 @@ header {
 /* Create two columns/boxes that floats next to each other */
 nav {
   float: left;
-  width: 30%;
-  height: 300px; /* only for demonstration, should be removed */
-  background: #ccc;
+  width: 25%;
+  height: 700px; /* only for demonstration, should be removed */
+  background: #F5D7CE;
   padding: 20px;
 }
 
@@ -43,9 +43,9 @@ nav ul {
 article {
   float: left;
   padding: 20px;
-  width: 70%;
-  background-color: #f1f1f1;
-  height: 300px; /* only for demonstration, should be removed */
+  width: 75%;
+  background-color: #FAF0E6;
+  height: 700px; /* only for demonstration, should be removed */
 }
 
 /* Clear floats after the columns */
@@ -57,7 +57,7 @@ section::after {
 
 /* Style the footer */
 footer {
-  background-color: #777;
+  background-color: #E6F0FA;
   padding: 10px;
   text-align: center;
   color: white;
@@ -73,7 +73,7 @@ footer {
 </style>
 <body>
 <footer>
-  <p>Footer</p>
+  <p>Test</p>
 	<h3>copywrite@2022</h3>
 </footer>
 

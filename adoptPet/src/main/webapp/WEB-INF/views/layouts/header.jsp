@@ -17,11 +17,11 @@ body {
 
 /* Style the header */
 header {
-  background-color: #666;
+  background-color: #8FBBE7;
   padding: 30px;
   text-align: center;
   font-size: 35px;
-  color: white;
+  color: black;
 }
 
 /* Create two columns/boxes that floats next to each other */
@@ -43,8 +43,8 @@ article {
   float: left;
   padding: 20px;
   width: 70%;
-  background-color: #f1f1f1;
-  height: 300px; /* only for demonstration, should be removed */
+  background-color: #FAF0E6;
+  height: 400px; /* only for demonstration, should be removed */
 }
 
 /* Clear floats after the columns */
@@ -73,7 +73,7 @@ footer {
 </head>
 <body>
 	<header>
-	  <h2>Kyung</h2>
+	  <h2>Test</h2>
 	</header>
 </body>
 </html>
