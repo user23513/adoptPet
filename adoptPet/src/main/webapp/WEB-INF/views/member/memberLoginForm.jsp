@@ -8,7 +8,7 @@
 </head>
 <body>
 <div align="center">
-	<div><h1>로그인 해보자</h1></div>
+	<div><h1>로 그 인 해 보 자 </h1></div>
 	<div>
 		<form id="frm" action="memberLogin.do" method="post">
 			<div>
@@ -32,7 +32,7 @@
 			<div>
 				<input type="submit" value="로그인">&nbsp;&nbsp;&nbsp;
 				<input type="reset" value="취 소">&nbsp;&nbsp;&nbsp;
-				<input type="button" value="홈으로~" onclick="location.href='main.do'">
+				<input type="button" value="홈 가기" onclick="location.href='main.do'">
 			</div>
 		</form>
 	</div>
