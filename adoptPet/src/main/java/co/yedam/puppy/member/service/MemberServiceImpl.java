@@ -24,11 +24,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO memberSelectOne(MemberVO vo) {
 		// 한명정보불러오기
-		String sql = "SELECT * FROM MEMBER WHERE MEMBER_ID= ? ";
+		String sql = "SELECT * FROM MEMBER WHERE MEMBER_ID = ? ";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getMemberId());
+			//psmt.setString(1, vo.getMemberId());
+			psmt.setString(1,vo.getMemberId());
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				vo.setMemberId(rs.getString("member_id"));
@@ -45,26 +46,27 @@ public class MemberServiceImpl implements MemberService {
 		}finally {
 			close();
 		}
-		return null;
+		return vo;
 	}
 
 	@Override
 	public int memberUpdate(MemberVO vo) {
 		// 한명정보수정하기
-		String sql = "UPDATE MEMBER SET MEMBER_PASSWORD=? , "
+		String sql = "UPDATE MEMBER SET  "
 				+ "MEMBER_TEL= ? , MEMBER_EMAIL= ? , MEMBER_JOB= ? , MEMBER_AUTHOR= ? "
 				+ "WHERE MEMBER_ID= ? ";
 		int r = 0;
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getMemberPassword());
-			psmt.setString(2, vo.getMemberTel());
-			psmt.setString(3, vo.getMemberEmail());
-			psmt.setString(4, vo.getMemberJob());
-			psmt.setString(5, vo.getMemberAuthor());
-			psmt.setString(6, vo.getMemberId());
+			psmt.setString(1, vo.getMemberTel());
+			psmt.setString(2, vo.getMemberEmail());
+			psmt.setString(3, vo.getMemberJob());
+			psmt.setString(4, vo.getMemberAuthor());
+			psmt.setString(5, vo.getMemberId());
+
 			r = psmt.executeUpdate();
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -75,11 +77,22 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int memberDelete(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int memberDelete(String id) {
+		int n = 0;
+		String sql = "DELETE FROM MEMBER WHERE MEMBER_ID = ?";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			n = psmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return n;
 	}
-	
+
 	@Override
 	public MemberVO memberLogin(MemberVO vo) {
 		//회원 로그인
@@ -102,10 +115,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return vo;
 	}
-	
-	
-	//@Override
-	
+
 	
 	
 
@@ -118,4 +128,5 @@ public class MemberServiceImpl implements MemberService {
 			e.printStackTrace();
 		}
 	}
+
 }

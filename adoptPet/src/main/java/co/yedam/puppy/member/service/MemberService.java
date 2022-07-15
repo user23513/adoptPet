@@ -10,5 +10,5 @@ public interface MemberService {
 	//경아
 	MemberVO memberSelectOne(MemberVO vo);// 내정보단건조회 
 	int memberUpdate(MemberVO vo); // 내정보수정
-	int memberDelete(MemberVO vo); // 내정보삭제(탈퇴)
+	int memberDelete(String id); // 내정보삭제(탈퇴)
 }

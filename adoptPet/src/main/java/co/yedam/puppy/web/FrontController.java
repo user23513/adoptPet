@@ -32,7 +32,8 @@ import co.yedam.puppy.petList.command.PetList;
 import co.yedam.puppy.member.command.MemberDelete;
 import co.yedam.puppy.member.command.MemberUpdateForm;
 
-import co.yedam.puppy.member.command.MyPage;
+import co.yedam.puppy.member.command.MemberMyPage;
+import co.yedam.puppy.member.command.MemberUpdate;
 
 
 @WebServlet("*.do")
@@ -46,18 +47,20 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		// 요청과 수행할 command연결
+		map.put("/main.do", new MainCommand());//처음접근하는곳
+		
 		map.put("/memberLoginForm.do", new MemberLoginForm()); // 로그인 폼 호출
 		map.put("/memberLogin", new MemberLogin()); // 로그인
 		map.put("/memberLogout.do", new MemberLogout()); // 로그아웃
 		map.put("/memberJoinForm.do", new MemberJoinForm()); // 회원가입 화면
 		map.put("/memberJoin.do", new MemberJoin()); // 회원가입 처리
 //		map.put("ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
-		
-		map.put("/main.do", new MainCommand());//처음접근하는곳
-		map.put("/myPage.do", new MyPage()); //로그인후 마이페이지
+		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
+		map.put("/memberDelete.do", new MemberDelete()); //회원자진탈퇴
+		map.put("/memberUpdateForm.do", new MemberUpdateForm());  //회원정보수정화면
+		map.put("/memberUpdate.do", new MemberUpdate()); //회원정보수정
+				 
 		map.put("/calendar.do", new Calendar()); // 캘린더 페이지
-		map.put("/memberDelete.do", new MemberDelete());
-		map.put("/memberUpdateForm.do", new MemberUpdateForm()); 
 		
 		map.put("/petAddForm.do", new PetAddForm()); //입양동물 등록 폼 페이지로 이동
 		map.put("/petAddList.do", new PetAddList()); //입양동물 등록 처리 후 뿌려주는 페이지(임의로 내가 만듬)로 이동
