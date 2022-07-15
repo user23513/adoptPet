@@ -41,11 +41,11 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		// 요청과 수행할 command연결
-		map.put("memberLoginForm.do", new MemberLoginForm()); // 로그인 폼 호출
-		map.put("memberLogin", new MemberLogin()); // 로그인
-		map.put("memberLogout.do", new MemberLogout()); // 로그아웃
-		map.put("memberJoinForm.do", new MemberJoinForm()); // 회원가입 화면
-		map.put("memberJoin.do", new MemberJoin()); // 회원가입 처리
+		map.put("/memberLoginForm.do", new MemberLoginForm()); // 로그인 폼 호출
+		map.put("/memberLogin", new MemberLogin()); // 로그인
+		map.put("/memberLogout.do", new MemberLogout()); // 로그아웃
+		map.put("/memberJoinForm.do", new MemberJoinForm()); // 회원가입 화면
+		map.put("/memberJoin.do", new MemberJoin()); // 회원가입 처리
 //		map.put("ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
 		
 		map.put("/main.do", new MainCommand());//처음접근하는곳
