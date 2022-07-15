@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.puppy.MainCommand;
+import co.yedam.puppy.board.command.AjaxNoticeSearch;
+import co.yedam.puppy.board.command.NoticeForm;
+import co.yedam.puppy.board.command.NoticeInsert;
+import co.yedam.puppy.board.command.NoticeList;
+import co.yedam.puppy.board.command.NoticeSelect;
 import co.yedam.puppy.calendar.service.Calendar;
 import co.yedam.puppy.comm.Command;
 
@@ -57,6 +62,15 @@ public class FrontController extends HttpServlet {
 		map.put("/petAddForm.do", new PetAddForm()); //입양동물 등록 폼 페이지로 이동
 		map.put("/petAddList.do", new PetAddList()); //입양동물 등록 처리 후 뿌려주는 페이지(임의로 내가 만듬)로 이동
 		map.put("/petList.do", new PetList()); //입양동물 소개 게시판 페이지로 이동
+		
+		
+		map.put("/noticeList.do", new NoticeList());//공지 리스트
+		map.put("/noticeSelect.do", new NoticeSelect());//공지 리스트
+		map.put("/noticeForm.do", new NoticeForm());//공지 입력폼 호출
+		map.put("/noticeInsert.do", new NoticeInsert()); //공지 등록
+		map.put("/ajaxNoticeInsert.do", new AjaxNoticeSearch());//공지 검색
+		
+		
 
 	}
 
