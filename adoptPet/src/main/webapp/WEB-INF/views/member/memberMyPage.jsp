@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.6.0.min.js"/></script>
+</head>
+<body>
+	<p>${member.memberId}</p>
+	<p>${member.memberPassword}</p>
+	<p>${member.memberName }</p>
+	<p>${member.memberTel}</p>
+	<p>${member.memberEmail }</p>
+	<p>${member.memberJob}</p>
+	<p>${member.memberGender }</p>
+	<p>${member.memberAuthor }</p>
+	
+	<form id="frm" action="memberDelete.do" method="post">
+		<input type="hidden" id="memberId" name="memberId" value="${member.memberId}">
+		<button type="button" onclick="memberDeleteCall()">탈퇴하기</button>
+	</form>
+		<button onclick="location.href='memberUpdateForm.do'">내정보수정하기</button>
+	
+<script type="text/javascript">
+
+function memberDeleteCall(){
+	 if(confirm("정말 탈퇴 하시겠습니까?\n(※ 작성한 글과 댓글 모두 삭제 됩니다.)") == true){		
+			frm.submit();
+	 }else{
+		alert("탈퇴를 취소 했습니다.");
+	 }
+	}
+</script>	
+</body>
+</html>

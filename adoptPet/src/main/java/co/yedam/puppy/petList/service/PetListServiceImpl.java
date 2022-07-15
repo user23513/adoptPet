@@ -100,7 +100,7 @@ public class PetListServiceImpl implements PetListService {
 	@Override
 	public PetListVO petListSelectOne(PetListVO vo) {
 		//입양동물소개게시판 단건조회
-		String sql = "select * from pet_list where PET_LIST_NO=?";
+		String sql = "SELECT * FROM PET_LIST WHERE PET_LIST_NO=?";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
@@ -130,7 +130,7 @@ public class PetListServiceImpl implements PetListService {
 	public int petListCount() {
 		//입양동물소개게시판에 있는 글 개수 확인
 		int r = 0;
-		String sql = "select * from pet_list";
+		String sql = "SELECT * FROM PET_LIST";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
@@ -152,10 +152,10 @@ public class PetListServiceImpl implements PetListService {
 	public int petListInsert(PetListVO listVO, FilesVO fileVO) {
 		//입양동물소개게시판 등록(파일까지)
 		int r = 0;
-		String sql = "insert all "
-						+ " into add_list values (pet_list_seq,?,?,?,?,?,?) "
-						+ " into files values (files_seq,?,?,?,?,?,?)"
-					+ "select * from dual;";
+		String sql = "INSERT ALL "
+						+ " INTO ADD_LIST VALUES (PET_LIST_SEQ,?,?,?,?,?,?) "
+						+ " INTO FILES VALUES (FILES_SEQ,?,?,?,?,?,?)"
+					+ "SELECT * FROM DUAL;";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);

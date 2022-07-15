@@ -9,7 +9,7 @@ import co.yedam.puppy.member.service.MemberService;
 import co.yedam.puppy.member.service.MemberServiceImpl;
 import co.yedam.puppy.vo.MemberVO;
 
-public class MyPage implements Command {
+public class MemberMyPage implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
@@ -17,12 +17,13 @@ public class MyPage implements Command {
 		MemberService memberDao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
 		
-		//로그인한 계정가져오기
+		//로그인한 계정가져오기 -수정해야됨
 		vo.setMemberId("kim");
 		
 		vo = memberDao.memberSelectOne(vo);
+		
 		request.setAttribute("member", vo);
-		return "member/myPage";
+		return "member/memberMyPage";
 	}
 
 }
