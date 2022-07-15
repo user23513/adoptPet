@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Controller;
+
 import co.yedam.puppy.MainCommand;
 import co.yedam.puppy.calendar.service.Calendar;
 import co.yedam.puppy.comm.Command;
@@ -29,6 +31,7 @@ import co.yedam.puppy.member.command.MemberUpdateForm;
 
 import co.yedam.puppy.member.command.MyPage;
 
+@Controller
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -69,7 +72,7 @@ public class FrontController extends HttpServlet {
 		
 		// 1.요청수행
 		Command command = map.get(page);
-		String viewPage = command.exec(request, response);
+		String viewPage  = command.exec(request, response);
 		
 		// 2.결과페이지
 		if (!viewPage.endsWith(".do")) {
@@ -78,7 +81,7 @@ public class FrontController extends HttpServlet {
 				response.getWriter().append(viewPage.substring(5));
 				return;
 			}
-			//viewPage = viewPage + ".tiles";
+//			viewPage = viewPage + ".tiles";
 			viewPage = "/WEB-INF/views/"+viewPage + ".jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
