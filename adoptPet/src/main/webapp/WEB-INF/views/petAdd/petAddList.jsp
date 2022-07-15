@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%= request.getAttribute("message") %>
+<%-- 	<%= request.getAttribute("message") %> --%>
+	${message}
 </body>
 </html>

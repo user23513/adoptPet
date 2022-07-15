@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import co.yedam.puppy.comm.DataSource;
 import co.yedam.puppy.vo.FilesVO;
@@ -18,9 +19,9 @@ public class PetListServiceImpl implements PetListService {
 	private ResultSet rs;
 
 	@Override
-	public List<PetListVO> petListSelectList(int startRow, int pageSize) {
+	public List<PetListVO> petListSelectList(int currentPage, int startRow, int pageSize) {
 		//입양동물소개게시판 전체리스트조회
-		List<PetListVO> list = new ArrayList<>();
+		List<PetListVO> list = new CopyOnWriteArrayList<>();
 		PetListVO vo;
 		
 		//DB 데이터를 원하는만큼씩 잘라내기
@@ -36,8 +37,8 @@ public class PetListServiceImpl implements PetListService {
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, startRow-1); //시작행-1(시작 row 인덱스 번호)
-			psmt.setInt(2, pageSize); //페이지크기(한번에 출력되는 수)
+			psmt.setInt(1, startRow); //시작행-1(시작 row 인덱스 번호)
+			psmt.setInt(2, pageSize*currentPage); //페이지크기(한번에 출력되는 수)
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -64,6 +65,38 @@ public class PetListServiceImpl implements PetListService {
 		return list;
 	}
 
+	@Override
+	public List<PetListVO> petListFiles(List<PetListVO> list) {
+		//담아온 list_no를  뽑아서 파일을 찾아서 다시 vo객체에 담기
+		//list가 pageSize만큼 뽑아온 게시판데이터
+		String sql = "select f.files_path\r\n"
+				+ "from pet_list l, files f\r\n"
+				+ "where l.pet_list_no = f.pet_list_no\r\n"
+				+ "and f.pet_list_no=?";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			
+			for(PetListVO vo: list) {
+				int petListNo = vo.getPetListNo();
+				psmt.setInt(1, petListNo);
+				rs = psmt.executeQuery();
+				
+				if(rs.next()) {
+					vo.setFilesPath1(rs.getString("files_path"));
+					
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return list;
+	}
+	
 	@Override
 	public PetListVO petListSelectOne(PetListVO vo) {
 		//입양동물소개게시판 단건조회
@@ -229,7 +262,7 @@ public class PetListServiceImpl implements PetListService {
 	private void close() {
 		try {
 			if(rs != null) rs.close();
-			if(psmt != null) rs.close();
+			if(psmt != null) psmt.close();
 			if(conn != null) conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
