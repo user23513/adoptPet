@@ -12,7 +12,7 @@ public class MemberUpdateForm implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// 회원정보수정
+		// 회원정보수정페이지
 		MemberService memberDao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
 		vo.setMemberId("kim");
@@ -20,8 +20,6 @@ public class MemberUpdateForm implements Command {
 		vo = memberDao.memberSelectOne(vo);
 		request.setAttribute("member", vo);
 
-		//int n = memberDao.memberUpdate(vo);
-		
 		return "member/memberUpdateForm";
 	}
 
