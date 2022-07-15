@@ -29,6 +29,8 @@ import co.yedam.puppy.member.service.MemberLogout;
 import co.yedam.puppy.petAdd.command.PetAddForm;
 import co.yedam.puppy.petAdd.command.PetAddList;
 import co.yedam.puppy.petList.command.PetList;
+import co.yedam.puppy.petList.command.PetListForm;
+import co.yedam.puppy.petList.command.PetListInsert;
 import co.yedam.puppy.member.command.MemberDelete;
 import co.yedam.puppy.member.command.MemberUpdateForm;
 
@@ -65,8 +67,10 @@ public class FrontController extends HttpServlet {
 		map.put("/petAddForm.do", new PetAddForm()); //입양동물 등록 폼 페이지로 이동
 		map.put("/petAddList.do", new PetAddList()); //입양동물 등록 처리 후 뿌려주는 페이지(임의로 내가 만듬)로 이동
 		map.put("/petList.do", new PetList()); //입양동물 소개 게시판 페이지로 이동
-		
-		
+
+		map.put("/petListForm.do", new PetListForm()); //입양동물 소개게시판 게시글 등록페이지로 이동
+		map.put("/petListInsert.do", new PetListInsert()); //입양동물 소개게시판 게시글 등록처리
+	
 		map.put("/noticeList.do", new NoticeList());//공지 리스트
 		map.put("/noticeSelect.do", new NoticeSelect());//공지 리스트
 		map.put("/noticeForm.do", new NoticeForm());//공지 입력폼 호출
