@@ -8,7 +8,7 @@ import co.yedam.puppy.vo.PetListVO;
 
 
 public interface AdminService {
-	//경아
+	
 	//관리자마이페이지
 	List<MemberVO> allMemberList(int startRow, int pageSize);
 	List<PetListVO> allAdoptList(int startRow, int pageSize);
