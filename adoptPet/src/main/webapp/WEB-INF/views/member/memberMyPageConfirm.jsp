@@ -7,12 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-메인입니다.
-
-<a href="webapp/fullcalendar/examples/php/selectable.do">달력</a>
-
-<a href="memberMyPage.do" >마이페이지</a>
-	
-
+${memberUpdateComplete}
+${memberDeleteComplete}
 </body>
 </html>
