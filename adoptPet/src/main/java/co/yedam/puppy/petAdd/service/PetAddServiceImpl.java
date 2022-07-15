@@ -25,7 +25,7 @@ public class PetAddServiceImpl implements PetAddService {
 	public int petAddInsert(PetAddVO vo) {
 		//입양동물 등록
 		int r = 0;
-		String sql = "INSERT INTO PET_ADD VALUES(PET_ADD_SEQ,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO PET_ADD VALUES(PET_ADD_SEQ.NEXTVAL,?,?,?,?,?,?,?)";
 		
 		try {
 			conn = dao.getConnection();
@@ -55,7 +55,8 @@ public class PetAddServiceImpl implements PetAddService {
 		int r = 0;
 		String sql = "UPDATE PET_ADD "
 				+ " SET PET_ADD_NAME=?, PET_ADD_AGE=?, PET_ADD_GENDER=?, "
-				+ " PET_ADD_WEIGHT=?, PET_ADD_HEALTH=?, PET_ADD_ADOPT_STATE=?, PET_ADD_TYPE=?";
+				+ " PET_ADD_WEIGHT=?, PET_ADD_HEALTH=?, PET_ADD_ADOPT_STATE=?, PET_ADD_TYPE=? "
+				+ "WHERE PET_ADD_NO=?";
 		
 		try {
 			conn = dao.getConnection();
@@ -67,6 +68,7 @@ public class PetAddServiceImpl implements PetAddService {
 			psmt.setString(5, vo.getPetAddHealth());
 			psmt.setString(6, vo.getPetAddAdoptState());
 			psmt.setString(7, vo.getPetAddType());
+			psmt.setInt(8, vo.getPetAddNo());
 			
 			r = psmt.executeUpdate();
 			
@@ -103,7 +105,7 @@ public class PetAddServiceImpl implements PetAddService {
 	private void close() {
 		try {
 			if(rs != null) rs.close();
-			if(psmt != null) rs.close();
+			if(psmt != null) psmt.close();
 			if(conn != null) conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
