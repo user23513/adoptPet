@@ -21,6 +21,9 @@ import co.yedam.puppy.board.command.NoticeInsert;
 import co.yedam.puppy.board.command.NoticeList;
 import co.yedam.puppy.board.command.NoticeSelect;
 import co.yedam.puppy.calendar.command.Calendar;
+import co.yedam.puppy.calendar.service.CalendarDelete;
+import co.yedam.puppy.calendar.service.CalendarInsert;
+import co.yedam.puppy.calendar.service.CalendarList;
 import co.yedam.puppy.comm.Command;
 import co.yedam.puppy.heart.command.HeartCheck;
 import co.yedam.puppy.petAdd.command.PetAddForm;
@@ -70,7 +73,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
 		
 		map.put("/main.do", new MainCommand());//처음접근하는곳
-//		map.put("/myPage.do", new MyPage()); //로그인후 마이페이지
+//		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
 
 //		map.put("ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
 		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
@@ -80,6 +83,10 @@ public class FrontController extends HttpServlet {
 				 
 
 		map.put("/calendar.do", new Calendar()); // 캘린더 페이지
+		map.put("/calendarList.do", new CalendarList()); // 캘린더 리스트 페이지
+		map.put("/calendarInsert.do", new CalendarInsert()); // 캘린더 등록 페이지
+		map.put("/calendarDelete.do", new CalendarDelete()); // 캘린더 삭제 페이지
+		
 		
 		map.put("/petAddForm.do", new PetAddForm()); //입양동물 등록 폼 페이지로 이동
 		map.put("/petAddInsert.do", new PetAddInsert()); //입양동물 등록 처리
