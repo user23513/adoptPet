@@ -1,17 +1,11 @@
 package co.yedam.puppy.calendar.service;
 
-import java.io.IOException;
-import java.sql.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import co.yedam.puppy.comm.Command;
-import co.yedam.puppy.vo.CalendarVO;
 
 public class Calendar implements Command {
 

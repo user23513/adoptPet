@@ -31,7 +31,7 @@ public class CalendarList implements Command {
 		vo.setCalendarEndDate(Date.valueOf(end));
 		
 		Gson gson = new GsonBuilder().create();
-		response.getTitle().print(gson.toJson(schedules));
+//		response.getTitle().print(gson.toJson(schedules));
 		
 		return "calendar/calendar";
 	}

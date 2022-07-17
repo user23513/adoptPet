@@ -19,4 +19,8 @@ public class PetListVO {
 	private String filesPath1; //파일1번 경로
 	private String filesPath2; //파일2번 경로
 	private String filesPath3; //파일3번 경로
+	
+	
+	private int heartNum;//하트수
+	private int heartCheck;//하트체크여부
 }
