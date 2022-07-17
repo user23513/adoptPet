@@ -86,14 +86,14 @@ public class CalendarServiceImpl implements CalendarService {
 	public int calendarInsert(CalendarVO vo) {
 		// 추가
 		int n = 0;
-		String sql = "INSERT INTO CALENDAR VALUES(CALENDAR_SEQ.NEXTVAL,'ADMIN',?,?,?)";
+		String sql = "INSERT INTO CALENDAR VALUES(CALENDAR_SEQ.NEXTVAL,?,?,?,?)";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-//			psmt.setString(1, vo.getCalendarWriter());
-			psmt.setString(1, vo.getCalendarTitle());
-			psmt.setDate(2, vo.getCalendarStartDate());
-			psmt.setDate(3, vo.getCalendarEndDate());
+			psmt.setString(1, vo.getCalendarWriter());
+			psmt.setString(2, vo.getCalendarTitle());
+			psmt.setDate(3, vo.getCalendarStartDate());
+			psmt.setDate(4, vo.getCalendarEndDate());
 			n = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
