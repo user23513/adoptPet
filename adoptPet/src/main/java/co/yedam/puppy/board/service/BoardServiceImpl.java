@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.yedam.puppy.comm.DataSource;
-import co.yedam.puppy.petAdd.service.Exception;
-import co.yedam.puppy.petAdd.service.String;
 import co.yedam.puppy.vo.BoardVO;
 import co.yedam.puppy.vo.FilesVO;
 
@@ -155,7 +153,7 @@ public class BoardServiceImpl implements BoardService {
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getBoardNo());
+			psmt.setInt(1, bvo.getBoardNo());
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				bvo.setBoardNo(rs.getInt("board_no"));
