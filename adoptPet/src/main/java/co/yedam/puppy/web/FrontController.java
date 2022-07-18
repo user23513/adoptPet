@@ -24,6 +24,7 @@ import co.yedam.puppy.board.command.NoticeForm;
 import co.yedam.puppy.board.command.NoticeInsert;
 import co.yedam.puppy.board.command.NoticeList;
 import co.yedam.puppy.board.command.NoticeSelect;
+import co.yedam.puppy.board.command.NoticeUpdate;
 import co.yedam.puppy.calendar.command.Calendar;
 import co.yedam.puppy.calendar.service.CalendarDelete;
 import co.yedam.puppy.calendar.service.CalendarInsert;
@@ -76,6 +77,7 @@ public class FrontController extends HttpServlet {
 		map.put("/memberJoinForm.do", new MemberJoinForm()); // 회원가입 화면
 		map.put("/memberJoin.do", new MemberJoin()); // 회원가입 처리
 		map.put("/ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
+		
 
 		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
 		map.put("/memberDelete.do", new MemberDelete()); //회원자진탈퇴
@@ -104,9 +106,10 @@ public class FrontController extends HttpServlet {
 		map.put("/heartCheck.do", new HeartCheck()); //게시글 좋아요버튼 눌렀을때 처리
 		
 		map.put("/noticeList.do", new NoticeList());//공지 리스트
-		map.put("/noticeSelect.do", new NoticeSelect());//공지 리스트
+		map.put("/noticeSelect.do", new NoticeSelect());//공지 상세보기
 		map.put("/noticeForm.do", new NoticeForm());//공지 입력폼 호출
 		map.put("/noticeInsert.do", new NoticeInsert()); //공지 등록
+		map.put("/noticeUpdateForm.do", new NoticeUpdate());//공지 수정 폼
 		map.put("/ajaxNoticeInsert.do", new AjaxNoticeSearch());//공지 검색
 		
 		map.put("/memberList.do", new MemberList()); //모든회원리스트
