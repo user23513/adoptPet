@@ -32,6 +32,12 @@ public class NoticeInsert implements Command{
 		try {
 			MultipartRequest multi = 
 					new MultipartRequest(request, savePath, uploadSize, "utf-8", new DefaultFileRenamePolicy());
+			
+			String writer = multi.getParameter("boardWriter");
+			if(writer.equals("관리자")) {
+				writer = "ADMIN";
+			}
+			
 			String originalFileName = multi.getOriginalFileName("file");
 			String saveFileName = multi.getFilesystemName("file");
 			vo.setBoardWriter(multi.getParameter("boardWriter"));

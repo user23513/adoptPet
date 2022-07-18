@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,13 +72,34 @@ footer {
 }
 </style>
 </head>
+
 <body>
-  <nav>
-    <ul>
-      <li><a href="memberJoinForm.do">회원가입</a></li>
+<% if(session.getAttribute("id") == null){ // 로그인 안 한 상태 %> 
+	<ul>
+	  <li><a href="memberJoinForm.do">회원가입</a></li>
       <li><a href="memberLoginForm.do">로그인</a></li>
       <li><a href="noticeList.do">공지리스트</a></li>
-    </ul>
-  </nav>
+
+     </ul>
+<%} else { // 로그인 한 상태 %>
+		<%if(session.getAttribute("author") == "admin") { // 로그인 함-> 권한이 admin인 사람 %>
+		 <ul>
+			<li><a href="memberLogoutForm.do">로그아웃</a></li>
+			<li><a href="noticeList.do">공지리스트</a></li>
+		 </ul>
+		<%} else { // 로그인 함-> 권한이 admin이 아닌 사람=회원 %>
+		 <ul>
+			<li><a href="memberLogoutForm.do">로그아웃</a></li>
+			<li><a href="memberMyPage.do">마이페이지</a></li>
+			<li><a href="noticeList.do">공지리스트</a></li>
+		 </ul>
+		<%}%>
+<%}%>
+
+
+
+
+
 </body>
+
 </html>

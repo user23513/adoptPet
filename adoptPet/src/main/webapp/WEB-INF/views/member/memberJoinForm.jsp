@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
 			<h1>회원가입 해보자</h1>
 		</div>
 		<div>
-			<form id="frm" action="member.Join.do"
+			<form id="frm" action="memberJoin.do"
 				onsubmit="return formCheck() method="post">
 				<div>
 					<table border="1">
@@ -57,9 +58,9 @@
 						<tr>
 							<th width="150">성별</th>
 							<td width="300"><input type="radio" id="memberGender"
-								name="memberGender" size="20">여
+								name="memberGender" size="20" value="여">여
 								<input type="radio" id="memberGender"
-								name="memberGender" size="20">남</td>
+								name="memberGender" size="20" value="남">남</td>
 						</tr>
 					</table>
 					</div><br>
