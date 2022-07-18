@@ -1,8 +1,10 @@
-package co.yedam.puppy.calendar.service;
+package co.yedam.puppy.calendar.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.puppy.calendar.service.CalendarService;
+import co.yedam.puppy.calendar.service.CalendarServiceImpl;
 import co.yedam.puppy.comm.Command;
 import co.yedam.puppy.vo.CalendarVO;
 
