@@ -46,13 +46,16 @@ public class PetListInsert implements Command {
 			lvo.setPetListState(multi.getParameter("petListState"));
 			lvo.setPetListType(multi.getParameter("petListType"));
 			
+			//동물소개게시판 DB에 등록
 			int petListNo = listDao.petListInsert(lvo);
+			if(petListNo > 0) {
+				r++;
+			}
 			
-			
+			//동물소개게시판 첨부파일 DB에 등록
 			for(int i=1; i<=3; i++) {
-				String originalFileName = multi.getOriginalFileName("file"+i);
-				String saveFileName = multi.getFilesystemName("file"+i);
-				
+				String originalFileName = multi.getOriginalFileName("file"+i); //실제파일이름
+				String saveFileName = multi.getFilesystemName("file"+i); //저장된 파일이름
 				//첨부파일추가를 했을 때
 				if(originalFileName != null) { 
 						fvo = new FilesVO();

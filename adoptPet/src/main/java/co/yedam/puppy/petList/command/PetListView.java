@@ -10,29 +10,29 @@ import co.yedam.puppy.files.service.FilesService;
 import co.yedam.puppy.files.service.FilesServiceImpl;
 import co.yedam.puppy.petList.service.PetListService;
 import co.yedam.puppy.petList.service.PetListServiceImpl;
-import co.yedam.puppy.vo.FilesVO;
 import co.yedam.puppy.vo.PetListVO;
 
-public class PetListUpdateForm implements Command {
+public class PetListView implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		//입양동물 소개게시판 수정폼으로 이동
-		//단건조회해서 값을 넘겨줘야함(파일이 있으면 같이 넘겨줘야한다.)
+		//리스트에 제목클릭했을때 게시물 보여주는 페이지
 		PetListService dao = new PetListServiceImpl();
-		FilesService fdao = new FilesServiceImpl();
-		
 		PetListVO vo = new PetListVO();
-		int petListNo = Integer.parseInt(request.getParameter("petListNo"));
-		vo.setPetListNo(petListNo);
-		vo = dao.petListSelectOne(vo);
 		
-		List<FilesVO> list = fdao.fileNoSelect(petListNo);
+		String petListNo = request.getParameter("petListNo");
+		vo.setPetListNo(Integer.parseInt(petListNo));
+		
+		vo = dao.petListSelectOne(vo); //클릭한 제목 단건조회
+		
+		//파일가져와야함
+		FilesService fdao = new FilesServiceImpl();
+		List<String> filePathList = fdao.filesSelect(vo);
 		
 		request.setAttribute("vo", vo);
-		request.setAttribute("filesList", list);
+		request.setAttribute("filePathList", filePathList);
 		
-		return "petList/petListUpdateForm";
+		return "petList/petListView";
 	}
 
 }
