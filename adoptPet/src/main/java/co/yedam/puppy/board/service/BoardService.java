@@ -13,7 +13,7 @@ public interface BoardService {
 	int volReviewUpdate (BoardVO vo); // 수정
 	int volReviewDelete (BoardVO vo); // 삭제
 	int volReviewInsert (BoardVO vo); // 추가
-	List<BoardVO> volReviewAddSelectList(int startRow, int pageSize); // 검색
+	List<BoardVO> volReviewAddSelectList(String key, String val); // 검색
 
 	//공지게시판
 	List<BoardVO> boardSelectList(int startRow, int pageSize);// 공지 목록
