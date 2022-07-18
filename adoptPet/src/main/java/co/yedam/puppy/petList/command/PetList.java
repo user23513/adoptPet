@@ -6,10 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.puppy.comm.Command;
+import co.yedam.puppy.heart.service.HeartService;
+import co.yedam.puppy.heart.service.HeartServiceImpl;
 import co.yedam.puppy.petAdd.service.PetAddService;
 import co.yedam.puppy.petAdd.service.PetAddServiceImpl;
 import co.yedam.puppy.petList.service.PetListService;
 import co.yedam.puppy.petList.service.PetListServiceImpl;
+import co.yedam.puppy.vo.HeartVO;
 import co.yedam.puppy.vo.PetListVO;
 
 public class PetList implements Command {
@@ -17,10 +20,11 @@ public class PetList implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		//입양동물 소개 게시판 페이지로 이동
-		PetListService dao = new PetListServiceImpl();
+		
+		PetListService petListDao = new PetListServiceImpl();
 		
 		//============가져오는 게시글 수==============
-		int cnt = dao.petListCount(); //게시판 DB에 있는 글 개수를 확인
+		int cnt = petListDao.petListCount(); //게시판 DB에 있는 글 개수를 확인
 		
 		//한 페이지에 출력될 글 수
 		int pageSize = 10;
@@ -38,8 +42,7 @@ public class PetList implements Command {
 		//pageSize만큼 list에 게시글 저장
 		
 		//다시 파일을 담은 list
-		List<PetListVO> nList = dao.petListFiles(dao.petListSelectList(currentPage, startRow, pageSize));
-		request.setAttribute("petList", nList);
+		List<PetListVO> nList = petListDao.petListFiles(petListDao.petListSelectList(currentPage, startRow, pageSize));
 		
 		//=================페이징처리=============================
 		int pageCount=0;
@@ -67,6 +70,21 @@ public class PetList implements Command {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
+		
+		HeartService heartDao = new HeartServiceImpl();
+		HeartVO heartVo = new HeartVO();
+		//===============하트수================
+		for(PetListVO vo : nList) {
+			int petListNo = vo.getPetListNo();
+			int heartNum = heartDao.heartCount(petListNo);
+			vo.setHeartNum(heartNum);
+			
+			heartVo.setMemberId("lee");
+			heartVo.setPetListNo(petListNo);
+			int check = heartDao.heartCheck(heartVo); //하트클릭여부 체크(1이면 체크되어있는거 0이면 체크안되어있는거)
+			vo.setHeartCheck(check);
+		}
+		request.setAttribute("petList", nList);
 		
 		return "petList/petList";
 	}
