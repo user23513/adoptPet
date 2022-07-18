@@ -18,7 +18,7 @@ public class BoardServiceImpl implements BoardService {
 	private ResultSet rs;
 
 	@Override
-	public List<BoardVO> volReviewSelectList() {
+	public List<BoardVO> volReviewSelectList(int startRow, int pageSize) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -48,7 +48,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> volReviewAddSelectList(int startRow, int pageSize) {
+	public List<BoardVO> volReviewAddSelectList(String key, String val) {
 		// TODO Auto-generated method stub
 		return null;
 	}

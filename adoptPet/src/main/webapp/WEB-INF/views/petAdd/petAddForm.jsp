@@ -7,7 +7,7 @@
 <title>입양동물 등록 폼</title>
 </head>
 <body>
-	<form action="petAddList.do" method="post">
+	<form action="petAddInsert.do" method="post">
 		동물이름<input type="text" id="petAddName" name="petAddName" value=""><br>
 		동물나이<input type="text" id="petAddAge" name="petAddAge" value=""><br>
 		동물성별<input type="radio" id="petAddGender" name="petAddGender" value="남자">남

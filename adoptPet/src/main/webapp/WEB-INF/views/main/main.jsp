@@ -13,6 +13,7 @@
 
 <a href="memberMyPage.do" >마이페이지</a>
 	
+<a href="petAddForm.do" >입양동물 등록</a>	
 
 </body>
 </html>
