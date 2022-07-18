@@ -54,7 +54,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> boardSelectList(int startRow, int pageSize) {
+	public List<BoardVO> boardSelectList( int startRow, int pageSize) {
 		// 공지 전체목록
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		BoardVO vo;
@@ -111,6 +111,35 @@ public class BoardServiceImpl implements BoardService {
 			close();
 		}
 		return bvo;
+	}
+	@Override
+	public int boardCount() {
+		// DB에 있는 공지 글 갯수 확인
+		int n = 0;
+		String sql = "select * from board";
+		
+		conn = dao.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				n++;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return n;
+	}
+
+	
+	@Override
+	public BoardVO boardSelectOne(BoardVO vo) {
+		// 공지 단건 조회
+		return null;
 	}
 
 	@Override
@@ -270,11 +299,32 @@ public class BoardServiceImpl implements BoardService {
 		return list;
 
 	}
+	@Override
+	public int apodtReviewCount() {
+		// DB공지 갯수 확인
+		int n = 0;
+		String sql="select * from board";
+		
+		conn = dao.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				n++;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return n;
+	}
 
 	@Override
 	public BoardVO adoptReviewSelect(BoardVO bvo,FilesVO fvo) {
 		//후기 상세보기
-String sql = "SELECT * FROM BOARD WHERE BOARD_NO = ?";
+		String sql = "SELECT * FROM BOARD WHERE BOARD_NO = ?";
 		
 		conn = dao.getConnection();
 		try {
@@ -299,6 +349,11 @@ String sql = "SELECT * FROM BOARD WHERE BOARD_NO = ?";
 			close();
 		}
 		return bvo;
+	}
+	@Override
+	public BoardVO adoptFeviewSelectOne(BoardVO vo) {
+		// 후기 단건 조회
+		return null;
 	}
 
 	@Override
@@ -440,4 +495,11 @@ String sql = "SELECT * FROM BOARD WHERE BOARD_NO = ?";
 			e.printStackTrace();
 		}
 	}
+
+
+
+
+	
+
+
 }
