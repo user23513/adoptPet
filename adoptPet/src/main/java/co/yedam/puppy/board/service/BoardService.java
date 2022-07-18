@@ -8,12 +8,13 @@ import co.yedam.puppy.vo.FilesVO;
 
 public interface BoardService {
 	// 봉사활동 후기 게시판
-	List<BoardVO> volReviewSelectList(); // 게시판 목록
-	BoardVO volReviewSelectOne(BoardVO vo); // 단건 조회
+	List<BoardVO> volReviewSelectList(int currentPage, int startRow, int pageSize); // 봉사후기 게시판 전체조회 목록
+	int volReviewCount(); // DB에 있는 봉사후기 list 글 갯수 확인하여 페이징 처리할때 사용
+	BoardVO volReviewSelectOne(BoardVO vo); // 단건조회
+	int volReviewInsert (BoardVO vo); // 글쓰기
 	int volReviewUpdate (BoardVO vo); // 수정
 	int volReviewDelete (BoardVO vo); // 삭제
-	int volReviewInsert (BoardVO vo); // 추가
-	List<BoardVO> volReviewAddSelectList(int startRow, int pageSize); // 검색
+	List<BoardVO> volReviewSerarchList(String key, String val); // 검색
 
 	//공지게시판
 	List<BoardVO> boardSelectList(int currentPage, int startRow, int pageSize);// 공지 목록
