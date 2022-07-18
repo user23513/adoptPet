@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 
 import co.yedam.puppy.MainCommand;
+import co.yedam.puppy.admin.command.MemberList;
+import co.yedam.puppy.admin.command.allAdoptList;
 import co.yedam.puppy.board.command.AjaxNoticeSearch;
 import co.yedam.puppy.board.command.NoticeForm;
 import co.yedam.puppy.board.command.NoticeInsert;
@@ -66,7 +68,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
 		
 		map.put("/main.do", new MainCommand());//처음접근하는곳
-		map.put("/myPage.do", new MyPage()); //로그인후 마이페이지
+		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
 
 //		map.put("ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
 		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
@@ -90,7 +92,8 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeInsert.do", new NoticeInsert()); //공지 등록
 		map.put("/ajaxNoticeInsert.do", new AjaxNoticeSearch());//공지 검색
 		
-		
+		map.put("/memberList.do", new MemberList()); //모든회원리스트
+		map.put("/allAdoptList", new allAdoptList());//모든입양신청리스트
 
 	}
 
