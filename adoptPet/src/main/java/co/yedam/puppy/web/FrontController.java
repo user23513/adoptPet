@@ -39,6 +39,7 @@ import co.yedam.puppy.petAdd.command.PetAddInsert;
 import co.yedam.puppy.petAdd.command.PetAddList;
 import co.yedam.puppy.petAdd.command.PetAddUpdate;
 import co.yedam.puppy.petAdd.command.PetAddUpdateForm;
+import co.yedam.puppy.petAdd.command.PetListDelete;
 import co.yedam.puppy.petList.command.PetList;
 
 
@@ -47,6 +48,7 @@ import co.yedam.puppy.member.command.AjaxMemberIdCheck;
 
 import co.yedam.puppy.petList.command.PetListForm;
 import co.yedam.puppy.petList.command.PetListInsert;
+import co.yedam.puppy.petList.command.PetListSearch;
 import co.yedam.puppy.petList.command.PetListUpdate;
 import co.yedam.puppy.petList.command.PetListUpdateForm;
 
@@ -92,7 +94,7 @@ public class FrontController extends HttpServlet {
 		map.put("/memberJoin.do", new MemberJoin()); // 회원가입 처리
 		map.put("/ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
 
-    map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
+		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
 		map.put("/memberDelete.do", new MemberDelete()); //회원자진탈퇴
 		map.put("/memberUpdateForm.do", new MemberUpdateForm());  //회원정보수정화면
 		map.put("/memberUpdate.do", new MemberUpdate()); //회원정보수정			 
@@ -114,7 +116,9 @@ public class FrontController extends HttpServlet {
 		map.put("/petListInsert.do", new PetListInsert()); //입양동물 소개게시판 게시글 등록처리
 		map.put("/petListUpdateForm.do", new PetListUpdateForm()); //입양동물 소개게시판 수정폼으로 이동
 		map.put("/petListUpdate.do", new PetListUpdate()); //입양동물 소개게시판 수정처리
+		map.put("/petListDelete.do", new PetListDelete()); //입양동물 소개게시판 삭제처리(게시물만 지우면 파일도 같이 지워짐)
 		map.put("/heartCheck.do", new HeartCheck()); //게시글 좋아요버튼 눌렀을때 처리
+		map.put("/petListSearch.do", new PetListSearch()); //게시글 검색
 		
 		map.put("/noticeList.do", new NoticeList());//공지 리스트
 		map.put("/noticeSelect.do", new NoticeSelect());//공지 상세보기

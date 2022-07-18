@@ -22,6 +22,7 @@
 					<th>건강상태</th>
 					<th>입양여부</th>
 					<th>동물유형</th>
+					<th>글쓰기</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -35,6 +36,7 @@
 						<td>${vo.petAddHealth }</td>
 						<td>${vo.petAddAdoptState }</td>
 						<td>${vo.petAddType }</td>
+						<td><button type="button" onclick="location.href='petListForm.do?petAddNo=${vo.petAddNo }&petAddName=${vo.petAddName }'">글쓰기</button> </td>
 					</tr>
 				</c:forEach>
 			</tbody>
