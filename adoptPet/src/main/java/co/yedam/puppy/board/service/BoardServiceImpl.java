@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.yedam.puppy.comm.DataSource;
-import co.yedam.puppy.petAdd.service.Exception;
-import co.yedam.puppy.petAdd.service.String;
 import co.yedam.puppy.vo.BoardVO;
 import co.yedam.puppy.vo.FilesVO;
 

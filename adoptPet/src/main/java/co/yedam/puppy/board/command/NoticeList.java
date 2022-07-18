@@ -18,7 +18,7 @@ public class NoticeList implements Command {
 		// 공지 게시판 리스트
 		BoardService noticeDao = new BoardServiceImpl();
 		List<BoardVO> list = new ArrayList<BoardVO>();
-		list = noticeDao.boardSelectList(1, 10);//페이징인가 ???
+		list = noticeDao.boardSelectList(1, 10, 0);//페이징인가 ???
 		request.setAttribute("list", list);
 		return "notice/noticeList";
 	}
