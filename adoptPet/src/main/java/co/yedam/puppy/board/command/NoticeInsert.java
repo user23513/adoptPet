@@ -6,7 +6,8 @@ import java.sql.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.multipart.MultipartRequest;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import co.yedam.puppy.board.service.BoardService;
 import co.yedam.puppy.board.service.BoardServiceImpl;
