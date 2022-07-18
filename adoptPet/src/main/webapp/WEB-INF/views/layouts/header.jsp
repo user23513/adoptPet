@@ -17,7 +17,7 @@ body {
 
 /* Style the header */
 header {
-  background-color: #8FBBE7;
+  background-color: #84c1af;
   padding: 30px;
   text-align: center;
   font-size: 35px;
@@ -73,7 +73,7 @@ footer {
 </head>
 <body>
 	<header>
-	  <h2>Test</h2>
+	  <h2><a href="main.do">Test</a></h2>
 	</header>
 </body>
 </html>
