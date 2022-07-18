@@ -74,8 +74,18 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
 		
 		map.put("/main.do", new MainCommand());//처음접근하는곳
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> branch 'gayun' of https://github.com/user23513/adoptPet.git
 		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
+<<<<<<< HEAD
 
+=======
+=======
+//		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
+>>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
+>>>>>>> branch 'gayun' of https://github.com/user23513/adoptPet.git
 
 //		map.put("ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
 		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
