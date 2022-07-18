@@ -16,17 +16,17 @@ public interface BoardService {
 	List<BoardVO> volReviewAddSelectList(int startRow, int pageSize); // 검색
 
 	//공지게시판
-	List<BoardVO> boardSelectList(int startRow, int pageSize);// 공지 목록
+	List<BoardVO> boardSelectList(int currentPage, int startRow, int pageSize);// 공지 목록
 	int boardCount();//DB공지 갯수 확인
 	BoardVO boardSelect(BoardVO bvo,FilesVO fvo);//공지상세보기
-	BoardVO boardSelectOne(BoardVO vo);//공지 단건 조회
+	BoardVO boardSelectOne(BoardVO bvo, FilesVO fvo);//공지 단건 조회
 	int noticeInsert(BoardVO bvo,FilesVO fvo);//글쓰기
 	int noticeUpdate(BoardVO bvo,FilesVO fvo);//수정
 	int noticeDelete(BoardVO bvo,FilesVO fvo);//삭제
 	List<BoardVO> noticeSerarchList(String key, String val);//검색
 	
 	//입양후기 게시판
-	List<BoardVO> adoptReviewSelectList(int startRow, int pageSize);//후기게시판 목록
+	List<BoardVO> adoptReviewSelectList(int currentPage, int startRow, int pageSize);//후기게시판 목록
 	int apodtReviewCount();//DB공지 갯수 확인
 	BoardVO adoptReviewSelect(BoardVO bvo,FilesVO fvo);//후기 상세보기
 	BoardVO adoptFeviewSelectOne(BoardVO vo);//후기 단건 조회

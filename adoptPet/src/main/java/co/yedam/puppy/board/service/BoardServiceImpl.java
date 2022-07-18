@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.yedam.puppy.comm.DataSource;
+import co.yedam.puppy.petAdd.service.Exception;
+import co.yedam.puppy.petAdd.service.String;
 import co.yedam.puppy.vo.BoardVO;
 import co.yedam.puppy.vo.FilesVO;
 
@@ -54,15 +56,24 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> boardSelectList( int startRow, int pageSize) {
+	public List<BoardVO> boardSelectList(int currentPage, int startRow, int pageSize) {
 		// 공지 전체목록
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		BoardVO vo;
-		String sql = "SELECT * FROM BOARD where board_id=10 ORDER BY BOARD_NO DESC";
+		String sql = "SELECT *\r\n"
+				+ "  FROM (\r\n"
+				+ "        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) NUM\r\n"
+				+ "             , A.*\r\n"
+				+ "          FROM BOARD A\r\n"
+				+ "         ORDER BY BOARD_NO DESC\r\n"
+				+ "        ) \r\n"
+				+ " WHERE NUM BETWEEN ? AND ?";
 
 		conn = dao.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1,startRow);
+			psmt.setInt(2,pageSize*currentPage);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				vo = new BoardVO();
@@ -137,8 +148,33 @@ public class BoardServiceImpl implements BoardService {
 
 	
 	@Override
-	public BoardVO boardSelectOne(BoardVO vo) {
+	public BoardVO boardSelectOne(BoardVO bvo, FilesVO fvo) {
 		// 공지 단건 조회
+		String sql = "select * from board where board_no=?";
+		
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getBoardNo());
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				bvo.setBoardNo(rs.getInt("board_no"));
+				bvo.setBoardId(rs.getInt("board_Id"));
+				bvo.setBoardTitle(rs.getString("board_title"));
+				bvo.setBoardWriter(rs.getString("board_writer"));
+				bvo.setBoardContent(rs.getString("board_content"));
+				bvo.setBoardDate(rs.getDate("board_date"));
+				bvo.setBoardHit(rs.getInt("board_hit"));
+				fvo.setFilesNo(rs.getInt("files_no"));
+				fvo.setFilesName(rs.getString("files_name"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
 		return null;
 	}
 
@@ -270,15 +306,21 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> adoptReviewSelectList(int startRow, int pageSize) {
+	public List<BoardVO> adoptReviewSelectList(int currentPage, int startRow, int pageSize) {
 		// 후기게시판 목록
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		BoardVO vo;
-		String sql = "SELECT * FROM BOARD where board_id=20 ORDER BY BOARD_NO DESC";
+		String sql = "FROM (SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) NUM\r\n"
+				+ " , A.*\r\n"
+				+ " FROM board A\r\n"
+				+ "ORDER BY BOARD_NO DESC)\r\n"
+				+ " WHERE NUM BETWEEN ? AND ?";
 
 		conn = dao.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, startRow); 
+			psmt.setInt(2, pageSize*currentPage);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				vo = new BoardVO();
@@ -303,7 +345,7 @@ public class BoardServiceImpl implements BoardService {
 	public int apodtReviewCount() {
 		// DB공지 갯수 확인
 		int n = 0;
-		String sql="select * from board";
+		String sql="select * from board where  board_id=20";
 		
 		conn = dao.getConnection();
 		try {
