@@ -15,6 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 
 import co.yedam.puppy.MainCommand;
+import co.yedam.puppy.admin.command.AdoptList;
+import co.yedam.puppy.admin.command.AdoptStateSearch;
+import co.yedam.puppy.admin.command.MemberList;
+import co.yedam.puppy.admin.command.UpdateMemberList;
 import co.yedam.puppy.board.command.AjaxNoticeSearch;
 import co.yedam.puppy.board.command.NoticeForm;
 import co.yedam.puppy.board.command.NoticeInsert;
@@ -69,13 +73,8 @@ public class FrontController extends HttpServlet {
 		map.put("/memberLogout.do", new MemberLogout()); // 로그아웃
 		map.put("/memberJoinForm.do", new MemberJoinForm()); // 회원가입 화면
 		map.put("/memberJoin.do", new MemberJoin()); // 회원가입 처리
-
 		map.put("/ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
-		
-		map.put("/main.do", new MainCommand());//처음접근하는곳
-//		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
 
-//		map.put("ajaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 아이디 중복체크
 		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
 		map.put("/memberDelete.do", new MemberDelete()); //회원자진탈퇴
 		map.put("/memberUpdateForm.do", new MemberUpdateForm());  //회원정보수정화면
@@ -107,8 +106,11 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeInsert.do", new NoticeInsert()); //공지 등록
 		map.put("/ajaxNoticeInsert.do", new AjaxNoticeSearch());//공지 검색
 		
+		map.put("/memberList.do", new MemberList()); //모든회원리스트
+		map.put("/adoptList.do", new AdoptList());//모든입양신청리스트
+		map.put("/updateMemberList.do", new UpdateMemberList()); //멤버권한수정
+		map.put("/adoptStateSearch.do", new AdoptStateSearch());
 		
-
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

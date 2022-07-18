@@ -77,6 +77,8 @@ footer {
       <li><a href="memberJoinForm.do">회원가입</a></li>
       <li><a href="memberLoginForm.do">로그인</a></li>
       <li><a href="noticeList.do">공지리스트</a></li>
+	  <li><a href="memberMyPage.do" >마이페이지</a></li>
+ 	  <li><a href="webapp/fullcalendar/examples/php/selectable.do">달력</a></li>
     </ul>
   </nav>
 </body>
