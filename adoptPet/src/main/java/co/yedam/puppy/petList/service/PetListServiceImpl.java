@@ -69,6 +69,7 @@ public class PetListServiceImpl implements PetListService {
 	public List<PetListVO> petListFiles(List<PetListVO> list) {
 		//담아온 list_no를  뽑아서 파일을 찾아서 다시 vo객체에 담기
 		//list가 pageSize만큼 뽑아온 게시판데이터
+		String savePath = "C:\\Temp\\";
 		String sql = "SELECT F.FILES_PATH\r\n"
 				+ "FROM PET_LIST L, FILES F\r\n"
 				+ "WHERE L.PET_LIST_NO = F.PET_LIST_NO\r\n"
@@ -84,7 +85,7 @@ public class PetListServiceImpl implements PetListService {
 				rs = psmt.executeQuery();
 				
 				if(rs.next()) {
-					vo.setFilesPath1(rs.getString("files_path"));
+					vo.setFilesPath1(rs.getString("files_path").substring(savePath.length()));
 					
 				}
 				
@@ -109,13 +110,14 @@ public class PetListServiceImpl implements PetListService {
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				vo.setPetListNo(rs.getInt("PET_LIST_NO"));
-				vo.setBoardId(rs.getInt("BOARD_ID"));
-				vo.setPetListTitle(rs.getString("PET_LIST_TITLE"));
-				vo.setPetListContent(rs.getString("PET_LIST_CONTENT"));
-				vo.setPetListWriter(rs.getString("PET_LIST_WRITER"));
-				vo.setPetListState(rs.getString("PET_LIST_STATE"));
-				vo.setPetListType(rs.getString("PET_LIST_TYPE"));
+					vo.setPetListNo(rs.getInt("PET_LIST_NO"));
+					vo.setBoardId(rs.getInt("BOARD_ID"));
+					vo.setPetListTitle(rs.getString("PET_LIST_TITLE"));
+					vo.setPetListContent(rs.getString("PET_LIST_CONTENT"));
+					vo.setPetListWriter(rs.getString("PET_LIST_WRITER"));
+					vo.setPetListState(rs.getString("PET_LIST_STATE"));
+					vo.setPetListType(rs.getString("PET_LIST_TYPE"));
+				
 			}
 			
 		} catch (Exception e) {
@@ -193,21 +195,16 @@ public class PetListServiceImpl implements PetListService {
 	}
 
 	@Override
-	public int petListUpdate(PetListVO listVO, FilesVO fileVO) {
+	public int petListUpdate(PetListVO listVO) {
 		//입양동물소개게시판 수정
 		int r = 0;
 		String sqlList = "UPDATE PET_LIST "
-				+ "SET BOARD_ID=?, PET_LIST_TITLE=?, PET_LIST_CONTENT=? "
+				+ "SET BOARD_ID=?, PET_LIST_TITLE=?, PET_LIST_CONTENT=?, "
 				+ " PET_LIST_WRITER=?, PET_LIST_STATE=?, PET_LIST_TYPE=? "
 				+ " WHERE PET_LIST_NO=?";
-		String sqlFiles="UPDATE FILES "
-				+ "SET FILES_NAME=?, FILES_PATH=?, FILES_TYPE=? "
-				+ " WHERE FILES_NO=?";
 		
 		try {
 			conn = dao.getConnection();
-			conn.setAutoCommit(false);
-			
 			psmt = conn.prepareStatement(sqlList);
 			psmt.setInt(1, listVO.getBoardId());
 			psmt.setString(2, listVO.getPetListTitle());
@@ -218,30 +215,12 @@ public class PetListServiceImpl implements PetListService {
 			psmt.setInt(7, listVO.getPetListNo());
 			psmt.executeUpdate();
 			
-			psmt = conn.prepareStatement(sqlFiles);
-			psmt.setString(1, fileVO.getFilesName());
-			psmt.setString(2, fileVO.getFilesPath());
-			psmt.setString(3, fileVO.getFilesType());
-			psmt.setInt(4, fileVO.getFilesNo());
-			psmt.executeUpdate();
-			
-			conn.commit();
 			r = 1;
 			
 		} catch (SQLException se) {
-			try {
-				conn.rollback();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			se.printStackTrace();
+				se.printStackTrace();
 			
 		} finally {
-			try {
-				conn.setAutoCommit(true);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 			close();
 		}
 		return r;

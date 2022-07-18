@@ -41,7 +41,9 @@ import co.yedam.puppy.member.command.AjaxMemberIdCheck;
 
 import co.yedam.puppy.petList.command.PetListForm;
 import co.yedam.puppy.petList.command.PetListInsert;
+import co.yedam.puppy.petList.command.PetListUpdate;
 import co.yedam.puppy.petList.command.PetListUpdateForm;
+import co.yedam.puppy.petList.command.PetListView;
 import co.yedam.puppy.member.command.MemberDelete;
 import co.yedam.puppy.member.command.MemberJoin;
 import co.yedam.puppy.member.command.MemberJoinForm;
@@ -94,11 +96,12 @@ public class FrontController extends HttpServlet {
 		map.put("/petAddUpdateForm.do", new PetAddUpdateForm()); //입양동물등록 수정 처리
 		
 		map.put("/petList.do", new PetList()); //입양동물 소개 게시판 페이지로 이동
+		map.put("/petListView.do", new PetListView()); //리스트에 제목클릭했을때 게시물 보여주는 페이지
 		map.put("/petListForm.do", new PetListForm()); //입양동물 소개게시판 게시글 등록페이지로 이동
 		map.put("/petListInsert.do", new PetListInsert()); //입양동물 소개게시판 게시글 등록처리
-		map.put("/heartCheck.do", new HeartCheck()); //게시글 좋아요버튼 눌렀을때 처리
 		map.put("/petListUpdateForm.do", new PetListUpdateForm()); //입양동물 소개게시판 수정폼으로 이동
-//		map.put("/petListUpdate.do", new PetListUpdate()); //입양동물 소개게시판 수정처리
+		map.put("/petListUpdate.do", new PetListUpdate()); //입양동물 소개게시판 수정처리
+		map.put("/heartCheck.do", new HeartCheck()); //게시글 좋아요버튼 눌렀을때 처리
 		
 		map.put("/noticeList.do", new NoticeList());//공지 리스트
 		map.put("/noticeSelect.do", new NoticeSelect());//공지 리스트
