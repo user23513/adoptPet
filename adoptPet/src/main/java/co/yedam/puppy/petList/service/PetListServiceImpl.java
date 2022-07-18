@@ -69,10 +69,11 @@ public class PetListServiceImpl implements PetListService {
 	public List<PetListVO> petListFiles(List<PetListVO> list) {
 		//담아온 list_no를  뽑아서 파일을 찾아서 다시 vo객체에 담기
 		//list가 pageSize만큼 뽑아온 게시판데이터
-		String sql = "select f.files_path\r\n"
-				+ "from pet_list l, files f\r\n"
-				+ "where l.pet_list_no = f.pet_list_no\r\n"
-				+ "and f.pet_list_no=?";
+		String sql = "SELECT F.FILES_PATH\r\n"
+				+ "FROM PET_LIST L, FILES F\r\n"
+				+ "WHERE L.PET_LIST_NO = F.PET_LIST_NO\r\n"
+				+ "AND F.PET_LIST_NO=?"
+				+ " ORDER BY FILES_NO";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
@@ -149,30 +150,38 @@ public class PetListServiceImpl implements PetListService {
 	}
 
 	@Override
-	public int petListInsert(PetListVO listVO, FilesVO fileVO) {
-		//입양동물소개게시판 등록(파일까지)
+	public int petListInsert(PetListVO listVO) {
+		//입양동물소개게시판 등록(파일까지) 파일이 없을경우에는 파일테이블에 입력안시켜야함
 		int r = 0;
-		String sql = "INSERT ALL "
-						+ " INTO ADD_LIST VALUES (PET_LIST_SEQ,?,?,?,?,?,?) "
-						+ " INTO FILES VALUES (FILES_SEQ,?,?,?,?,?,?)"
-					+ "SELECT * FROM DUAL;";
+		int petListNo = 0;
+		
 		try {
+			//시퀀스 => 회원번호
+			String sql = "SELECT PET_LIST_SEQ.NEXTVAL FROM DUAL";
+			int nextSeq = 0;
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, listVO.getBoardId());
-			psmt.setString(2, listVO.getPetListTitle());
-			psmt.setString(3, listVO.getPetListContent());
-			psmt.setString(4, listVO.getPetListWriter());
-			psmt.setString(5, listVO.getPetListState());
-			psmt.setString(6, listVO.getPetListType());
-			psmt.setInt(7, fileVO.getBoardId());
-			psmt.setString(8, fileVO.getFilesName());
-			psmt.setString(9, fileVO.getFilesPath());
-			psmt.setString(10, fileVO.getFilesType());
-			psmt.setInt(11, fileVO.getBoardNo());
-			psmt.setInt(12, fileVO.getPetListNo());
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				nextSeq = rs.getInt(1); // 컬럼의 순서상으로 1
+			}
 			
-			r = psmt.executeUpdate();
+			sql = "INSERT INTO PET_LIST"
+					+ " VALUES(?,?,?,?,?,?,?)";
+			psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, nextSeq);
+				psmt.setInt(2, listVO.getBoardId());
+				psmt.setString(3, listVO.getPetListTitle());
+				psmt.setString(4, listVO.getPetListContent());
+				psmt.setString(5, listVO.getPetListWriter());
+				psmt.setString(6, listVO.getPetListState());
+				psmt.setString(7, listVO.getPetListType());
+				
+				r = psmt.executeUpdate();
+				if(r>0) {
+					petListNo = nextSeq;
+				}
+				
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -180,7 +189,7 @@ public class PetListServiceImpl implements PetListService {
 			close();
 		}
 		
-		return r;
+		return petListNo;
 	}
 
 	@Override
