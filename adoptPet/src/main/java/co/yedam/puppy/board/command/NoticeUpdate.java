@@ -19,6 +19,7 @@ public class NoticeUpdate implements Command{
 		
 		
 		vo.setBoardNo(Integer.parseInt(request.getParameter("boardNo")));
+
 //		vo = dao.noticeSelectOne(vo);
 		
 		request.setAttribute("boardVO", vo);
