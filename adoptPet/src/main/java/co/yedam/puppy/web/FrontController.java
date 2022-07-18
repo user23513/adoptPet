@@ -43,7 +43,8 @@ import co.yedam.puppy.member.command.AjaxMemberIdCheck;
 import co.yedam.puppy.petList.command.PetListForm;
 import co.yedam.puppy.petList.command.PetListInsert;
 import co.yedam.puppy.petList.command.PetListUpdateForm;
-
+import co.yedam.puppy.volunteerReview.command.VolReviewInsert;
+import co.yedam.puppy.volunteerReview.command.VolReviewList;
 import co.yedam.puppy.member.command.MemberDelete;
 import co.yedam.puppy.member.command.MemberJoin;
 import co.yedam.puppy.member.command.MemberJoinForm;
@@ -121,8 +122,8 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeInsert.do", new NoticeInsert()); //공지 등록
 		map.put("/ajaxNoticeInsert.do", new AjaxNoticeSearch());//공지 검색
 		
-		
-
+		map.put("/volReviewList.do", new VolReviewList()); // 봉사활동후기 리스트
+		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
