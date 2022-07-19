@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import co.yedam.puppy.comm.DataSource;
-import co.yedam.puppy.member.service.MemberService;
 import co.yedam.puppy.vo.MemberVO;
 
 public class MemberServiceImpl implements MemberService {
@@ -73,7 +72,6 @@ public class MemberServiceImpl implements MemberService {
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			//psmt.setString(1, vo.getMemberId());
 			psmt.setString(1,vo.getMemberId());
 			rs = psmt.executeQuery();
 			if(rs.next()) {
@@ -98,7 +96,7 @@ public class MemberServiceImpl implements MemberService {
 	public int memberUpdate(MemberVO vo) {
 		// 한명정보수정하기
 		String sql = "UPDATE MEMBER SET  "
-				+ "MEMBER_TEL= ? , MEMBER_EMAIL= ? , MEMBER_JOB= ? , MEMBER_AUTHOR= ? "
+				+ "MEMBER_TEL= ? , MEMBER_EMAIL= ? , MEMBER_JOB= ? "
 				+ "WHERE MEMBER_ID= ? ";
 		int r = 0;
 		try {
@@ -107,8 +105,7 @@ public class MemberServiceImpl implements MemberService {
 			psmt.setString(1, vo.getMemberTel());
 			psmt.setString(2, vo.getMemberEmail());
 			psmt.setString(3, vo.getMemberJob());
-			psmt.setString(4, vo.getMemberAuthor());
-			psmt.setString(5, vo.getMemberId());
+			psmt.setString(4, vo.getMemberId());
 
 			r = psmt.executeUpdate();
 			

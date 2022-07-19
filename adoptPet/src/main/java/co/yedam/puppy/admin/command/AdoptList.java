@@ -9,14 +9,12 @@ import co.yedam.puppy.admin.service.AdminService;
 import co.yedam.puppy.admin.service.AdminServiceImple;
 import co.yedam.puppy.comm.Command;
 import co.yedam.puppy.vo.AdoptSubscriptionVO;
-import co.yedam.puppy.vo.MemberVO;
 
 public class AdoptList implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
+		// 관리자페이지 - 모든입양신청리스트
 		AdminService adminDao = new AdminServiceImple();
 		int cnt = adminDao.adoptListCount();
 		int pageSize = 10;
@@ -33,6 +31,7 @@ public class AdoptList implements Command {
 
 		List<AdoptSubscriptionVO> list = adminDao.allAdoptList(currentPage, startRow, pageSize);
 		request.setAttribute("adoptList", list);
+		
 		// =================페이징처리=============================
 		int pageCount = 0;
 		int pageBlock = 0;

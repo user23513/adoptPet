@@ -19,7 +19,7 @@
 
      </ul>
 <%} else { // 로그인 한 상태 %>
-		<%if(session.getAttribute("author") == "admin") { // 로그인 함-> 권한이 admin인 사람 %>
+		<%if(session.getAttribute("author") == "ADMIN") { // 로그인 함-> 권한이 admin인 사람 %>
 		 <ul>
 			<li><a href="memberLogoutForm.do">로그아웃</a></li>
 			<li><a href="noticeList.do">공지리스트</a></li>
