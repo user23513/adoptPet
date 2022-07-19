@@ -38,7 +38,6 @@
 				<th width="100">작성자</th>
 				<th width="250">제목</th>
 				<th width="70">작성일자</th>
-			<!-- 	<th width="180">첨부파일</th> -->
 				<th width="50">조회수</th>
 			</tr>
 		</thead>
@@ -51,14 +50,14 @@
 						<td>${b.boardId }</td>
 						<td>${b.boardWriter }</td>
 						<td><a href="noticeSelect.do">${b.boardTitle }</a></td>
-						<td>${b.boardContent }</td>
+						<td>${b.boardDate }</td>
 						<td>${b.boardHit }</td>
 					</tr>
 				</c:forEach>
 			</c:when>
 			<c:otherwise>
 				<tr>
-					<td colspan="6" align="center">게시글이 +존재하지 않습니다.</td>
+					<td colspan="6" align="center">게시글이 존재하지 않습니다.</td>
 				</tr>
 			</c:otherwise>
 		</c:choose>
@@ -73,8 +72,8 @@
 	</c:if>
 </div>
 </div>
-<!-- <script type="text/javascript">
-	function noticeSerarch() {
+<script type="text/javascript">
+<!-- 	function noticeSerarch() {
 		let key = $("#key").val();//$("#key").val();
 ;		let val = $("#val").val();//$("#val").val();
 		//ajax function Call
@@ -95,16 +94,17 @@
 
 	}
 });
-	}
+	} -->
 	function jsonHtmlConvert(data){
 		$('tbody').remove();
 		var tbody = $("<tbody />");
 		$.each(data, function(index,item){
-			var row = $("<tr />").append($("<td />").text(item.boardId),
+			var row = $("<tr />").append(
+					  $("<td />").text(item.boardNo),
+					  $("<td />").text(item.boardId),
 					  $("<td />").text(item.boardWriter),
 					  $("<td />").text(item.boardTitle),
 					  $("<td />").text(item.boardDate),
-				//	  $("<td />").text(item.boardAttech),
 					  $("<td />").text(item.boardHit)
 					  );
 			tbody.append(row);
@@ -112,6 +112,27 @@
 		
 		$("table").append(tbody);
 	}
-</script> -->
+	
+	function noticeSerarch(){
+		const ajax = new XMLHttpRequest();
+		let key = document.getElementById('key').value;
+		let val = document.getElementById('val').value;
+		const url = "ajaxNoticeSearche.do";
+		const data = {"key" : key,"val" : val};
+		ajax.onload = function(){
+			if(ajax.status >= 200 && ajax.status < 300){
+				jsonHtmlConvert(ajax.response);
+			}else {
+				errorCallback(new Error(ajax.stautsText));
+			}
+		};
+		
+		ajax.onerror = errorCallback;
+		ajax.open('POST',url,true);
+		ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		ajax.responseType='json';
+		ajax.send(Object.keys(data).map(key => key+"="+data[key]).join('&')); //   
+	}
+</script> 
 </body>
 </html>
