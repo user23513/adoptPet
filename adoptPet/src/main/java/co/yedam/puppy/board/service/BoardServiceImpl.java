@@ -175,7 +175,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> volReviewSerarchList(String key, String val) {
+	public List<BoardVO> volReviewSearchList(String key, String val) {
 		// 검색
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		BoardVO vo;

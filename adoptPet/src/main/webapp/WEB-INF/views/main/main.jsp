@@ -9,5 +9,9 @@
 </head>
 <body>
 메인입니다.
+<ul>
+	<li><a href="calendar.do">달력</a></li>
+	<li><a href="volReviewList.do">봉사활동일정</a></li>
+</ul>		 
 </body>
 </html>

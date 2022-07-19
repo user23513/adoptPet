@@ -15,9 +15,12 @@ public class CalendarDelete implements Command {
 		// 캘린더 삭제 페이지
 		CalendarService dao = new CalendarServiceImpl();
 		CalendarVO vo = new CalendarVO();
-		int r = dao.calendarDelete(vo);
+		
 		
 		String title = request.getParameter("title");
+		vo.setCalendarTitle(title);
+		
+		int r = dao.calendarDelete(vo);
 		
 		if (r > 0) {
 			System.out.println("DB에 1건이 삭제되었습니다.");

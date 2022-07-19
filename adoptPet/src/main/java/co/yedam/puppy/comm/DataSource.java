@@ -19,7 +19,7 @@ public class DataSource {
 	
 	public Connection getConnection() {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName("oracle.jdbc.driver.OracleDriver"); // 192.168.0.19 팀장
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.19:1521:xe", "puppy", "puppy");
 			System.out.println("DB 연결 성공 ~");
 		} catch (ClassNotFoundException | SQLException e) {
