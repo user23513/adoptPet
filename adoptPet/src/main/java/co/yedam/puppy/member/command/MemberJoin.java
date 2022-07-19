@@ -27,10 +27,10 @@ public class MemberJoin implements Command {
 		
 		int n = memberDao.memberInsert(vo);
 		if(n != 0) {
-			request.setAttribute("message", "회원가입 완!");
+			request.setAttribute("message", "회원가입 완!");   // .....
 			return "member/memberLoginForm";
 		}else {
-			request.setAttribute("message", "회원가입 실패");
+			request.setAttribute("message", "회원가입 실패");  // .....
 			return "member/memberJoinForm";
 		}
 	}

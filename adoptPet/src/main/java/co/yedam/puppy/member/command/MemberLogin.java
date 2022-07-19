@@ -26,10 +26,11 @@ public class MemberLogin implements Command {
 			session.setAttribute("author", vo.getMemberAuthor());
 			session.setAttribute("name", vo.getMemberName());
 //			request.setAttribute("message", vo.getMemberName() + " 님 환영합니다.");
+			return "main/main";
 		}else {
 			request.setAttribute("message", "아이디 또는 패스워드가 일치하지 않습니다.");
+			return "member/memberLoginForm";
 		}
-		return "main/main";
 	}
 
 }
