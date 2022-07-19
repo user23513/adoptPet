@@ -50,6 +50,7 @@ public class PetListServiceImpl implements PetListService {
 				vo.setPetListWriter(rs.getString("PET_LIST_WRITER"));
 				vo.setPetListState(rs.getString("PET_LIST_STATE"));
 				vo.setPetListType(rs.getString("PET_LIST_TYPE"));
+				vo.setPetAddNo(rs.getInt("PET_ADD_NO"));
 				
 				list.add(vo);
 			}
@@ -117,6 +118,7 @@ public class PetListServiceImpl implements PetListService {
 					vo.setPetListWriter(rs.getString("PET_LIST_WRITER"));
 					vo.setPetListState(rs.getString("PET_LIST_STATE"));
 					vo.setPetListType(rs.getString("PET_LIST_TYPE"));
+					vo.setPetAddNo(rs.getInt("PET_ADD_NO"));
 				
 			}
 			
@@ -169,7 +171,7 @@ public class PetListServiceImpl implements PetListService {
 			}
 			
 			sql = "INSERT INTO PET_LIST"
-					+ " VALUES(?,?,?,?,?,?,?)";
+					+ " VALUES(?,?,?,?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 				psmt.setInt(1, nextSeq);
 				psmt.setInt(2, listVO.getBoardId());
@@ -178,6 +180,7 @@ public class PetListServiceImpl implements PetListService {
 				psmt.setString(5, listVO.getPetListWriter());
 				psmt.setString(6, listVO.getPetListState());
 				psmt.setString(7, listVO.getPetListType());
+				psmt.setInt(8, listVO.getPetAddNo());
 				
 				r = psmt.executeUpdate();
 				if(r>0) {
@@ -195,7 +198,7 @@ public class PetListServiceImpl implements PetListService {
 	}
 
 	@Override
-	public int petListUpdate(PetListVO listVO) {
+	public int petListUpdate(PetListVO vo) {
 		//입양동물소개게시판 수정
 		int r = 0;
 		String sqlList = "UPDATE PET_LIST "
@@ -206,13 +209,13 @@ public class PetListServiceImpl implements PetListService {
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sqlList);
-			psmt.setInt(1, listVO.getBoardId());
-			psmt.setString(2, listVO.getPetListTitle());
-			psmt.setString(3, listVO.getPetListContent());
-			psmt.setString(4, listVO.getPetListWriter());
-			psmt.setString(5, listVO.getPetListState());
-			psmt.setString(6, listVO.getPetListType());
-			psmt.setInt(7, listVO.getPetListNo());
+			psmt.setInt(1, vo.getBoardId());
+			psmt.setString(2, vo.getPetListTitle());
+			psmt.setString(3, vo.getPetListContent());
+			psmt.setString(4, vo.getPetListWriter());
+			psmt.setString(5, vo.getPetListState());
+			psmt.setString(6, vo.getPetListType());
+			psmt.setInt(7, vo.getPetListNo());
 			psmt.executeUpdate();
 			
 			r = 1;
@@ -227,17 +230,57 @@ public class PetListServiceImpl implements PetListService {
 	}
 
 	@Override
-	public int petListDelete(PetListVO listVO, FilesVO fileVO) {
+	public int petListDelete(int petListNo) {
 		//입양동물소개게시판 삭제
+		int r = 0;
+		String sql = "DELETE FROM PET_LIST WHERE PET_LIST_NO=?";
 		
-		return 0;
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, petListNo);
+			psmt.executeUpdate();
+			
+			r = 1;
+			
+		} catch (SQLException se) {
+				se.printStackTrace();
+			
+		} finally {
+			close();
+		}
+		return r;
 	}
 
 	@Override
 	public List<PetListVO> petListSearchList(String key, String val) {
 		//입양동물소개게시판 검색조회
-		
-		return null;
+		List<PetListVO> list = new ArrayList<PetListVO>();
+		PetListVO vo;
+		String sql = "SELECT * FROM PET_LIST WHERE " + key + " LIKE ? ";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, "%"+val+"%");
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new PetListVO();
+				vo.setPetListNo(rs.getInt("PET_LIST_NO"));
+				vo.setBoardId(rs.getInt("BOARD_ID"));
+				vo.setPetListTitle(rs.getString("PET_LIST_TITLE"));
+				vo.setPetListContent(rs.getString("PET_LIST_CONTENT"));
+				vo.setPetListWriter(rs.getString("PET_LIST_WRITER"));
+				vo.setPetListState(rs.getString("PET_LIST_STATE"));
+				vo.setPetListType(rs.getString("PET_LIST_TYPE"));
+				list.add(vo);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return list;
 	}
 
 	@Override

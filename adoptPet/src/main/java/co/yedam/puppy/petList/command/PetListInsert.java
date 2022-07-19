@@ -45,6 +45,7 @@ public class PetListInsert implements Command {
 			lvo.setPetListWriter(writer);
 			lvo.setPetListState(multi.getParameter("petListState"));
 			lvo.setPetListType(multi.getParameter("petListType"));
+			lvo.setPetAddNo(Integer.parseInt(multi.getParameter("petAddNo")));
 			
 			//동물소개게시판 DB에 등록
 			int petListNo = listDao.petListInsert(lvo);
