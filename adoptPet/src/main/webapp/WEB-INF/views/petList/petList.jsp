@@ -9,7 +9,7 @@
 <script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
 </head>
 <body>
-	<div>
+	<div align="center">
 		<div>
 			<form id="frm">
 				<select id="key" name="key" >
@@ -44,7 +44,7 @@
 								<c:if test="${empty list.filesPath1}">
 									<td></td>
 								</c:if>
-								<td><a href="petListView.do?petListNo=${list.petListNo}"> ${list.petListTitle}</a></td>
+								<td><a href="petListView.do?petListNo=${list.petListNo}&petAddNo=${list.petAddNo}"> ${list.petListTitle}</a></td>
 								<td>${list.petListState}</td>
 								<td>${list.petListType}</td>
 								<td>${list.filesPath1}</td>

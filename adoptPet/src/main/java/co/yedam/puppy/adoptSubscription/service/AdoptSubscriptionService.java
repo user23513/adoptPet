@@ -15,4 +15,6 @@ public interface AdoptSubscriptionService {
 	int myAdoptSubUpdate(AdoptSubscriptionVO vo);// 나의 입양신청 수정
 	int myAdoptSubDelete(AdoptSubscriptionVO vo); // 나의 입양신청 삭제
 	
+	boolean isAdoptSubCheck(String memberId, int petAddNo); //같은동물 입양신청했는지 확인하는(true면 신청한적이 있고 false면 신청한적이 없음=>false면 신청버튼보이게)
+	
 }

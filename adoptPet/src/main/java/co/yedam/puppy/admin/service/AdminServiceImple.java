@@ -89,7 +89,7 @@ public class AdminServiceImple implements AdminService {
 			while(rs.next()) {
 				vo = new AdoptSubscriptionVO();
 				vo.setMemberId(rs.getString("member_id"));
-				vo.setPetListNo(rs.getInt("pet_list_no"));
+				vo.setPetAddNo(rs.getInt("pet_list_no"));
 				vo.setAdoptSubscriptionOk(rs.getString("adopt_subscription_ok"));
 				vo.setAdoptSubscriptionReason(rs.getString("adopt_subscription_reason"));
 				list.add(vo);
@@ -227,7 +227,7 @@ public class AdminServiceImple implements AdminService {
 			while(rs.next()) {
 				vo = new AdoptSubscriptionVO();
 				vo.setMemberId(rs.getString("member_id"));
-				vo.setPetListNo(rs.getInt("pet_list_no"));
+				vo.setPetAddNo(rs.getInt("pet_list_no"));
 				vo.setAdoptSubscriptionOk(rs.getString("adopt_subscription_ok"));
 				vo.setAdoptSubscriptionReason(rs.getString("adopt_subscription_reason"));
 				list.add(vo);
