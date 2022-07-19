@@ -27,6 +27,7 @@ public class AjaxNoticeSearch implements Command {
 		
 		list = noticeDao.noticeSerarchList(key, val);
 		String jsonList = null;
+		
 		try {
 			jsonList = mapper.writeValueAsString(list);
 		} catch (JsonProcessingException e) {
