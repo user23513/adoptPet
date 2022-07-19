@@ -14,7 +14,7 @@
 			  <input type="radio" id="petAddGender" name="petAddGender" value="여자">여<br>
 		동물체중<input type="text" id="petAddWeight" name="petAddWeight" value=""><br>
 		동물건강상태<input type="text" id="petAddHealth" name="petAddHealth" value=""><br>
-		동물나이<input type="text" id="petAddAdoptState" name="petAddAdoptState" value="입양대기" readonly><br>
+		입양여부<input type="text" id="petAddAdoptState" name="petAddAdoptState" value="입양대기" readonly><br>
 		동물유형<select id="petAddType" name="petAddType">
 				<option value="강아지">강아지</option>
 				<option value="고양이">고양이</option>	
