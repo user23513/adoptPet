@@ -1,4 +1,4 @@
-package co.yedam.puppy.calendar.service;
+package co.yedam.puppy.calendar.command;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import co.yedam.puppy.calendar.service.CalendarService;
+import co.yedam.puppy.calendar.service.CalendarServiceImpl;
 import co.yedam.puppy.comm.Command;
 import co.yedam.puppy.vo.CalendarVO;
 
@@ -31,7 +33,7 @@ public class CalendarList implements Command {
 		vo.setCalendarEndDate(Date.valueOf(end));
 		
 		Gson gson = new GsonBuilder().create();
-//		response.getTitle().print(gson.toJson(schedules));
+		//response.getTitle().print(gson.toJson(schedules));
 		
 		return "calendar/calendar";
 	}
