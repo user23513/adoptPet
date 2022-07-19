@@ -14,7 +14,7 @@ public interface BoardService {
 	int volReviewInsert (BoardVO vo); // 글쓰기
 	int volReviewUpdate (BoardVO vo); // 수정
 	int volReviewDelete (BoardVO vo); // 삭제
-	List<BoardVO> volReviewSerarchList(String key, String val); // 검색
+	List<BoardVO> volReviewSearchList(String key, String val); // 검색
 
 	//공지게시판
 	List<BoardVO> boardSelectList(int currentPage, int startRow, int pageSize);// 공지 목록

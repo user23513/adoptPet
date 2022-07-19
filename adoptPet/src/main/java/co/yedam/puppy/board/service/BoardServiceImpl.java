@@ -177,6 +177,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> volReviewSerarchList(String key, String val) {
 		// 봉사검색
+
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		BoardVO vo;
 		String sql = "SELECT * FROM WHERE" + key + "LIKE'%" + val + "%'";

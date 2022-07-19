@@ -38,6 +38,8 @@
 			<li><a href="memberLogout.do">로그아웃</a></li> 
 			<li><a href="memberMyPage.do">마이페이지</a></li>
 			<li><a href="noticeList.do">공지리스트</a></li>
+		
+		 
 		 </ul>
 		 </nav>
 		<%}%>
