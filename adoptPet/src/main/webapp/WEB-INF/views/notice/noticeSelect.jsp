@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
- <h2>공지글 상세페이</h2>
+ <h2>공지글 상세페이지</h2>
  <div>
 	<table>
  		<tr>

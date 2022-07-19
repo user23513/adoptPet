@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/jquery-3.6.0.min.js" /></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
 <div align="center">
