@@ -85,7 +85,7 @@ function modifyFnc(memId){
 	let select =  document.createElement('select');
 	select.setAttribute('id','sel');
 
-	let author = ['ADMIN','USER'];
+	let author = ['선택하기','ADMIN','USER'];
 
 	
 	let option = "";
@@ -119,13 +119,15 @@ function modifyFnc(memId){
 		})
 		.then(function(result) {
 			console.log(result);
-			alert('수정완료')
-			location.href="memberList.do"
+			modifyTd.previousElementSibling.innerText=opVal
+			alert('수정완료'+opVal)
+			//location.href="memberList.do"
 		})
 		.catch(function(err) {
 			console.error(err);
-			alert('수정완료')
-			location.href="memberList.do"
+			modifyTd.previousElementSibling.innerText=opVal
+			alert('수정완료'+opVal)
+			//location.href="memberList.do"
 		})
 	})
 	

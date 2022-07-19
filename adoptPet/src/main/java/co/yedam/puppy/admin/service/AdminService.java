@@ -23,6 +23,8 @@ public interface AdminService {
 	
 	List<VolunteerSubscriptionVO> allVolunteerList(int currentPage, int startRow, int pageSize);
 	int updateVolunteerList(VolunteerSubscriptionVO vo); //봉사신청상태 수정
+	int volunteerListCount();
+	List<VolunteerSubscriptionVO> volunteerSubscriptionSearchList(String key, String val);//봉사신청상태 검색
 	
 	//모든회원후원정보리스트 메소드있어ㅇㅑ됨
 	
