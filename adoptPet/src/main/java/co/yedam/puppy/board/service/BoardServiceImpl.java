@@ -186,7 +186,7 @@ public class BoardServiceImpl implements BoardService {
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-//			psmt.setInt(1, bvo.getBoardNo());
+//			psmt.setInt(1, bvo.getBoardNo());  
 			psmt.setInt(1, bvo.getBoardId());
 			psmt.setString(2, bvo.getBoardTitle());
 			psmt.setString(3, bvo.getBoardWriter());
