@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>입양동물 소개 게시판</title>
-<script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
 <style>
 #list {
 	 text-align : center;
@@ -40,6 +40,11 @@ thead {
 </head>
 <body>
 <div>
+		
+	</div>
+	<div id="list">
+		<h2>입양동물 소개 리스트</h2>
+		<button type="button" style="float: left;" onclick="location.href='petAddList.do'">입양등록</button>
 		<div align="right">
 			<form id="frm">
 				<select id="key" name="key" >
@@ -50,11 +55,7 @@ thead {
 				<input type="button" value="검색" onclick="petListSearch()">
 			</form>
 		</div>
-		
-	</div>
-	<div id="list">
-		<h2>입양동물 소개 리스트</h2>
-		<table>
+		<table id="tb">
 			<thead>
 				  <tr>
 				    <th>게시물번호</th>
@@ -62,7 +63,6 @@ thead {
 					<th>제목</th>
 					<th>입양여부</th>
 					<th>동물유형</th>
-					<th>첫번째파일 경로</th>
 					<th>좋아요</th>
 				  </tr>
 			 </thead>
@@ -81,7 +81,6 @@ thead {
 								<td><a href="petListView.do?petListNo=${list.petListNo}&petAddNo=${list.petAddNo}"> ${list.petListTitle}</a></td>
 								<td>${list.petListState}</td>
 								<td>${list.petListType}</td>
-								<td>${list.filesPath1}</td>
 								<td><div>
 								<button id="heartBtn" type="button" onclick="heartCheckFnc(${list.petListNo},${list.heartNum })">
 									<c:choose>
@@ -118,7 +117,6 @@ thead {
 				<% } %>
 		</div>	
 
-	
 	<script>
 		//하트버튼 눌렀을때
 		function heartCheckFnc(petListNo,heartNum) {
@@ -161,37 +159,23 @@ thead {
 				},
 				dataType:"json",
 				success : function(result) {
-					console.log(result);
+					console.log(result)
 					$('tbody').remove();
 					var tbody = $("<tbody />");
 					
 					$.each(result, function(index, item) {
 						var row = $("<tr />").append(
 								$("<td />").text(item.petListNo),
-								$("<td />").text(item.이미지),
+								$("<td />").text(item.filesPath1),
 								$("<td />").text(item.petListTitle),
 								$("<td />").text(item.petListState),
-								$("<td />").text(item.filesPath1),
-								$("<td />").text(item.noticeHit),
+								$("<td />").text(item.petListType),
 								$("<td />").text(item.heartNum)
 								);
-						tbody.append(row);
-					});
+								tbody.append(row);
+							});
 					
 					$('table').append(tbody);
-// 					$('tbody').remove();
-// 					$('<tbody />').append(
-// 						$.each(result, (inx,vo)=>{
-// 							$('<tr />').append($('<td />').text(vo.petListNo),
-// 											   $('<td />').text('이미지'),
-// 											   $('<td />').text(vo.petListTitle),
-// 											   $('<td />').text(vo.petListState),
-// 											   $('<td />').text(vo.petListType),
-// 											   $('<td />').text(vo.filesPath1),
-// 											   $('<td />').text(vo.heartNum)
-// 								)
-// 						})		
-// 					);
 					
 				},
 				error : function(error) {
