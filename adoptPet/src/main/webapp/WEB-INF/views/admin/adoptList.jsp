@@ -25,7 +25,7 @@
 	<table border="1">
 		<thead>
 			<tr>
-				<th>회원아이디</th>
+				<th>회원아이디</th>  
 				<th>동물아이디</th>
 				<th>상태</th>
 				<th>이유</th>
