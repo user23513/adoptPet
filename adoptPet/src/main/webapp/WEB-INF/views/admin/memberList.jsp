@@ -9,6 +9,7 @@
 <script src="js/jquery-3.6.0.min.js" /></script>
 </head>
 <body>
+<div align="center">
 회원리스트
 <table border="1">
 	<thead>
@@ -43,7 +44,7 @@
 			</c:when>
 			<c:otherwise>
 				<tr>
-					<td colspan="5" align="center">회원이 없습니다.</td>
+					<td colspan="8" align="center">회원이 없습니다.</td>
 				</tr>
 			</c:otherwise>
 		</c:choose>
@@ -62,6 +63,7 @@
 	<%
 	}
 	%>
+</div>
 </div>
 </body>
 <script type="text/javascript">
@@ -107,27 +109,25 @@ function modifyFnc(memId){
 	
 	btn.addEventListener('click',function(e){
 		e.preventDefault();
-		console.log($("#sel option:selected").val());
 		fetch('updateMemberList.do',{
 			method:'post',
 			headers: {
 				'Content-type': 'application/x-www-form-urlencoded'
 			},
 			body:"memberId="+memId+"&memberAuthor="+opVal
-		}).then(function(result) {
+		})
+		.then(function(result) {
 			return result.json();
 		})
 		.then(function(result) {
 			console.log(result);
-			modifyTd.previousElementSibling.innerText=opVal
-			alert('수정완료'+opVal)
-			//location.href="memberList.do"
+			alert('수정완료')
+			location.href="memberList.do"
 		})
 		.catch(function(err) {
 			console.error(err);
-			modifyTd.previousElementSibling.innerText=opVal
-			alert('수정완료'+opVal)
-			//location.href="memberList.do"
+			alert('수정완료')
+			location.href="memberList.do"
 		})
 	})
 	

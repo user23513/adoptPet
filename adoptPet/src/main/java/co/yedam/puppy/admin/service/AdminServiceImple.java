@@ -77,19 +77,19 @@ public class AdminServiceImple implements AdminService {
 		// 모든입양신청리스트 
 		List<AdoptSubscriptionVO> list = new ArrayList<AdoptSubscriptionVO>();
 		AdoptSubscriptionVO vo;
-		String sql = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ADOPT_SUBSCRIPTION_OK DESC) NUM  , A.* FROM ADOPT_SUBSCRIPTION A ) WHERE NUM BETWEEN ? AND ?";
+		String sql = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY PET_ADD_NO DESC) NUM  , A.* FROM ADOPT_SUBSCRIPTION A ) WHERE NUM BETWEEN ? AND ?";
 		
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, startRow);
-			psmt.setInt(2, currentPage*currentPage);
+			psmt.setInt(2, currentPage*pageSize);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				vo = new AdoptSubscriptionVO();
 				vo.setMemberId(rs.getString("member_id"));
-				vo.setPetListNo(rs.getInt("pet_list_no"));
+				vo.setPetAddNo(rs.getInt("pet_add_no"));
 				vo.setAdoptSubscriptionOk(rs.getString("adopt_subscription_ok"));
 				vo.setAdoptSubscriptionReason(rs.getString("adopt_subscription_reason"));
 				list.add(vo);
@@ -104,15 +104,16 @@ public class AdminServiceImple implements AdminService {
 
 
 	@Override
-	public int updateAdoptList(AdoptSubscriptionVO vo) {
+	public int adoptListUpdate(AdoptSubscriptionVO vo) {
 		//입양상태수정 
 		int n = 0;
-		String sql = "update adopt_subscription set ADOPT_SUBSCRIPTION_OK where member_id=? and PET_LIST_NO=?";
+		String sql = "UPDATE ADOPT_SUBSCRIPTION SET ADOPT_SUBSCRIPTION_OK=? WHERE MEMBER_ID=? AND PET_ADD_NO=?";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getAdoptSubscriptionOk());
 			psmt.setString(2, vo.getMemberId());
+			psmt.setInt(3, vo.getPetAddNo());
 			n = psmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -134,7 +135,7 @@ public class AdminServiceImple implements AdminService {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, startRow);
-			psmt.setInt(2, currentPage*currentPage);
+			psmt.setInt(2, currentPage*pageSize);
 			rs = psmt.executeQuery();	
 			
 			while(rs.next()) {
@@ -219,7 +220,7 @@ public class AdminServiceImple implements AdminService {
 		// 입양승인완료,입양승인대기,입양승인불가 검색정렬하기
 		List<AdoptSubscriptionVO> list = new ArrayList<AdoptSubscriptionVO>();
 		AdoptSubscriptionVO vo;
-		String sql = "select * from ADOPT_SUBSCRIPTION where "+key+" like '%"+val+"%' order by pet_list_no";
+		String sql = "SELECT * FROM ADOPT_SUBSCRIPTION WHERE "+key+" LIKE '%"+val+"%' ORDER BY PET_ADD_NO";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
@@ -227,7 +228,7 @@ public class AdminServiceImple implements AdminService {
 			while(rs.next()) {
 				vo = new AdoptSubscriptionVO();
 				vo.setMemberId(rs.getString("member_id"));
-				vo.setPetListNo(rs.getInt("pet_list_no"));
+				vo.setPetAddNo(rs.getInt("pet_add_no"));
 				vo.setAdoptSubscriptionOk(rs.getString("adopt_subscription_ok"));
 				vo.setAdoptSubscriptionReason(rs.getString("adopt_subscription_reason"));
 				list.add(vo);
@@ -245,7 +246,7 @@ public class AdminServiceImple implements AdminService {
 
 		//봉사신청수확인
 		int n = 0;
-		String sql = "SELECT * FROM volunteer_SUBSCRIPTION";
+		String sql = "SELECT * FROM VOLUNTEER_SUBSCRIPTION";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
@@ -288,6 +289,35 @@ public class AdminServiceImple implements AdminService {
 
 
 
+	@Override
+	public AdoptSubscriptionVO adoptOneView(AdoptSubscriptionVO vo) {
+		// 입양신청 단건조회
+		String sql = "SELECT * FROM  ADOPT_SUBSCRIPTION "
+				+ "WHERE MEMBER_ID=? AND PET_ADD_NO=?";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getMemberId());
+			psmt.setInt(2, vo.getPetAddNo());
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo = new AdoptSubscriptionVO();
+				vo.setMemberId(rs.getString("member_id"));
+				vo.setPetAddNo(rs.getInt("pet_add_no"));
+				vo.setAdoptSubscriptionOk(rs.getString("adopt_subscription_ok"));
+				vo.setAdoptSubscriptionReason(rs.getString("adopt_subscription_reason"));
+		
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return vo;
+	}
+
+
+
 	private void close() {
 		try {
 			if(rs != null) rs.close();
@@ -297,6 +327,5 @@ public class AdminServiceImple implements AdminService {
 			e.printStackTrace();
 		}
 	}
-
 
 }

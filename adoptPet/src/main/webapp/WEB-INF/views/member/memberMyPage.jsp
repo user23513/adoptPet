@@ -50,8 +50,7 @@ function memberDeleteCall(){
 				alert('탈퇴완료')
 				location.href="main.do"
 			})
-			})
-		}
+		})
 	 }else{
 		alert("탈퇴를 취소 했습니다.");
 	 }

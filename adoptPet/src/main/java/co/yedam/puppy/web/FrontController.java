@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 
 import co.yedam.puppy.MainCommand;
 import co.yedam.puppy.admin.command.AdoptList;
+import co.yedam.puppy.admin.command.AdoptListUpdate;
+import co.yedam.puppy.admin.command.AdoptOneView;
 import co.yedam.puppy.admin.command.AdoptStateSearch;
 import co.yedam.puppy.admin.command.MemberList;
 import co.yedam.puppy.admin.command.UpdateMemberList;
@@ -46,8 +48,7 @@ import co.yedam.puppy.petList.command.PetList;
 
 
 import co.yedam.puppy.member.command.AjaxMemberIdCheck;
-
-
+import co.yedam.puppy.member.command.MemberAdopt;
 import co.yedam.puppy.petList.command.PetListForm;
 import co.yedam.puppy.petList.command.PetListInsert;
 import co.yedam.puppy.petList.command.PetListSearch;
@@ -99,7 +100,8 @@ public class FrontController extends HttpServlet {
 		map.put("/memberMyPage.do", new MemberMyPage()); //로그인후 마이페이지
 		map.put("/memberDelete.do", new MemberDelete()); //회원자진탈퇴
 		map.put("/memberUpdateForm.do", new MemberUpdateForm());  //회원정보수정화면
-		map.put("/memberUpdate.do", new MemberUpdate()); //회원정보수정			 
+		map.put("/memberUpdate.do", new MemberUpdate()); //회원정보수정
+		map.put("/memberAdopt.do", new MemberAdopt());// 나의입양신청
 
 		map.put("/calendar.do", new Calendar()); // 캘린더 페이지
 		map.put("/calendarList.do", new CalendarList()); // 캘린더 리스트 페이지
@@ -132,12 +134,14 @@ public class FrontController extends HttpServlet {
 		map.put("/volReviewList.do", new VolReviewList()); // 봉사활동후기 리스트
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
 	
-    map.put("/memberList.do", new MemberList()); //모든회원리스트
+		map.put("/memberList.do", new MemberList()); //모든회원리스트
 		map.put("/adoptList.do", new AdoptList());//모든입양신청리스트
+		map.put("/adoptListUpdate.do", new AdoptListUpdate());//입양상태수정
 		map.put("/updateMemberList.do", new UpdateMemberList()); //멤버권한수정
-		map.put("/adoptStateSearch.do", new AdoptStateSearch()); //입양상태정렬 (수정하는기능추가해야됨) 
-		map.put("/volunteerList.do", new VolunteerList());
-		map.put("/volunteerStateSearch.do", new VolunteerStateSearch());
+		map.put("/adoptStateSearch.do", new AdoptStateSearch()); //입양상태정렬 
+		map.put("/adoptOneView.do", new AdoptOneView()); //입양신청상세보기
+		map.put("/volunteerList.do", new VolunteerList()); //봉사신청리스트-
+		map.put("/volunteerStateSearch.do", new VolunteerStateSearch()); //봉사신청정렬검색-
 	
 
 	}
