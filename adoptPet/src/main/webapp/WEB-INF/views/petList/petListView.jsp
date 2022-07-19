@@ -36,6 +36,13 @@
 					</td>
 				</tr>
 		</table>
+		<div>
+			<c:if test="${id}">
+			
+			
+				<button type="button">수정</button>
+			</c:if>
+		</div>
 	</div>
 </body>
 </html>

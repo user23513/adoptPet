@@ -26,10 +26,13 @@ import co.yedam.puppy.board.command.NoticeList;
 import co.yedam.puppy.board.command.NoticeSelect;
 import co.yedam.puppy.board.command.NoticeUpdate;
 import co.yedam.puppy.calendar.command.Calendar;
-import co.yedam.puppy.calendar.service.CalendarDelete;
-import co.yedam.puppy.calendar.service.CalendarInsert;
-import co.yedam.puppy.calendar.service.CalendarList;
+
+import co.yedam.puppy.calendar.command.CalendarDelete;
+import co.yedam.puppy.calendar.command.CalendarInsert;
+import co.yedam.puppy.calendar.command.CalendarList;
+
 import co.yedam.puppy.comm.Command;
+
 import co.yedam.puppy.heart.command.HeartCheck;
 import co.yedam.puppy.petAdd.command.PetAddForm;
 import co.yedam.puppy.petAdd.command.PetAddInsert;
@@ -38,23 +41,34 @@ import co.yedam.puppy.petAdd.command.PetAddUpdate;
 import co.yedam.puppy.petAdd.command.PetAddUpdateForm;
 import co.yedam.puppy.petList.command.PetList;
 
+
 import co.yedam.puppy.member.command.AjaxMemberIdCheck;
+
 
 import co.yedam.puppy.petList.command.PetListForm;
 import co.yedam.puppy.petList.command.PetListInsert;
 import co.yedam.puppy.petList.command.PetListUpdate;
 import co.yedam.puppy.petList.command.PetListUpdateForm;
+
+import co.yedam.puppy.volunteerReview.command.VolReviewInsert;
+import co.yedam.puppy.volunteerReview.command.VolReviewList;
+
 import co.yedam.puppy.petList.command.PetListView;
+
 import co.yedam.puppy.member.command.MemberDelete;
 import co.yedam.puppy.member.command.MemberJoin;
 import co.yedam.puppy.member.command.MemberJoinForm;
 import co.yedam.puppy.member.command.MemberLogin;
 import co.yedam.puppy.member.command.MemberLoginForm;
 import co.yedam.puppy.member.command.MemberLogout;
-import co.yedam.puppy.member.command.MemberUpdateForm;
-
 import co.yedam.puppy.member.command.MemberMyPage;
 import co.yedam.puppy.member.command.MemberUpdate;
+import co.yedam.puppy.member.command.MemberUpdateForm;
+import co.yedam.puppy.petAdd.command.PetAddForm;
+import co.yedam.puppy.petAdd.command.PetAddList;
+import co.yedam.puppy.petList.command.PetList;
+import co.yedam.puppy.petList.command.PetListForm;
+import co.yedam.puppy.petList.command.PetListInsert;
 
 @Controller
 
@@ -109,7 +123,10 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeUpdateForm.do", new NoticeUpdate());//공지 수정 폼
 		map.put("/ajaxNoticeInsert.do", new AjaxNoticeSearch());//공지 검색
 		
-		map.put("/memberList.do", new MemberList()); //모든회원리스트
+		map.put("/volReviewList.do", new VolReviewList()); // 봉사활동후기 리스트
+		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
+	
+    map.put("/memberList.do", new MemberList()); //모든회원리스트
 		map.put("/adoptList.do", new AdoptList());//모든입양신청리스트
 		map.put("/updateMemberList.do", new UpdateMemberList()); //멤버권한수정
 		map.put("/adoptStateSearch.do", new AdoptStateSearch());

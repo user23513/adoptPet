@@ -17,7 +17,8 @@ public class Calendar implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		//캘린더 페이지 이동
+		// 캘린더 페이지
+
 		return "calendar/calendar";
 	}
 
