@@ -14,6 +14,7 @@ public class PetListVO {
 	private String petListWriter; //not null - 동물소개게시판 작성자
 	private String petListState; //not null - 동물소개게시판 입양여부
 	private String petListType; //not null - 동물소개게시판 동물유형
+	private int petAddNo;//동물등록번호 -외래키(동물지우면 게시글도 삭제)
 	
 	//join해서 게시판에 뿌려줄때 쓰는 변수
 	private String filesPath1; //파일1번 경로

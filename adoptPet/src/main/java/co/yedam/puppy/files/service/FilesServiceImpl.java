@@ -103,15 +103,16 @@ public class FilesServiceImpl implements FilesService {
 	}
 	
 	@Override
-	public int filesDelete(int filesNo) {
+	public int filesDelete(PetListVO vo) {
 		// 파일삭제
 		int r = 0;
-		String sql = "delete from files where files_no=?";
+		String sql = "DELETE FROM FILES WHERE PET_LIST_NO=? AND BOARD_ID=?";
 		
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, filesNo);
+			psmt.setInt(1, vo.getPetListNo());
+			psmt.setInt(2, vo.getBoardId());
 			r = psmt.executeUpdate();
 			
 		} catch (Exception e) {

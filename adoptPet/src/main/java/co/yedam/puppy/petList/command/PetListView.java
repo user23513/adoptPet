@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.puppy.adoptSubscription.service.AdoptSubscriptionService;
+import co.yedam.puppy.adoptSubscription.service.AdoptSubscriptionServiceImpl;
 import co.yedam.puppy.comm.Command;
 import co.yedam.puppy.files.service.FilesService;
 import co.yedam.puppy.files.service.FilesServiceImpl;
@@ -21,6 +23,8 @@ public class PetListView implements Command {
 		PetListVO vo = new PetListVO();
 		
 		String petListNo = request.getParameter("petListNo");
+		String petAddNo = request.getParameter("petAddNo");
+		
 		vo.setPetListNo(Integer.parseInt(petListNo));
 		
 		vo = dao.petListSelectOne(vo); //클릭한 제목 단건조회
@@ -29,8 +33,12 @@ public class PetListView implements Command {
 		FilesService fdao = new FilesServiceImpl();
 		List<String> filePathList = fdao.filesSelect(vo);
 		
+		//같은게시글에 입양신청한 적이 있는지 확인(세션으로 멤버아이디받아와야함)
+		AdoptSubscriptionService adoptDao = new AdoptSubscriptionServiceImpl();
+		boolean check = adoptDao.isAdoptSubCheck("park", Integer.parseInt(petAddNo)); //true면 입양신청버튼이 보이게
 		request.setAttribute("vo", vo);
 		request.setAttribute("filePathList", filePathList);
+		request.setAttribute("check", check);
 		
 		return "petList/petListView";
 	}

@@ -9,6 +9,7 @@
 </head>
 <body>
 <div align="center">
+${message }
 	<div><h1>로 그 인 해 보 자 </h1></div>
 	<div>
 		<form id="frm" action="memberLogin.do" method="post">
@@ -18,14 +19,14 @@
 						<th width="150">아 이 디</th>
 						<td width="200">
 							<input type="text" id="memberId" name="memberId" 
-								required="required" placeholder="Enter Your Id...">
+								required="required" >
 						</td>
 					</tr>
 					<tr>
 						<th width="150">패스워드</th>
 						<td width="200">
 							<input type="password" id="memberPassword" name="memberPassword" 
-								required="required" placeholder="Enter Your Password...">
+								required="required" >
 						</td>
 					</tr>
 				</table>

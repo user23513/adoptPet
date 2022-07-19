@@ -49,9 +49,10 @@
 			<input type="reset" value="리셋">	
 		</form>
 	</div>
+	
 	<script>
 		if(${r}>0 ) {
-			alert("등록이 완료되었습니다!");
+			alert("수정이 완료되었습니다!");
 			location.href = "petList.do";
 		}
 	</script>

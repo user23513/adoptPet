@@ -2,6 +2,7 @@ package co.yedam.puppy.board.command;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,7 +50,7 @@ public class NoticeInsert implements Command{
 				saveFileName = savePath + saveFileName;//파일경로를 추가한다.
 				fvo.setFilesPath(saveFileName);
 			}
-			n = noticeDao.noticeInsert(vo,fvo);
+			n = noticeDao.noticeInsert(vo);
 			
 		} catch (IOException e) {
 			e.printStackTrace();

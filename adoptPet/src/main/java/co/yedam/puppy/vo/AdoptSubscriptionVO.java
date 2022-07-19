@@ -7,7 +7,10 @@ import lombok.Setter;
 @Setter
 public class AdoptSubscriptionVO {
 	private String memberId;
-	private int petListNo;
+	private int petAddNo;
 	private String AdoptSubscriptionOk;
 	private String AdoptSubscriptionReason;
+	
+//	private String memberName;
+//	private String petAddName;
 }
