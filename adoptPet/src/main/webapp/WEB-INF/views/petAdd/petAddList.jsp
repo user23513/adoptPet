@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>입양동물 등록 리스트</title>
+<script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
 </head>
 <body>
 <%-- 	${message} 입양등록처리 되었습니다 메세지 --%>
@@ -23,6 +24,7 @@
 					<th>입양여부</th>
 					<th>동물유형</th>
 					<th>글쓰기</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,7 +38,9 @@
 						<td>${vo.petAddHealth }</td>
 						<td>${vo.petAddAdoptState }</td>
 						<td>${vo.petAddType }</td>
+						<c:if test=""></c:if>
 						<td><button type="button" onclick="location.href='petListForm.do?petAddNo=${vo.petAddNo }&petAddName=${vo.petAddName }'">글쓰기</button> </td>
+						<td><button type="button" onclick="petAddDeleteFnc(${vo.petAddNo })">삭제</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -55,5 +59,33 @@
 			<% } %>
 		</div>
 	</div>	
+	
+	<script>
+		function petAddDeleteFnc(petAddNo) {
+			fetch('petAddDelete.do',{
+				method: 'post',
+				headers: {
+					'Content-type': 'application/x-www-form-urlencoded'
+				},  
+				body:"petAddNo="+petAddNo
+			})
+			.then(function(result){
+						return result.json();
+					})
+			.then(function(result){
+				console.log(result)
+				if(result==1) {
+					alert("삭제가 완료되었습니다!");
+					location.href = "petAddList.do";
+				}else{
+					alert("삭제가 되지않았습니다!");
+					location.href = "petAddList.do";
+				}
+			})
+			.catch(function(err){
+						console.error(err);
+				})
+		}
+	</script>
 </body>
 </html>
