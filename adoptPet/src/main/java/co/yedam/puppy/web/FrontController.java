@@ -19,6 +19,8 @@ import co.yedam.puppy.admin.command.AdoptList;
 import co.yedam.puppy.admin.command.AdoptStateSearch;
 import co.yedam.puppy.admin.command.MemberList;
 import co.yedam.puppy.admin.command.UpdateMemberList;
+import co.yedam.puppy.admin.command.VolunteerList;
+import co.yedam.puppy.admin.command.VolunteerStateSearch;
 import co.yedam.puppy.board.command.AjaxNoticeSearch;
 import co.yedam.puppy.board.command.NoticeForm;
 import co.yedam.puppy.board.command.NoticeInsert;
@@ -112,8 +114,10 @@ public class FrontController extends HttpServlet {
 		map.put("/memberList.do", new MemberList()); //모든회원리스트
 		map.put("/adoptList.do", new AdoptList());//모든입양신청리스트
 		map.put("/updateMemberList.do", new UpdateMemberList()); //멤버권한수정
-		map.put("/adoptStateSearch.do", new AdoptStateSearch());
-		
+		map.put("/adoptStateSearch.do", new AdoptStateSearch()); //입양상태정렬 (수정하는기능추가해야됨) 
+		map.put("/volunteerList.do", new VolunteerList());
+		map.put("/volunteerStateSearch.do", new VolunteerStateSearch());
+	
 
 	}
 
