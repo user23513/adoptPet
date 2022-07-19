@@ -33,8 +33,8 @@
 	<table border="1">
 		<thead>
 			<tr>
-				<th width="50">순번</th>
-				<th width="50">유형</th>
+				<th width="50">No</th>
+				<!-- <th width="50">유형</th> -->
 				<th width="100">작성자</th>
 				<th width="250">제목</th>
 				<th width="70">작성일자</th>
@@ -47,7 +47,7 @@
 				<c:forEach items="${list }" var="b">
 					<tr>
 						<td>${b.boardNo }</td>
-						<td>${b.boardId }</td>
+						<%-- <td>${board_part.boardName }</td> --%>
 						<td>${b.boardWriter }</td>
 						<td><a href="noticeSelect.do">${b.boardTitle }</a></td>
 						<td>${b.boardDate }</td>
@@ -132,6 +132,38 @@
 		ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		ajax.responseType='json';
 		ajax.send(Object.keys(data).map(key => key+"="+data[key]).join('&')); //   
+	}
+	
+	function errorCallback(err){
+		console.log('error : '+err.message);
+	}
+	
+	function delNotice(obj){	
+		let row = $(obj).parent().parent().get(0);
+		let td = row.cells[0];
+		let id = $(td).html();		
+		
+			const xhr = new XMLHttpRequest();
+		const url = "ajaxNoticeDelte.do?id="+id;
+		xhr.onload = function(){
+			if(xhr.status >= 200 && xhr.status < 300){
+				if(xhr.response == 1) {
+					alert("데이터가 삭제되었습니다.");
+					$(row).remove();
+				}else {
+					alert("삭제 할 수 없습니다.");
+				};
+			}else {
+				errorCallback(new Error(xhr.stautsText));
+			}
+		};
+	
+		xhr.open('GET',url);
+		xhr.send(); 
+	}
+	
+	function noticeSelect(id) {  //get방식 안전하지 않음
+		location.href='noticeSelect.do?id='+id;			
 	}
 </script> 
 </body>

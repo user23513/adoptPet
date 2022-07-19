@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <link href='./fullcalendar/lib/main.css' rel='stylesheet' />
 <script src='./fullcalendar/lib/main.js'></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
 <script>
  let schedules = [];
 

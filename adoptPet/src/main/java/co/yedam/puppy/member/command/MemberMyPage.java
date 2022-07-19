@@ -18,8 +18,8 @@ public class MemberMyPage implements Command {
 		MemberVO vo = new MemberVO();
 		
 		//로그인한 계정가져오기 -수정해야됨
-		//vo.setMemberId(request.getParameter("member_id"));
-		vo.setMemberId("kim");
+		vo.setMemberId(request.getParameter("member_id"));
+		//vo.setMemberId("");
 		
 		vo = memberDao.memberSelectOne(vo);
 		

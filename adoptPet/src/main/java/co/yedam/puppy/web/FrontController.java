@@ -132,7 +132,7 @@ public class FrontController extends HttpServlet {
 		map.put("/volReviewList.do", new VolReviewList()); // 봉사활동후기 리스트
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
 	
-    map.put("/memberList.do", new MemberList()); //모든회원리스트
+		map.put("/memberList.do", new MemberList()); //모든회원리스트
 		map.put("/adoptList.do", new AdoptList());//모든입양신청리스트
 		map.put("/updateMemberList.do", new UpdateMemberList()); //멤버권한수정
 		map.put("/adoptStateSearch.do", new AdoptStateSearch()); //입양상태정렬 (수정하는기능추가해야됨) 
