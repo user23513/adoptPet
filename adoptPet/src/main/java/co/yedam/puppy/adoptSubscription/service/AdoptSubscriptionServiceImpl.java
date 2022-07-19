@@ -45,12 +45,6 @@ public class AdoptSubscriptionServiceImpl implements AdoptSubscriptionService {
 		return list;
 	}
 
-	@Override
-	public int AdoptSubInsert(AdoptSubscriptionVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
-
-
 
 	@Override
 	public int AdoptSubInsert(AdoptSubscriptionVO vo) {
