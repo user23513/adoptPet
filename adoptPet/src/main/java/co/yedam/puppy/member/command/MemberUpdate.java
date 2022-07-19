@@ -18,7 +18,6 @@ public class MemberUpdate implements Command {
 		vo.setMemberTel(request.getParameter("memberTel"));
 		vo.setMemberEmail(request.getParameter("memberEmail"));
 		vo.setMemberJob(request.getParameter("memberJob"));
-		vo.setMemberAuthor(request.getParameter("memberAuthor"));
 		vo.setMemberId(request.getParameter("memberId"));
 		
 
@@ -26,18 +25,18 @@ public class MemberUpdate implements Command {
 		System.out.println(request.getParameter("memberJob"));
 		System.out.println(request.getParameter("memberTel"));
 		System.out.println(request.getParameter("memberEmail"));
-		System.out.println(request.getParameter("memberAuthor"));
 		
 		
 		int n = memberDao.memberUpdate(vo);
 		
-		request.setAttribute("memberUpdateComplete", "회원정보 수정이 완료되었습니다.");
+		//request.setAttribute("memberUpdateComplete", "회원정보 수정이 완료되었습니다.");
 		if(n>0) {
 			System.out.println("수정성공");
 		}else {
 			System.out.println("수정실패");
 		}
-		return "member/memberMyPageConfirm";
+		//return "member/memberMyPageConfirm";
+		return "member/memberMyPage";
 	}
 
 }

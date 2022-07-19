@@ -240,6 +240,53 @@ public class AdminServiceImple implements AdminService {
 		return list;
 	}
 
+	@Override
+	public int volunteerListCount() {
+
+		//봉사신청수확인
+		int n = 0;
+		String sql = "SELECT * FROM volunteer_SUBSCRIPTION";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				n++;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return n;
+	}
+
+	@Override
+	public List<VolunteerSubscriptionVO> volunteerSubscriptionSearchList(String key, String val) {
+		// 봉사신청승인완료,승인대기,승인불가 검색정렬하기
+		List<VolunteerSubscriptionVO> list = new ArrayList<VolunteerSubscriptionVO>();
+		VolunteerSubscriptionVO vo;
+		String sql = "select * from volunteer_SUBSCRIPTION where "+key+" like '%"+val+"%' order by calendar_no";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				vo = new VolunteerSubscriptionVO();
+				vo.setMemberId(rs.getString("member_id"));
+				vo.setCalendarNo(rs.getInt("calendar_no"));
+				vo.setVolunteerSubscriptionOk(rs.getString("volunteer_subscription_ok"));
+				list.add(vo);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return list;
+	}
+
+
 
 	private void close() {
 		try {
