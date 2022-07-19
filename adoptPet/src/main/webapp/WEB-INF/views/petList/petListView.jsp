@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
@@ -29,13 +30,13 @@ input[type=text]:focus, input[type=password]:focus {
 
 /* Set a style for all buttons */
 button {
-  background-color: #04AA6D;
+  background-color: #83c0ae;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 100px;
   opacity: 0.9;
 }
 
@@ -46,7 +47,7 @@ button:hover {
 /* Extra styles for the cancel button */
 .cancelbtn {
   padding: 14px 20px;
-  background-color: #f44336;
+  background-color: #ef9899;
 }
 
 /* Float cancel and signup buttons and add an equal width */
@@ -123,15 +124,15 @@ hr {
 	<div align="center">
 		<table border="1">
 				<tr>
-					<th width="500">ëë¬¼ì í</th>
+					<th width="500">동물유형</th>
 					<td width="500">${vo.petListType}</td>
-					<th width="500">ììì¬ë¶</th>
+					<th width="500">입양여부</th>
 					<td width="500">${vo.petListState}</td>
 				</tr>
 				<tr>
-					<th>ìì±ì</th>
+					<th>작성자</th>
 					<td>${vo.petListWriter}</td>
-					<th>ì ëª©</th>
+					<th>제목</th>
 					<td>${vo.petListTitle}</td>
 				</tr>
 				<tr>
@@ -147,47 +148,42 @@ hr {
 					</td>
 				</tr>
 		</table>
-		<div><input type="hidden" id="petAddNo" name="petAddNo" value="${vo.petAddNo}"> </div>
+		<div><input type="hidden" name="petAddNo" value="${vo.petAddNo}"> </div>
 		<div>
-			<button type="button" style="float: left;" onclick="location.href = 'petList.do'">ëª©ë¡</button>
-<%-- 			<input type="hidden" value="${ëë¬¼ë²í¸ }"> --%>
-			<!-- ì¸ì ìì´ëê°ì´ ì´ëë¯¼ì¼ë ì¤ì  -->
-			<!-- ììì ì²­ë²í¼ì´ ììì ì²­í ì ì ì´ ìì¼ë©´ ë³´ì´ì§ ìê² -->
+			<button type="button" style="float: left;" onclick="location.href = 'petList.do'">목록</button>
 			<c:if test="${check == true}">
-				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">ììì ì²­</button>
+				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto; float: right;">입양신청</button>
 			</c:if>
-			<button type="button" style="float: right;" onclick="petListDeleteFnc(${vo.petListNo})">ì­ì </button>
-			<button type="button" style="float: right;" onclick="location.href = 'petListUpdateForm.do?petListNo=${vo.petListNo}'">ìì </button>
+			<button type="button" style="float: right;" onclick="petListDeleteFnc(${vo.petListNo})">삭제</button>
+			<button type="button" style="float: right;" onclick="location.href = 'petListUpdateForm.do?petListNo=${vo.petListNo}'">수정</button>
 		</div>
 	</div>
-	
-	<!-- -============================================== -->
 
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form class="modal-content" action="adoptSubScription.do">
     <div class="container">
-      <h1>ììì ì²­</h1>
+      <h1>입양 신청</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
-      <label for="memberId"><b>íììì´ë</b></label>
-      <input type="text" name="memberId" value="lee" required>
+      <label for="memberId"><b>신청자 아이디</b></label>
+      <input type="text" id="memberId" name="memberId" value="lee" required>
 
-      <label for="petAddNo"><b>ëë¬¼ë²í¸</b></label>
-      <input type="text" name="petAddNo" value="${vo.petAddNo}" required>
+      <label for="petAddNo"><b>동물 번호</b></label>
+      <input type="text" id="petAddNo" name="petAddNo" value="${vo.petAddNo}" required>
 
-      <label for="adoptSubscriptionOk"><b>ììì¹ì¸ì¬ë¶</b></label>
-      <input type="text" name="adoptSubscriptionOk" value="${vo.petListState}" required>
+      <label for="adoptSubscriptionOk"><b>입양 승인여부</b></label>
+      <input type="text" id="adoptSubscriptionOk" name="adoptSubscriptionOk" value="${vo.petListState}" required>
       
-      <label for="adoptSubscriptionReason"><b>ììì¬ì </b></label>
-      <input type="text" name="adoptSubscriptionReason" required>
+      <label for="adoptSubscriptionReason"><b>입양 사유</b></label>
+      <input type="text" id="adoptSubscriptionReason" name="adoptSubscriptionReason" required>
       
 
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">ì·¨ì</button>
-        <button type="button" class="signupbtn" onclick="adoptSubFnc();">ì ì²­</button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">취소</button>
+        <button type="button" class="signupbtn" onclick="adoptSubFnc();">신청</button>
       </div>
     </div>
   </form>
@@ -218,9 +214,38 @@ hr {
 	      .catch(function(err){
 	               console.error(err);
 	         })
-	      
-	      
 	   }
+	 
+		function adoptSubFnc() {
+			let memberId = $('#memberId').val();
+			let petAddNo = $('#petAddNo').val();
+			let adoptSubOk = $('#adoptSubscriptionOk').val();
+			let adoptSubReason = $('#adoptSubscriptionReason').val();
+			//ajax function Call
+			$.ajax({
+				url:"adoptSubScription.do",
+				type:"post",
+				data:{
+					"memberId" : memberId,
+					"petAddNo" : petAddNo,
+					"adoptSubscriptionOk" : adoptSubOk,
+					"adoptSubscriptionReason" : adoptSubReason
+				},
+				dataType:"json",
+				success : function(result) {
+					if(result == 1) {
+						alert("신청되었습니다!");
+						document.getElementById('id01').style.display='none';
+					} else {
+						alert("신청되지않았습니다!");
+						document.getElementById('id01').style.display='none';
+					}
+				},
+				error : function(error) {
+					console.log(error);
+				}
+			})
+		}
 
 	
 	

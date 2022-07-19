@@ -7,10 +7,40 @@
 <meta charset="UTF-8">
 <title>입양동물 소개 게시판</title>
 <script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#list {
+	 text-align : center;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tbody>tr:nth-child(even) {
+  background-color: #e7e7e5;
+}
+
+tbody>tr:nth-child(odd) {
+  background-color: #bed4cf;
+}
+
+thead {
+	background-color: #bcccc9;
+}
+</style>
 </head>
 <body>
-	<div align="center">
-		<div>
+<div>
+		<div align="right">
 			<form id="frm">
 				<select id="key" name="key" >
 					<option value="pet_list_title">제목</option>
@@ -20,26 +50,30 @@
 				<input type="button" value="검색" onclick="petListSearch()">
 			</form>
 		</div>
-		<table border="1">
+		
+	</div>
+	<div id="list">
+		<h2>입양동물 소개 리스트</h2>
+		<table>
 			<thead>
-				<tr>
-					<th>게시물번호</th>
-					<th>이미지</th>
+				  <tr>
+				    <th>게시물번호</th>
+				 	<th>이미지</th>
 					<th>제목</th>
 					<th>입양여부</th>
 					<th>동물유형</th>
 					<th>첫번째파일 경로</th>
 					<th>좋아요</th>
-				</tr>
-			</thead>
-			<tbody>
-			<c:choose>
+				  </tr>
+			 </thead>
+			 <tbody>
+			 	<c:choose>
 				<c:when test="${not empty petList}">
 						<c:forEach var="list" items="${petList}">
 							<tr>
 								<td>${list.petListNo}</td>
 								<c:if test="${not empty list.filesPath1}">
-									<td><img width="50" height="50" src="fileup/${list.filesPath1}"></td>
+									<td><img width="70" height="70" src="fileup/${list.filesPath1}"></td>
 								</c:if>
 								<c:if test="${empty list.filesPath1}">
 									<td></td>
@@ -70,9 +104,10 @@
 						</tr>
 					</c:otherwise>
 				</c:choose>
-			</tbody>
+			 </tbody>
 		</table>
-		<div>
+	</div>
+	<div align="center">
 			<% 	int pageCount = (int)request.getAttribute("pageCount");
 				int pageBlock = (int)request.getAttribute("pageBlock");
 				int startPage = (int)request.getAttribute("startPage"); //게시글이 하나도 없을때 0이다.
@@ -82,7 +117,8 @@
 					<a href="petList.do?pageNum=<%=i%>"><%=i %></a>
 				<% } %>
 		</div>	
-	</div>
+
+	
 	<script>
 		//하트버튼 눌렀을때
 		function heartCheckFnc(petListNo,heartNum) {
@@ -126,6 +162,23 @@
 				dataType:"json",
 				success : function(result) {
 					console.log(result);
+					$('tbody').remove();
+					var tbody = $("<tbody />");
+					
+					$.each(result, function(index, item) {
+						var row = $("<tr />").append(
+								$("<td />").text(item.petListNo),
+								$("<td />").text(item.이미지),
+								$("<td />").text(item.petListTitle),
+								$("<td />").text(item.petListState),
+								$("<td />").text(item.filesPath1),
+								$("<td />").text(item.noticeHit),
+								$("<td />").text(item.heartNum)
+								);
+						tbody.append(row);
+					});
+					
+					$('table').append(tbody);
 // 					$('tbody').remove();
 // 					$('<tbody />').append(
 // 						$.each(result, (inx,vo)=>{
