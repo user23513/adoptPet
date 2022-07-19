@@ -10,7 +10,7 @@ public class NoticeForm implements Command{
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 공지 등록 
-		return "notice/noticeForm";
+		return "notice/noticeInsertForm";
 	}
 
 }

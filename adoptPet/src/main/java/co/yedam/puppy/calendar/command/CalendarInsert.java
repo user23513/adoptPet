@@ -17,14 +17,21 @@ public class CalendarInsert implements Command {
 		// 캘린더 등록 페이지
 		CalendarService dao =  new CalendarServiceImpl(); // 인스턴스 (구현체) 생성
 		CalendarVO vo = new CalendarVO();
-		int r = dao.calendarInsert(vo); // int 타입 0건입력 1건입력
+		
 		
 		String title = request.getParameter("title"); // 
+		System.out.println(title);
 		vo.setCalendarTitle(title);
+		
 		String start = request.getParameter("start");
+		System.out.println(start);
 		vo.setCalendarStartDate(Date.valueOf(start));
+		
 		String end = request.getParameter("end");
+		System.out.println(end);
 		vo.setCalendarEndDate(Date.valueOf(end));
+		
+		int r = dao.calendarInsert(vo); // int 타입 0건입력 1건입력
 		
 		if(r > 0) {
 			System.out.println("DB에 1건 입력되었습니다.");

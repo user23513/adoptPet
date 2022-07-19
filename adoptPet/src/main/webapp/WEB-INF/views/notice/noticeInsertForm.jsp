@@ -14,19 +14,19 @@
 			<div>
 				<table border="1">
 					<tr>
-						<th width="150">작성자</th>
-						<td width="200">
-							<input type="text" id="boardWriter" name="boardWriter"><!-- id-javascript  name-java -->
-						</td>
-						<th width="150">작성일자</th>
-						<td width="200">
-							<input type="date" id="boardDate" name="boardDate"> 
-						</td>
-					</tr>
+						<%-- <th width="150">작성자</th>
+						<td width="200">${board.boardWriter}</td> --%>
+							
 					<tr>
 						<th>제목</th>
 						<td colspan="3">
 							<input type="text" id="boardTitle" name="boardTitle" size="73">
+						</td>
+					</tr>
+					<tr>
+						<th width="150">작성일자</th>
+						<td width="200">
+							<input type="date" id="boardDate" name="boardDate"> 
 						</td>
 					</tr>
 					<tr>

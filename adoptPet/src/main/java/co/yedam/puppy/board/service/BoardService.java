@@ -14,15 +14,15 @@ public interface BoardService {
 	int volReviewInsert (BoardVO vo); // 글쓰기
 	int volReviewUpdate (BoardVO vo); // 수정
 	int volReviewDelete (BoardVO vo); // 삭제
-	List<BoardVO> volReviewSerarchList(String key, String val); // 검색
+	List<BoardVO> volReviewSearchList(String key, String val); // 검색
 
 	//공지게시판
 	List<BoardVO> boardSelectList(int currentPage, int startRow, int pageSize);// 공지 목록
 	int boardCount();//DB공지 갯수 확인
-	BoardVO boardSelect(BoardVO bvo,FilesVO fvo);//공지상세보기
-	BoardVO boardSelectOne(BoardVO bvo, FilesVO fvo);//공지 단건 조회
-	int noticeInsert(BoardVO bvo,FilesVO fvo);//글쓰기
-	int noticeUpdate(BoardVO bvo,FilesVO fvo);//수정
+	BoardVO boardSelect(BoardVO vo);//공지상세보기
+	BoardVO boardSelectOne(BoardVO vo);//공지 단건 조회
+	int noticeInsert(BoardVO vo);//글쓰기
+	int noticeUpdate(BoardVO vo);//수정
 	int noticeDelete(BoardVO bvo,FilesVO fvo);//삭제
 	List<BoardVO> noticeSerarchList(String key, String val);//검색
 	
@@ -35,5 +35,14 @@ public interface BoardService {
 	int adoptReviewUpdate(BoardVO bvo,FilesVO fvo);//수정
 	int adoptReviewDelete(BoardVO bvo,FilesVO fvo);//삭제
 	List<BoardVO> adoptReviewSearchList(String key, String val);//검색
-
+	
+	//문의게시판
+	List<BoardVO> qnaBoardSelectList(int currentPage, int startRow, int pageSize);//문의게시판 목록
+	int qnaBoardCount();//DB공지 갯수 확인
+	BoardVO qnaBoardSelect(BoardVO bvo);//문의글 상세보기
+	BoardVO qnaBoardSelectOne(BoardVO vo);//문의글 단건 조회
+	int qnaBoardInsert(BoardVO bvo);//문의 글쓰기
+	int qnaBoardUpdate(BoardVO bvo);//수정
+	int qnaBoardDelete(BoardVO bvo);//삭제
+	List<BoardVO> qnaBoardSearchList(String key, String val);//검색	
 }

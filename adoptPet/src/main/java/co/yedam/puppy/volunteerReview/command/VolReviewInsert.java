@@ -18,16 +18,16 @@ public class VolReviewInsert implements Command {
 		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
 		
-		String no = request.getParameter("board_no");
+		String no = request.getParameter("boardNo");
 		vo.setBoardNo(Integer.parseInt(no));
-		String id = request.getParameter("board_id");
+		String id = request.getParameter("boardId");
 		vo.setBoardId(Integer.parseInt(id));
-		vo.setBoardTitle(request.getParameter("board_title"));
-		vo.setBoardWriter(request.getParameter("board_writer"));
-		vo.setBoardContent(request.getParameter("board_content"));
-		String date = request.getParameter("board_date");
+		vo.setBoardTitle(request.getParameter("boardTitle"));
+		vo.setBoardWriter(request.getParameter("boardWriter"));
+		vo.setBoardContent(request.getParameter("boardContent"));
+		String date = request.getParameter("boardDate");
 		vo.setBoardDate(Date.valueOf(date));
-		String hit = request.getParameter("board_hit");
+		String hit = request.getParameter("boardHit");
 		vo.setBoardHit(Integer.parseInt(hit));
 		
 		int r = dao.volReviewInsert(vo); // int 타입 0건입력 1건입력

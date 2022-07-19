@@ -15,8 +15,8 @@ public class MemberUpdateForm implements Command {
 		// 회원정보수정페이지
 		MemberService memberDao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
-		vo.setMemberId("kim");
-		
+		//vo.setMemberId("kim");
+		vo.setMemberId(request.getParameter("memberId"));
 		vo = memberDao.memberSelectOne(vo);
 		request.setAttribute("member", vo);
 

@@ -66,7 +66,7 @@ public class VolReviewList implements Command {
 		request.setAttribute("endPage", endPage);
 		
 		
-		return "volunteerReview/volReviewList";
+		return "volReview/volReviewList";
 	}
 
 }

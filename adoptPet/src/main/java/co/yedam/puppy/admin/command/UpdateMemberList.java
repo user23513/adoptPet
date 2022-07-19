@@ -12,7 +12,7 @@ public class UpdateMemberList implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		// 관리자 - 멤버권한수정
 		AdminService adminDao = new AdminServiceImple();
 		MemberVO vo = new MemberVO();
 		vo.setMemberId(request.getParameter("memberId"));

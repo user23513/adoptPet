@@ -157,7 +157,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int volReviewDelete(BoardVO vo) {
-		// 삭제
+		// 봉사 삭제
 		int n = 0;
 		String sql = "DELETE FROM BOARD WHERE BOARD_NO=?";
 
@@ -175,8 +175,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> volReviewSerarchList(String key, String val) {
-		// 검색
+	public List<BoardVO> volReviewSearchList(String key, String val) {
+		// 봉사검색
+
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		BoardVO vo;
 		String sql = "SELECT * FROM WHERE" + key + "LIKE'%" + val + "%'";
@@ -206,7 +207,8 @@ public class BoardServiceImpl implements BoardService {
 				+ "          FROM BOARD A\r\n"
 				+ "         ORDER BY BOARD_NO DESC\r\n"
 				+ "        ) \r\n"
-				+ " WHERE NUM BETWEEN ? AND ?";
+				+ " WHERE NUM BETWEEN ? AND ?"
+				+ "AND BOARD_ID = 10";
 
 		conn = dao.getConnection();
 		try {
@@ -234,25 +236,25 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public BoardVO boardSelect(BoardVO bvo, FilesVO fvo) {
+	public BoardVO boardSelect(BoardVO vo) {
 		// 공지 상세보기
 		String sql = "SELECT * FROM BOARD WHERE BOARD_NO = ?";
 
 		conn = dao.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, bvo.getBoardNo());
+			psmt.setInt(1, vo.getBoardNo());
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				bvo.setBoardNo(rs.getInt("board_no"));
-				bvo.setBoardId(rs.getInt("board_Id"));
-				bvo.setBoardTitle(rs.getString("board_title"));
-				bvo.setBoardWriter(rs.getString("board_writer"));
-				bvo.setBoardContent(rs.getString("board_content"));
-				bvo.setBoardDate(rs.getDate("board_date"));
-				bvo.setBoardHit(rs.getInt("board_hit"));
-				fvo.setFilesNo(rs.getInt("files_no"));
-				fvo.setFilesName(rs.getString("files_name"));
+				vo.setBoardNo(rs.getInt("board_no"));
+				vo.setBoardId(rs.getInt("board_Id"));
+				vo.setBoardTitle(rs.getString("board_title"));
+				vo.setBoardWriter(rs.getString("board_writer"));
+				vo.setBoardContent(rs.getString("board_content"));
+				vo.setBoardDate(rs.getDate("board_date"));
+				vo.setBoardHit(rs.getInt("board_hit"));
+//				fvo.setFilesNo(rs.getInt("files_no"));
+//				fvo.setFilesName(rs.getString("files_name"));
 
 			}
 		} catch (SQLException e) {
@@ -260,7 +262,7 @@ public class BoardServiceImpl implements BoardService {
 		} finally {
 			close();
 		}
-		return bvo;
+		return vo;
 	}
 	@Override
 	public int boardCount() {
@@ -287,25 +289,25 @@ public class BoardServiceImpl implements BoardService {
 
 	
 	@Override
-	public BoardVO boardSelectOne(BoardVO bvo, FilesVO fvo) {
+	public BoardVO boardSelectOne(BoardVO vo) {
 		// 공지 단건 조회
 		String sql = "select * from board where board_no=?";
 		
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, bvo.getBoardNo());
+			psmt.setInt(1, vo.getBoardNo());
 			rs = psmt.executeQuery();
 			if(rs.next()) {
-				bvo.setBoardNo(rs.getInt("board_no"));
-				bvo.setBoardId(rs.getInt("board_Id"));
-				bvo.setBoardTitle(rs.getString("board_title"));
-				bvo.setBoardWriter(rs.getString("board_writer"));
-				bvo.setBoardContent(rs.getString("board_content"));
-				bvo.setBoardDate(rs.getDate("board_date"));
-				bvo.setBoardHit(rs.getInt("board_hit"));
-				fvo.setFilesNo(rs.getInt("files_no"));
-				fvo.setFilesName(rs.getString("files_name"));
+				vo.setBoardNo(rs.getInt("board_no"));
+				vo.setBoardId(rs.getInt("board_Id"));
+				vo.setBoardTitle(rs.getString("board_title"));
+				vo.setBoardWriter(rs.getString("board_writer"));
+				vo.setBoardContent(rs.getString("board_content"));
+				vo.setBoardDate(rs.getDate("board_date"));
+				vo.setBoardHit(rs.getInt("board_hit"));
+//				fvo.setFilesNo(rs.getInt("files_no"));
+//				fvo.setFilesName(rs.getString("files_name"));
 			}
 			
 		} catch (Exception e) {
@@ -318,25 +320,24 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int noticeInsert(BoardVO bvo, FilesVO fvo) {
+	public int noticeInsert(BoardVO vo) {
 		// 공지 글쓰기
 		int n = 0;
-		String sql = "INSERT ALL INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,?,?,?,?,SYSDATE,0)\r\n"
-				+ "            INTO FILES VALUES(?,?,?,?,?)\r\n" + "SELECT * FROM DUAL";
+		String sql = "INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,?,?,?,?,SYSDATE,0)";
 
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
 //			psmt.setInt(1, bvo.getBoardNo());  
-			psmt.setInt(1, bvo.getBoardId());
-			psmt.setString(2, bvo.getBoardTitle());
-			psmt.setString(3, bvo.getBoardWriter());
-			psmt.setString(4, bvo.getBoardContent());
-			psmt.setInt(5, fvo.getFilesNo());
-			psmt.setInt(6, bvo.getBoardId());
-			psmt.setString(7, fvo.getFilesName());
-			psmt.setString(8, fvo.getFilesPath());
-			psmt.setString(9, fvo.getFilesType());
+			psmt.setInt(1, vo.getBoardId());
+			psmt.setString(2, vo.getBoardTitle());
+			psmt.setString(3, vo.getBoardWriter());
+			psmt.setString(4, vo.getBoardContent());
+//			psmt.setInt(5, fvo.getFilesNo());
+//			psmt.setInt(6, vo.getBoardId());
+//			psmt.setString(7, fvo.getFilesName());
+//			psmt.setString(8, fvo.getFilesPath());
+//			psmt.setString(9, fvo.getFilesType());
 
 			n = psmt.executeUpdate();
 		} catch (SQLException e) {
@@ -349,26 +350,26 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int noticeUpdate(BoardVO bvo, FilesVO fvo) {
+	public int noticeUpdate(BoardVO vo) {
 		// 공지 수정
 		int n = 0;
-		String sqlB = "UPDATE BOARD SET  BOARD_ID=?, BOARD_TITLE=?, BOARD_CONTENT=? WHERE BOARD_NO=?";
-		String sqlF = "UPDATE FILES SET  FILES_NAME=?, FILES_PATH=?, FILES_TYPE=? WHERE FILES_NO=?";
+		String sql = "UPDATE BOARD SET  BOARD_ID=?, BOARD_TITLE=?, BOARD_CONTENT=? WHERE BOARD_NO=?";
+//		String sqlF = "UPDATE FILES SET  FILES_NAME=?, FILES_PATH=?, FILES_TYPE=? WHERE FILES_NO=?";
 
 		try {
 			conn = dao.getConnection();
 			conn.setAutoCommit(false);
 
-			psmt = conn.prepareStatement(sqlB);
-			psmt.setInt(1, bvo.getBoardId());
-			psmt.setString(2, bvo.getBoardTitle());
-			psmt.setString(3, bvo.getBoardContent());
-			psmt.setInt(4, bvo.getBoardNo());
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getBoardId());
+			psmt.setString(2, vo.getBoardTitle());
+			psmt.setString(3, vo.getBoardContent());
+			psmt.setInt(4, vo.getBoardNo());
 
-			psmt = conn.prepareStatement(sqlF);
-			psmt.setString(1, fvo.getFilesName());
-			psmt.setString(2, fvo.getFilesPath());
-			psmt.setInt(3, fvo.getBoardNo());
+//			psmt = conn.prepareStatement(sqlF);
+//			psmt.setString(1, fvo.getFilesName());
+//			psmt.setString(2, fvo.getFilesPath());
+//			psmt.setInt(3, fvo.getBoardNo());
 			psmt.executeUpdate();
 
 			conn.commit();
@@ -395,15 +396,15 @@ public class BoardServiceImpl implements BoardService {
 	public int noticeDelete(BoardVO bvo, FilesVO fvo) {
 		// 공지 삭제
 		int n = 0;
-		String sqlB = "DELETE FROM BOARD WHERE BOARD_NO=?";
-		String sqlF = "DELETE FROM FILES WHERE FILES_NO=?";
+		String sql = "DELETE FROM BOARD WHERE BOARD_NO=?";
+//		String sqlF = "DELETE FROM FILES WHERE FILES_NO=?";
 		conn = dao.getConnection();
 		try {
-			psmt = conn.prepareStatement(sqlB);
+			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, bvo.getBoardNo());
 
-			psmt = conn.prepareStatement(sqlF);
-			psmt.setInt(1, fvo.getFilesNo());
+//			psmt = conn.prepareStatement(sqlF);
+//			psmt.setInt(1, fvo.getFilesNo());
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -453,7 +454,8 @@ public class BoardServiceImpl implements BoardService {
 				+ " , A.*\r\n"
 				+ " FROM board A\r\n"
 				+ "ORDER BY BOARD_NO DESC)\r\n"
-				+ " WHERE NUM BETWEEN ? AND ?";
+				+ " WHERE NUM BETWEEN ? AND ?"
+				+ "AND BOARD_ID = 20";
 
 		conn = dao.getConnection();
 		try {
@@ -567,19 +569,20 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return n;
 	}
+	
 
 	@Override
 	public int adoptReviewUpdate(BoardVO bvo,FilesVO fvo) {
 		// 후기 수정
 		int n = 0;
-		String sqlB = "UPDATE BOARD SET  BOARD_ID=?, BOARD_TITLE=?, BOARD_CONTENT=? WHERE BOARD_NO=?";
+		String sql = "UPDATE BOARD SET  BOARD_ID=?, BOARD_TITLE=?, BOARD_CONTENT=? WHERE BOARD_NO=?";
 		String sqlF ="UPDATE FILES SET  FILES_NAME=?, FILES_PATH=?, FILES_TYPE=? WHERE FILES_NO=?";
 		
 		try {
 			conn = dao.getConnection();
 			conn.setAutoCommit(false);
 			
-			psmt = conn.prepareStatement(sqlB);
+			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, bvo.getBoardId());
 			psmt.setString(2, bvo.getBoardTitle());
 			psmt.setString(3, bvo.getBoardContent());
@@ -664,6 +667,129 @@ public class BoardServiceImpl implements BoardService {
 		return list;
 	}
 
+
+
+	//문의게시판
+	@Override
+	public List<BoardVO> qnaBoardSelectList(int currentPage, int startRow, int pageSize) {
+		// 문의게시판 목록
+		List<BoardVO> list = new ArrayList<BoardVO>();
+		BoardVO vo;
+		String sql = "SELECT *\r\n"
+				+ "  FROM (\r\n"
+				+ "        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) NUM\r\n"
+				+ "             , A.*\r\n"
+				+ "          FROM BOARD A\r\n"
+				+ "         ORDER BY BOARD_NO DESC\r\n"
+				+ "        ) \r\n"
+				+ " WHERE NUM BETWEEN ? AND ?";
+		conn = dao.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, startRow);
+			psmt.setInt(2, pageSize*currentPage);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				vo = new BoardVO();
+				vo.setBoardNo(rs.getInt("board_no"));
+				vo.setBoardId(rs.getInt("board_id"));
+				vo.setBoardTitle(rs.getString("board_title"));
+				vo.setBoardWriter(rs.getString("board_writer"));
+				vo.setBoardContent(rs.getString("board_content"));
+				vo.setBoardDate(rs.getDate("board_date"));
+				vo.setBoardHit(rs.getInt("board_hit"));
+				list.add(vo);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return list;
+	}
+
+	@Override
+	public int qnaBoardCount() {
+		// db 갯수 확인
+		int n = 0;
+		String sql = "SELECT * FROM BOARD WHERE BOARD_ID=30";
+		
+		conn = dao.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				n++;
+			}
+		}catch (SQLException e){
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return n;
+	}
+
+	@Override
+	public BoardVO qnaBoardSelect(BoardVO bvo) {
+		// 문의글 상세보기
+		String sql = "select * from board where board_no=?";
+		
+		conn = dao.getConnection();
+		try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, bvo.getBoardNo());
+				rs = psmt.executeQuery();
+				if(rs.next()) {
+					bvo.setBoardNo(rs.getInt("board_no"));
+					bvo.setBoardId(rs.getInt("board_Id"));
+					bvo.setBoardTitle(rs.getString("board_title"));
+					bvo.setBoardWriter(rs.getString("board_writer"));
+					bvo.setBoardContent(rs.getString("board_content"));
+					bvo.setBoardDate(rs.getDate("board_date"));
+					bvo.setBoardHit(rs.getInt("board_hit"));
+				}
+		}catch (SQLException e){
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return bvo;
+	}
+
+	@Override
+	public BoardVO qnaBoardSelectOne(BoardVO vo) {
+		// 문의 게시판 단 건 조회
+		return null;
+	}
+
+	@Override
+	public int qnaBoardInsert(BoardVO bvo) {
+		// 문의게시판 글 쓰기
+		return 0;
+	}
+
+	@Override
+	public int qnaBoardUpdate(BoardVO bvo) {
+		// 문의게시판 글 수정
+		
+		return 0;
+	}
+
+	@Override
+	public int qnaBoardDelete(BoardVO bvo) {
+		// 문의게시판 글 삭제
+		return 0;
+	}
+
+	@Override
+	public List<BoardVO> qnaBoardSearchList(String key, String val) {
+		// 문의게시판 글 검색
+		List<BoardVO>list = new ArrayList<BoardVO>();
+		BoardVO vo;
+		String sql = "select * from where" + key + "like'%" + val + "%'";
+		return null;
+	}
+
 	private void close() {
 		try {
 			if (rs != null)
@@ -677,10 +803,6 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
-
-
-
-	
 
 
 }

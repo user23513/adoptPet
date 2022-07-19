@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
         
+=======
+                
+    
+    
+>>>>>>> branch 'gayun' of https://github.com/user23513/adoptPet.git
     
     <wb-module deploy-name="adoptPet">
+<<<<<<< HEAD
                 
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
                                 
@@ -11,37 +18,81 @@
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
                                                                 
 
+=======
+>>>>>>> branch 'gayun' of https://github.com/user23513/adoptPet.git
 
         
+<<<<<<< HEAD
         
         
         //
         
         
+=======
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+
+
+>>>>>>> branch 'gayun' of https://github.com/user23513/adoptPet.git
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+<<<<<<< HEAD
                                 
         
+=======
+                                        
+>>>>>>> branch 'gayun' of https://github.com/user23513/adoptPet.git
+
 
         
+        
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> branch 'gayun' of https://github.com/user23513/adoptPet.git
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
                 
+<<<<<<< HEAD
         
         
         
         
         
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
+
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
+                                
+   
+>>>>>>> branch 'gayun' of https://github.com/user23513/adoptPet.git
         <property name="context-root" value="adoptPet"/>
+<<<<<<< HEAD
                 
+=======
+     
+
+        
+>>>>>>> branch 'gayun' of https://github.com/user23513/adoptPet.git
         
         <property name="java-output-path" value="/adoptPet/target/classes"/>
+<<<<<<< HEAD
             
+=======
+                            
+    
+    
+    
+>>>>>>> branch 'gayun' of https://github.com/user23513/adoptPet.git
     
     
     
     </wb-module>
+<<<<<<< HEAD
     
+=======
+
+
+>>>>>>> branch 'gayun' of https://github.com/user23513/adoptPet.git
 </project-modules>

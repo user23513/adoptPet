@@ -28,7 +28,31 @@
 
 function memberDeleteCall(){
 	 if(confirm("정말 탈퇴 하시겠습니까?\n(※ 작성한 글과 댓글 모두 삭제 됩니다.)") == true){		
-			frm.submit();
+
+		//frm.submit();
+		this.addEventListener('click',function(e){
+			e.preventDefault();
+			fetch('memberDelete.do',{
+				method:'post',
+				headers: {
+					'Content-type': 'application/x-www-form-urlencoded'
+				},
+				body:"memberId="+memId
+			}).then(function(result) {
+				return result.json();
+			})
+			.then(function(result) {
+				console.log(result);
+				alert('탈퇴완료')
+				location.href="main.do"
+			})
+			.catch(function(err) {
+				console.error(err);
+				alert('탈퇴완료')
+				location.href="main.do"
+			})
+		})
+
 	 }else{
 		alert("탈퇴를 취소 했습니다.");
 	 }
