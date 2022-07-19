@@ -21,6 +21,8 @@ import co.yedam.puppy.admin.command.MemberList;
 import co.yedam.puppy.admin.command.UpdateMemberList;
 import co.yedam.puppy.admin.command.VolunteerList;
 import co.yedam.puppy.admin.command.VolunteerStateSearch;
+import co.yedam.puppy.adoptSubscription.command.AdoptSubScription;
+import co.yedam.puppy.adoptSubscription.command.AdoptSubscriptionForm;
 import co.yedam.puppy.board.command.AjaxNoticeSearch;
 import co.yedam.puppy.board.command.NoticeForm;
 import co.yedam.puppy.board.command.NoticeInsert;
@@ -28,7 +30,6 @@ import co.yedam.puppy.board.command.NoticeList;
 import co.yedam.puppy.board.command.NoticeSelect;
 import co.yedam.puppy.board.command.NoticeUpdate;
 import co.yedam.puppy.calendar.command.Calendar;
-
 import co.yedam.puppy.calendar.command.CalendarDelete;
 import co.yedam.puppy.calendar.command.CalendarInsert;
 import co.yedam.puppy.calendar.command.CalendarList;
@@ -36,6 +37,7 @@ import co.yedam.puppy.calendar.command.CalendarList;
 import co.yedam.puppy.comm.Command;
 
 import co.yedam.puppy.heart.command.HeartCheck;
+import co.yedam.puppy.petAdd.command.PetAddDelete;
 import co.yedam.puppy.petAdd.command.PetAddForm;
 import co.yedam.puppy.petAdd.command.PetAddInsert;
 import co.yedam.puppy.petAdd.command.PetAddList;
@@ -111,6 +113,7 @@ public class FrontController extends HttpServlet {
 		map.put("/petAddList.do", new PetAddList()); //입양동물등록 리스트 뿌려주는 페이지
 		map.put("/petAddUpdate.do", new PetAddUpdate()); //입양동물 수정 form으로 이동
 		map.put("/petAddUpdateForm.do", new PetAddUpdateForm()); //입양동물등록 수정 처리
+		map.put("/petAddDelete.do", new PetAddDelete()); //입양동물 삭제 처리
 		
 		map.put("/petList.do", new PetList()); //입양동물 소개 게시판 페이지로 이동
 		map.put("/petListView.do", new PetListView()); //리스트에 제목클릭했을때 게시물 보여주는 페이지
@@ -122,6 +125,9 @@ public class FrontController extends HttpServlet {
 		map.put("/heartCheck.do", new HeartCheck()); //게시글 좋아요버튼 눌렀을때 처리
 		map.put("/petListSearch.do", new PetListSearch()); //게시글 검색
 		
+		map.put("/adoptSubscriptionForm.do", new AdoptSubscriptionForm()); //입양신청폼으로 이동
+		map.put("/adoptSubScription.do", new AdoptSubScription()); //입양신청눌렀을때 처리해주는
+		
 		map.put("/noticeList.do", new NoticeList());//공지 리스트
 		map.put("/noticeSelect.do", new NoticeSelect());//공지 상세보기
 		map.put("/noticeForm.do", new NoticeForm());//공지 입력폼 호출
@@ -132,14 +138,13 @@ public class FrontController extends HttpServlet {
 		map.put("/volReviewList.do", new VolReviewList()); // 봉사활동후기 리스트
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
 	
-    map.put("/memberList.do", new MemberList()); //모든회원리스트
+		map.put("/memberList.do", new MemberList()); //모든회원리스트
 		map.put("/adoptList.do", new AdoptList());//모든입양신청리스트
 		map.put("/updateMemberList.do", new UpdateMemberList()); //멤버권한수정
 		map.put("/adoptStateSearch.do", new AdoptStateSearch()); //입양상태정렬 (수정하는기능추가해야됨) 
 		map.put("/volunteerList.do", new VolunteerList());
 		map.put("/volunteerStateSearch.do", new VolunteerStateSearch());
 	
-
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -161,9 +166,15 @@ public class FrontController extends HttpServlet {
 				response.getWriter().append(viewPage.substring(5));
 				return;
 			}
-
+			
+			if (viewPage.startsWith("popup:")) {
+				 viewPage = "/WEB-INF/views/"+viewPage.substring(6) + ".jsp";
+				 RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+				 dispatcher.forward(request, response);
+				return;
+			}
+			
 			viewPage = viewPage + ".tiles";
-			// viewPage = "/WEB-INF/views/"+viewPage + ".jsp";
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
