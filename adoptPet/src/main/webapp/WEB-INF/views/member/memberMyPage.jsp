@@ -18,16 +18,17 @@
 	<p>${member.memberGender }</p>
 	<p>${member.memberAuthor }</p>
 	
-<%-- 	<form id="frm" action="memberDelete.do" method="post">--%>
+	<form id="frm" action="memberDelete.do" method="post">
 		<input type="hidden" id="memberId" name="memberId" value="${member.memberId}">
 		<button type="button" onclick="memberDeleteCall()">탈퇴하기</button>
-<%--	</form>--%>
+	</form>
 		<button onclick="location.href='memberUpdateForm.do'">내정보수정하기</button>
 	
 <script type="text/javascript">
-let memId = document.getElementById('memberId').value;
+
 function memberDeleteCall(){
 	 if(confirm("정말 탈퇴 하시겠습니까?\n(※ 작성한 글과 댓글 모두 삭제 됩니다.)") == true){		
+
 		//frm.submit();
 		this.addEventListener('click',function(e){
 			e.preventDefault();
@@ -51,6 +52,7 @@ function memberDeleteCall(){
 				location.href="main.do"
 			})
 		})
+
 	 }else{
 		alert("탈퇴를 취소 했습니다.");
 	 }
