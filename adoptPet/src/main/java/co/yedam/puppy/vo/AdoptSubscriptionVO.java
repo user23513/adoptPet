@@ -10,4 +10,7 @@ public class AdoptSubscriptionVO {
 	private int petAddNo;
 	private String AdoptSubscriptionOk;
 	private String AdoptSubscriptionReason;
+	
+//	private String memberName;
+//	private String petAddName;
 }

@@ -13,20 +13,20 @@ public interface AdminService {
 	//관리자마이페이지
 	List<MemberVO> allMemberList(int currentPage, int startRow, int pageSize);
 	int updateMemberList(MemberVO vo);//회원수정(권한)
-	//int deleteMemberList(MemberVO vo);//회원탈퇴 
-	int memberListCount();
+	int memberListCount();//회원페이지수
 	
-	List<AdoptSubscriptionVO> allAdoptList(int currentPage, int startRow, int pageSize);
-	int updateAdoptList(AdoptSubscriptionVO vo);//입양상태 수정
+	List<AdoptSubscriptionVO> allAdoptList(int currentPage, int startRow, int pageSize);//봉사신청리스트
+	int adoptListUpdate(AdoptSubscriptionVO vo);//입양상태 수정
 	List<AdoptSubscriptionVO> AdoptSubscriptionSearchList(String key, String val);//입양상태 검색
-	int adoptListCount();
+	int adoptListCount();//입양페이지수
 	
-	List<VolunteerSubscriptionVO> allVolunteerList(int currentPage, int startRow, int pageSize);
+	AdoptSubscriptionVO adoptOneView(AdoptSubscriptionVO vo);
+	
+	List<VolunteerSubscriptionVO> allVolunteerList(int currentPage, int startRow, int pageSize);//봉사신청리스트
 	int updateVolunteerList(VolunteerSubscriptionVO vo); //봉사신청상태 수정
-	int volunteerListCount();
+	int volunteerListCount();//봉사신청페이지수
 	List<VolunteerSubscriptionVO> volunteerSubscriptionSearchList(String key, String val);//봉사신청상태 검색
 	
-	//모든회원후원정보리스트 메소드있어ㅇㅑ됨
 	
 	
 }
