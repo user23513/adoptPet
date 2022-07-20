@@ -9,8 +9,9 @@ public class QnaBoardForm implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+		// 문의글 등록 폼 호출
+		return "qna/qnaBoardInsertForm";
+		
 	}
 
 }

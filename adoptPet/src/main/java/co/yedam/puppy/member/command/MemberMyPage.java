@@ -18,6 +18,7 @@ public class MemberMyPage implements Command {
 		MemberVO vo = new MemberVO();
 		
 
+
 		//로그인한 계정가져오기 
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
@@ -25,6 +26,7 @@ public class MemberMyPage implements Command {
 
 
 		vo.setMemberId(id);
+
 		vo.setMemberAuthor(author);
 		
 		vo = memberDao.memberSelectOne(vo);
