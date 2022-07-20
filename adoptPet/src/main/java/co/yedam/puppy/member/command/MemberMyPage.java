@@ -21,7 +21,7 @@ public class MemberMyPage implements Command {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		String author = (String) session.getAttribute("author");
-		
+
 		vo.setMemberId(id);
 		vo.setMemberAuthor(author);
 		

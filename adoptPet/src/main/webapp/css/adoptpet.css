@@ -1,5 +1,6 @@
 @charset "UTF-8";
 body > div{
+
 	padding-top: 20px;
 	width: 80%;
 	margin: 0 auto;
@@ -45,3 +46,4 @@ body > div{
 #memUpdateDiv div{
 	padding-left: 150px;
 }
+
