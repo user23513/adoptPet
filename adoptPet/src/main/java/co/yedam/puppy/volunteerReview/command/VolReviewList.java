@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.puppy.board.service.BoardService;
 import co.yedam.puppy.board.service.BoardServiceImpl;
@@ -18,7 +19,6 @@ public class VolReviewList implements Command {
 
 		BoardService dao = new BoardServiceImpl();
 		
-
 		// ===========가져오는 게시글 수=============
 		int cnt = dao.volReviewCount();
 
@@ -30,7 +30,15 @@ public class VolReviewList implements Command {
 		if (pageNum == null) {
 			pageNum = "1";
 		}
-
+		
+		request.setAttribute("cnt", cnt); // 전체게시글수
+		request.setAttribute("pageSize", pageSize); // 페이지당보여지는 게시물수
+		request.setAttribute("pageNum", pageNum); // 현재페이지
+		
+		HttpSession session = request.getSession();
+	    String id = (String) session.getAttribute("id");
+	    request.setAttribute("id", id);
+	    
 		// 첫행번호를 계산
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage - 1) * pageSize + 1;
@@ -61,9 +69,7 @@ public class VolReviewList implements Command {
 			}
 
 		}
-		request.setAttribute("cnt", cnt); // 전체게시글수
-		request.setAttribute("pageSize", pageSize); // 페이지당보여지는 게시물수
-		request.setAttribute("pageNum", pageNum); // 현재페이지
+		
 		
 		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("pageBlock", pageBlock);

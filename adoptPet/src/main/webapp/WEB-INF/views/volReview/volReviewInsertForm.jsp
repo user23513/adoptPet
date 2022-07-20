@@ -14,19 +14,17 @@
 			<form id="vFrm" action="volReviewInsert.do" method="post" >
 				<div>
 					<table border="1">
+					<tr>
 						<th width="150">작성자</th>
-						<td width="200">
-							<input type="text" id="boardWriter" name="boardWriter" required>
-						<!-- id-javascript  name-java -->
-						</td>
-						</tr>
+						<td><input type="text" id="boardWriter" name="boardWriter" value ="${id }" required ></td>
+					</tr>
 						<tr>
 							<th>제목</th>
-							<td colspan="3"><input type="text" id="boardTitle" name="boardTitle" size="73" required></td>
+							<td colspan="3"><input type="text" id="boardTitle" name="boardTitle" size="95" required></td>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td colspan="3"><textarea rows="6" cols="75" id="boardContent" name="boardContect" required></textarea></td>
+							<td colspan="3"><textarea rows="6" cols="100" id="boardContent" name="boardContect" required></textarea></td>
 						</tr>
 
 					</table>
@@ -35,7 +33,9 @@
 				</div>
 				<br>
 				<div>
-					<input type="submit" value="저장">&nbsp;&nbsp;&nbsp; <input type="reset" value="취소">
+					<input type="submit" value="저장">&nbsp;&nbsp;&nbsp;
+					<input type="reset" value="전체삭제">&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="location.href='volReviewList.do'">등록취소</button>
 				</div>
 			</form>
 		</div>

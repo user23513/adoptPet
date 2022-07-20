@@ -3,6 +3,7 @@ package co.yedam.puppy.volunteerReview.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.puppy.board.service.BoardService;
 import co.yedam.puppy.board.service.BoardServiceImpl;
@@ -21,6 +22,10 @@ public class VolReviewInsert implements Command {
 		vo.setBoardWriter(request.getParameter("boardWriter"));
 		vo.setBoardContent(request.getParameter("boardContect"));
 		
+		HttpSession session = request.getSession();
+	    String id = (String) session.getAttribute("id");
+	    request.setAttribute("id", id);
+	    
 		int r = dao.volReviewInsert(vo); // int 타입 0건입력 1건입력
 		
 		if(r > 0) {
