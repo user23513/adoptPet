@@ -65,8 +65,13 @@ import co.yedam.puppy.volunteerReview.command.VolReviewUpdateForm;
 import co.yedam.puppy.volunteerReview.command.VolReviewDelete;
 import co.yedam.puppy.volunteerReview.command.VolReviewForm;
 import co.yedam.puppy.petList.command.PetListView;
+import co.yedam.puppy.qnaBoard.command.AjaxQnaBoardSearch;
+import co.yedam.puppy.qnaBoard.command.QnaBoardDelete;
+import co.yedam.puppy.qnaBoard.command.QnaBoardForm;
+import co.yedam.puppy.qnaBoard.command.QnaBoardInsert;
 import co.yedam.puppy.qnaBoard.command.QnaBoardList;
 import co.yedam.puppy.qnaBoard.command.QnaBoardSelect;
+import co.yedam.puppy.qnaBoard.command.QnaBoardUpdate;
 import co.yedam.puppy.member.command.MemberDelete;
 import co.yedam.puppy.member.command.MemberJoin;
 import co.yedam.puppy.member.command.MemberJoinForm;
@@ -165,12 +170,11 @@ public class FrontController extends HttpServlet {
 
 		map.put("/qnaBoardList.do", new QnaBoardList()); // 문의게시판 리스트
 		map.put("/qnaBoardSelect.do", new QnaBoardSelect()); // 문의글 보기
-//		map.put("/qnaBoardForm.do", new QnaBoardForm()); // 문의글 입력폼 호출
-//		map.put("/qnaBoardInsert.do", new QnaBoardInsert()); // 문의글 등록
-//		map.put("/qnaBoardUpdate.do", new QnaBoardUpdate()); // 문의글 수정
-//		map.put("/qnaBoardDelete.do", new QnaBoardDelete()); // 문의글 삭제
-//		map.put("/ajaxQnaBoardList.do", new AjaxQnaBoardSearch()); // 문의글 검색
+		map.put("/qnaBoardInsert.do", new QnaBoardInsert()); // 문의글 등록
+		map.put("/qnaBoardUpdate.do", new QnaBoardUpdate()); // 문의글 수정
+		map.put("/ajaxQnaBoardList.do", new AjaxQnaBoardSearch()); // 문의글 검색
 
+//		map.put("/qnaBoardDelete.do", new QnaBoardDelete()); // 문의글 삭제
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
