@@ -291,6 +291,31 @@ public class PetListServiceImpl implements PetListService {
 		return null;
 	}
 	
+	@Override
+	public boolean ispetAddNoCheck(int petAddNo) {
+		//petAddNo게시글이 있는지 확인(데이터가 있으면 false. true면 글쓰기 버튼보이게)
+		boolean b = true;
+		String sql = "select pet_list_no from pet_list where pet_add_no = ?";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, petAddNo);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				b = false;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+		return b;
+	}
+	
 	private void close() {
 		try {
 			if(rs != null) rs.close();
