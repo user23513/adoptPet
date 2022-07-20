@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 body > div{
 	padding-top: 20px;
 	width: 80%;
@@ -13,29 +12,36 @@ body > div{
 	padding: 0.75rem 0;
 	line-height: 1.5;
 	color: #122550;
-	}
-
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
+} 
+#myPageDiv{
+	padding-top: 50px;
+	height: 800px;
+	line-height: 1.5;
+	width: 80%;
+	padding-left:400px;
+	border:1px solid red;
+	margin: 0 auto;
 }
-
-th, td {
-  text-align: left;
-  padding: 16px;
+#myPageDiv p{
+	padding :10px;
 }
-
-thead {
-	background-color: #bcccc9;
+#myPageDiv button{
+	float: left;
+	margin:10px;
 }
-
-tbody>tr:nth-child(even) {
-  background-color: #e7e7e5;
+#memUpdateDiv{
+	border:1px solid blue;
+	padding-top:10px;
+	margin:0 auto;
+	width:500px;
+	height: 800px;
 }
-
-tbody>tr:nth-child(odd) {
-  background-color: #bed4cf;
+#memUpdateDiv input{
+	padding-top:10px;
+	padding-bottom:15px;
+	margin-top:10px;
+	
+}
+#memUpdateDiv div{
+	padding-left: 150px;
 }
