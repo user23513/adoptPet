@@ -7,8 +7,9 @@
 <meta charset="UTF-8">
 <title>공지사항</title>
 <script type="js/jquery-3.6.0.min.js"></script>
+<link href="css/adoptpet.css" rel="stylesheet" />   
 <style>
-	option,table{
+	option{
 		border: 1px solid black;
 		border-radius: 10px;
 	}
