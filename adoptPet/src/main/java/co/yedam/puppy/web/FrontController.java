@@ -50,10 +50,8 @@ import co.yedam.puppy.petAdd.command.PetAddInsert;
 import co.yedam.puppy.petAdd.command.PetAddList;
 import co.yedam.puppy.petAdd.command.PetAddUpdate;
 import co.yedam.puppy.petAdd.command.PetAddUpdateForm;
-import co.yedam.puppy.petAdd.command.PetListDelete;
 import co.yedam.puppy.petList.command.PetList;
-
-
+import co.yedam.puppy.petList.command.PetListDelete;
 import co.yedam.puppy.member.command.AjaxMemberIdCheck;
 import co.yedam.puppy.member.command.MemberAdopt;
 import co.yedam.puppy.petList.command.PetListForm;
@@ -159,7 +157,7 @@ public class FrontController extends HttpServlet {
 		map.put("/volReviewUpdateForm.do", new VolReviewUpdateForm()); //봉사활동 후기 수정 폼
 		map.put("/volReviewUpdate.do", new VolReviewUpdate()); // 봉사활동후기 수정
 		map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
-  	map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
+		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
 	
 
 		map.put("/memberList.do", new MemberList()); //모든회원리스트
