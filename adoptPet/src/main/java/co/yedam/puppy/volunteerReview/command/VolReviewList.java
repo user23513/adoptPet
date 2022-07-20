@@ -17,6 +17,7 @@ public class VolReviewList implements Command {
 		// 봉사활동 후기 리스트 뿌려주는 페이지
 
 		BoardService dao = new BoardServiceImpl();
+		
 
 		// ===========가져오는 게시글 수=============
 		int cnt = dao.volReviewCount();
@@ -37,7 +38,7 @@ public class VolReviewList implements Command {
 		// pageSize만큼 list에 게시글 저장
 		List<BoardVO> list = dao.volReviewSelectList(currentPage, startRow, pageSize);
 		request.setAttribute("volReviewList", list);
-
+		System.out.println(list);
 		// ==============페이징 처리====================
 		int pageCount = 0;
 		int pageBlock = 0;
@@ -60,10 +61,14 @@ public class VolReviewList implements Command {
 			}
 
 		}
-		request.setAttribute("pageCount", pageCount);
-		request.setAttribute("pageBlock", pageBlock);
-		request.setAttribute("startPage", startPage);
-		request.setAttribute("endPage", endPage);
+		request.setAttribute("cnt", cnt); // 전체게시글수
+		request.setAttribute("pageSize", pageSize); // 페이지당보여지는 게시물수
+		request.setAttribute("pageNum", pageNum); // 현재페이지
+		
+//		request.setAttribute("pageCount", pageCount);
+//		request.setAttribute("pageBlock", pageBlock);
+//		request.setAttribute("startPage", startPage);
+//		request.setAttribute("endPage", endPage);
 		
 		
 		return "volReview/volReviewList";

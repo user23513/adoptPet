@@ -11,5 +11,11 @@
 </head>
 <body>
 	 <img width="100%" alt="HTML" src="https://img.freepik.com/free-photo/group-portrait-of-adorable-puppies_53876-64778.jpg?w=1060&t=st=1658234811~exp=1658235411~hmac=4a35e0f659d120723c57fa46f13c043c52aa7b30adad3c99e929a17a7072f163">
+
+	<ul>
+      <li><a href="calendar.do">달력</a></li>
+      <li><a href="volReviewList.do">봉사활동후기</a></li>
+    </ul>
+	
 </body>
 </html>
