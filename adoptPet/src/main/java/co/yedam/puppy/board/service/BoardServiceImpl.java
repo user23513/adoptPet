@@ -288,36 +288,6 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	
-	@Override
-	public BoardVO boardSelectOne(BoardVO vo) {
-		// 공지 단건 조회
-		String sql = "select * from board where board_no=?";
-		
-		try {
-			conn = dao.getConnection();
-			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getBoardNo());
-			rs = psmt.executeQuery();
-			if(rs.next()) {
-				vo.setBoardNo(rs.getInt("board_no"));
-				vo.setBoardId(rs.getInt("board_Id"));
-				vo.setBoardTitle(rs.getString("board_title"));
-				vo.setBoardWriter(rs.getString("board_writer"));
-				vo.setBoardContent(rs.getString("board_content"));
-				vo.setBoardDate(rs.getDate("board_date"));
-				vo.setBoardHit(rs.getInt("board_hit"));
-//				fvo.setFilesNo(rs.getInt("files_no"));
-//				fvo.setFilesName(rs.getString("files_name"));
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		
-		return null;
-	}
 
 	@Override
 	public int noticeInsert(BoardVO vo) {
@@ -533,11 +503,7 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return bvo;
 	}
-	@Override
-	public BoardVO adoptFeviewSelectOne(BoardVO vo) {
-		// 후기 단건 조회
-		return null;
-	}
+
 
 	@Override
 	public int adoptReviewInsert(BoardVO bvo,FilesVO fvo) {
@@ -756,11 +722,6 @@ public class BoardServiceImpl implements BoardService {
 		return bvo;
 	}
 
-	@Override
-	public BoardVO qnaBoardSelectOne(BoardVO vo) {
-		// 문의 게시판 단 건 조회
-		return null;
-	}
 
 	@Override
 	public int qnaBoardInsert(BoardVO bvo) {

@@ -12,6 +12,10 @@
 	<div>
 		<form id="frm" action="noticeInsert.do" method="post" enctype="multipart/form-data">
 			<div>
+			
+			<div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">제목</label>
+      <input type="text" class="form-control" id="boardTitle" aria-describedby="titleHelp" placeholder="제목을 작성하세">
 				<table border="1">
 					<tr>
 						<%-- <th width="150">작성자</th>
