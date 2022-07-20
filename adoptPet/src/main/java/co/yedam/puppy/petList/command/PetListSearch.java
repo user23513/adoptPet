@@ -22,15 +22,63 @@ public class PetListSearch implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 게시글 검색
-		PetListService dao = new PetListServiceImpl();
+PetListService petListDao = new PetListServiceImpl();
+		
+		//============가져오는 게시글 수==============
+		int cnt = petListDao.petListCount(); //게시판 DB에 있는 글 개수를 확인
+		
+		//한 페이지에 출력될 글 수
+		int pageSize = 10;
+		
+		//현재 페이지 정보 설정
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null) {
+			pageNum = "1";
+		}
+		
+		request.setAttribute("cnt", cnt);
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("pageNum", pageNum);
+		
+		//첫행번호를 계산
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1)*pageSize+1;
+		
+		//pageSize만큼 list에 게시글 저장
+		
+		//다시 파일을 담은 list
 		List<PetListVO> list = new ArrayList<PetListVO>();
-		ObjectMapper mapper = new ObjectMapper(); //jackson 라이브러리
 		String key = request.getParameter("key");
 		String val = request.getParameter("val");
+		list = petListDao.petListSearchList(key, val); //pet_list
+		List<PetListVO> nList = petListDao.petListFiles(list);
 		
-
-		list = dao.petListSearchList(key, val); //pet_list
-		List<PetListVO> nList = dao.petListFiles(list);
+		//=================페이징처리=============================
+		int pageCount=0;
+		int pageBlock=0;
+		int startPage=0;
+		int endPage=0;
+		if(cnt != 0) {
+			//전체 페이지수 계산
+			pageCount = cnt / pageSize + (cnt % pageSize == 0 ? 0 : 1);
+			
+			//한 페이지에 보여줄 페이지 블럭
+			pageBlock = 10;
+			
+			//한 페이지에 보여줄 페이지 블럭 시작번호 계산
+			startPage = ((currentPage-1) / pageBlock) * pageBlock+1;
+			
+			//한 페이지에 보여줄 페이지 블럭 끝 번호 계산
+			endPage = startPage + pageBlock-1;
+			if(endPage > pageCount) {
+				endPage = pageCount;
+			}
+			
+		}
+		request.setAttribute("pageCount", pageCount);
+		request.setAttribute("pageBlock", pageBlock);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
 		
 		HeartService heartDao = new HeartServiceImpl();
 		HeartVO heartVo = new HeartVO();
@@ -45,15 +93,9 @@ public class PetListSearch implements Command {
 			int check = heartDao.heartCheck(heartVo); //하트클릭여부 체크(1이면 체크되어있는거 0이면 체크안되어있는거)
 			vo.setHeartCheck(check);
 		}
-
-		String josnList = null;
-		try {
-			josnList = mapper.writeValueAsString(list);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-				
-		return "ajax:"+josnList;
+		request.setAttribute("petList", nList);
+		
+		return "petList/petList";
 	}
 
 }
