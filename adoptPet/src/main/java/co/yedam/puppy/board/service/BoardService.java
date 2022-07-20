@@ -14,7 +14,7 @@ public interface BoardService {
 	int volReviewInsert (BoardVO vo); // 글쓰기
 	int volReviewUpdate (BoardVO vo); // 수정
 	int volReviewDelete (BoardVO vo); // 삭제
-	List<BoardVO> volReviewSearchList(String key, String val); // 검색
+	List<BoardVO> volReviewSearchList(String key, String val); // 검색	
 
 	//공지게시판
 	List<BoardVO> boardSelectList(int currentPage, int startRow, int pageSize);// 공지 목록
@@ -38,10 +38,12 @@ public interface BoardService {
 	
 	//문의게시판
 	List<BoardVO> qnaBoardSelectList(int currentPage, int startRow, int pageSize);//문의게시판 목록
+
 	BoardVO qnaBoardSelect(BoardVO vo);//문의글 상세보기
 	int qnaBoardInsert(BoardVO vo);//문의 글쓰기
 	int qnaBoardUpdate(BoardVO vo);//문의 글 수정
 	int qnaBoardDelete(BoardVO vo);//문의 글 삭제 / (BoardVO vo) !!확인해보기...!!
 	List<BoardVO> qnaBoardSearchList(String key, String val);//검색
 	int qnaBoardCount();// 문의게시판 글 개 수 확인 
+
 }

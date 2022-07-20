@@ -15,5 +15,7 @@ public class PetAddVO {
 	private String petAddHealth; //동물 건강상태
 	private String petAddAdoptState; //not null - 동물 입양여부
 	private String petAddType; //not null-동물 유형
+	
+	private boolean petAddCheck;//동물 글쓰기 했는지 확인
 
 }

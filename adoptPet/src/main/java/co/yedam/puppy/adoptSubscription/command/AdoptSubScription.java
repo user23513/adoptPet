@@ -2,6 +2,7 @@ package co.yedam.puppy.adoptSubscription.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -18,8 +19,11 @@ public class AdoptSubScription implements Command {
 		String petAddNo = request.getParameter("petAddNo");
 		AdoptSubscriptionService dao = new AdoptSubscriptionServiceImpl();
 		
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		
 		AdoptSubscriptionVO vo = new AdoptSubscriptionVO();
-		vo.setMemberId("lee"); //${id}
+		vo.setMemberId(id); //${id}
 		vo.setPetAddNo(Integer.parseInt(petAddNo));
 		vo.setAdoptSubscriptionOk(request.getParameter("adoptSubscriptionOk"));
 		vo.setAdoptSubscriptionReason(request.getParameter("adoptSubscriptionReason"));

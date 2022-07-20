@@ -16,7 +16,7 @@
 	<ul>
 	  <li><a href="memberJoinForm.do">회원가입</a></li>
       <li><a href="memberLoginForm.do">로그인</a></li>
-      <li><a href="noticeList.do">공지리스트</a></li>
+      <li><a href="nticeList.do">공지리스트</a></li>
      </ul>
 
 	</nav>

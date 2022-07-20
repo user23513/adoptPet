@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.puppy.comm.Command;
 import co.yedam.puppy.petAdd.service.PetAddService;
 import co.yedam.puppy.petAdd.service.PetAddServiceImpl;
+import co.yedam.puppy.petList.service.PetListService;
+import co.yedam.puppy.petList.service.PetListServiceImpl;
 import co.yedam.puppy.vo.PetAddVO;
 
 public class PetAddList implements Command {
@@ -36,6 +38,15 @@ public class PetAddList implements Command {
 		
 		//pageSize만큼 list에 게시글 저장
 		List<PetAddVO> list = dao.petAddSelectList(currentPage, startRow, pageSize);
+		
+		//==========입양동물 글쓴거 있는지 확인=========
+		PetListService ldao = new PetListServiceImpl(); 
+		for(PetAddVO vo:list) {
+			int petAddNo = vo.getPetAddNo();
+			boolean check = ldao.ispetAddNoCheck(petAddNo);
+			vo.setPetAddCheck(check); //true면 글쓰기 버튼 누를수 있게
+		}
+		
 		request.setAttribute("petAddList", list);
 		
 		//==============페이징 처리====================
@@ -64,6 +75,7 @@ public class PetAddList implements Command {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
+		
 		
 		return "petAdd/petAddList";
 	}

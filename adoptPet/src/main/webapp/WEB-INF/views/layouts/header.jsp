@@ -5,83 +5,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
-<script src="jquery/jquery.js"></script>
-<script type="text/javascript" src='js/bootstrap.min.js'></script>
-<!-- 부트스트랩 css 사용 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css" integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
-<style>
 
-</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>데려가줘</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Bootstrap Icons-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+<link href="css/styles.css" rel="stylesheet" />  
 </head>
-<body>
-	<header>
-		<h2>
-			<a href="main.do">PICKME</a>
-		</h2>
-	</header>
+<body id="page-top">
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+	    <div class="container px-4 px-lg-5">
+	        <a class="navbar-brand" href="main.do">데려가줘 PICK ME</a>
+	        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+	        <div class="collapse navbar-collapse" id="navbarResponsive">
+	            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+	                <li class="nav-item"><a class="nav-link" href="main.do">HOME</a></li>
+	                <li class="nav-item"><a class="nav-link" href="petList.do">ADOPT PET</a></li>
+	                <li class="nav-item"><a class="nav-link" href="calendar.do">VOlUNTEER</a></li>
+	                <li class="nav-item"><a class="nav-link" href="noticeList.do">NOTICE</a></li>
+	                <li class="nav-item"><a class="nav-link" href="qnaBoardList.do">Q&A</a></li>
+	                <li class="nav-item"><a class="nav-link" href="memberJoinForm.do">JOIN</a></li>
+	                <li class="nav-item"><a class="nav-link" href="memberLoginForm.do">LOGIN</a></li>
+	                <li class="nav-item"><a class="nav-link" href="memberMyPage.do">PAGE세션ad일때/user일때</a></li>
+	            </ul>
+	        </div>
+	    </div>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<div class="container-fluid">
-
-
-			<div class="collapse navbar-collapse" id="navbarColor01">
-				<ul class="navbar-nav me-auto">
-					<li class="nav-item"><a class="nav-link active" href="main.do"">Home
-							<!-- <span class="visually-hidden">(current)</span> -->
-					</a></li>
-
-					<li class="nav-item dropdown">
-					 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-						href="#" role="button" aria-haspopup="true" aria-expanded="false">MyPage</a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="memberMyPage.do">내정보보기</a> 
-							<a class="dropdown-item" href="#">좋아요한 동물</a>
-							<a class="dropdown-item" href="#">나의 입양신청 현황</a>
-							<a class="dropdown-item" href="#">나의 봉사참여 신청 현황</a>
-						</div></li>
-
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-						href="#" role="button" aria-haspopup="true" aria-expanded="false">AdopPage</a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">입양동물소개</a> 
-							<a class="dropdown-item" href="#">입양동물 후기</a>
-								
-						</div></li>
-						
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-						href="#" role="button" aria-haspopup="true" aria-expanded="false">Volunteer</a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">봉사활동 일정</a> 
-							<a class="dropdown-item" href="#">봉사활동 후기</a>
-						</div></li>
-						
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-						href="#" role="button" aria-haspopup="true" aria-expanded="false">Community</a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">공지게시판</a> 
-							<a class="dropdown-item" href="#">문의게시판</a>
-						</div></li>
-						
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-						href="#" role="button" aria-haspopup="true" aria-expanded="false">관리자페이지</a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">회원리스트</a> 
-							<a class="dropdown-item" href="#">입양신청내역</a>
-							<a class="dropdown-item" href="#">봉사참여 신청내역</a>
-							<a class="dropdown-item" href="#">전체후원내역</a>
-							<a class="dropdown-item" href="#">입양동물등록</a>
-						</div></li>
-				</ul>
-
-			</div>
-		</div>
 	</nav>
-
-
-</body>
+ </body>
 </html>

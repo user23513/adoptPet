@@ -35,6 +35,10 @@ public class PetList implements Command {
 			pageNum = "1";
 		}
 		
+		request.setAttribute("cnt", cnt);
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("pageNum", pageNum);
+		
 		//첫행번호를 계산
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1)*pageSize+1;

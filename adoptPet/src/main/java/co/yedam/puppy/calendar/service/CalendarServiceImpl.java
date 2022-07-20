@@ -21,7 +21,7 @@ public class CalendarServiceImpl implements CalendarService {
 		// 전체목록
 		List<CalendarVO> list = new ArrayList<CalendarVO>();
 		CalendarVO vo;
-		String sql = "SELECT * FROM CALENDAR";
+		String sql = "SELECT * FROM CALENDAR WHERE CALENDAR_START_DATE BETWEEN TO_DATE('2022-07-01', 'YYYY-MM-DD') AND TO_DATE('2022-07-31', 'YYYY-MM-DD')";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);

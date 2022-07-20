@@ -23,8 +23,13 @@ import co.yedam.puppy.admin.command.MemberList;
 import co.yedam.puppy.admin.command.UpdateMemberList;
 import co.yedam.puppy.admin.command.VolunteerList;
 import co.yedam.puppy.admin.command.VolunteerStateSearch;
+import co.yedam.puppy.adoptReview.command.AdoptReviewForm;
+import co.yedam.puppy.adoptReview.command.AdoptReviewInsert;
+import co.yedam.puppy.adoptReview.command.AdoptReviewList;
+import co.yedam.puppy.adoptReview.command.AdoptReviewSearch;
+import co.yedam.puppy.adoptReview.command.AdoptReviewSelect;
+import co.yedam.puppy.adoptReview.command.AdoptReviewUpdate;
 import co.yedam.puppy.adoptSubscription.command.AdoptSubScription;
-import co.yedam.puppy.adoptSubscription.command.AdoptSubscriptionForm;
 import co.yedam.puppy.board.command.AjaxNoticeSearch;
 import co.yedam.puppy.board.command.NoticeForm;
 import co.yedam.puppy.board.command.NoticeInsert;
@@ -137,7 +142,6 @@ public class FrontController extends HttpServlet {
 		map.put("/heartCheck.do", new HeartCheck()); //게시글 좋아요버튼 눌렀을때 처리
 		map.put("/petListSearch.do", new PetListSearch()); //게시글 검색
 		
-		map.put("/adoptSubscriptionForm.do", new AdoptSubscriptionForm()); //입양신청폼으로 이동
 		map.put("/adoptSubScription.do", new AdoptSubScription()); //입양신청눌렀을때 처리해주는
 		
 		map.put("/noticeList.do", new NoticeList());//공지 리스트
@@ -170,11 +174,26 @@ public class FrontController extends HttpServlet {
 
 		map.put("/qnaBoardList.do", new QnaBoardList()); // 문의게시판 리스트
 		map.put("/qnaBoardSelect.do", new QnaBoardSelect()); // 문의글 보기
+
 		map.put("/qnaBoardInsert.do", new QnaBoardInsert()); // 문의글 등록
 		map.put("/qnaBoardUpdate.do", new QnaBoardUpdate()); // 문의글 수정
 		map.put("/ajaxQnaBoardList.do", new AjaxQnaBoardSearch()); // 문의글 검색
 
 //		map.put("/qnaBoardDelete.do", new QnaBoardDelete()); // 문의글 삭제
+
+//		map.put("/qnaBoardForm.do", new QnaBoardForm()); // 문의글 입력폼 호출
+//		map.put("/qnaBoardInsert.do", new QnaBoardInsert()); // 문의글 등록
+//		map.put("/qnaBoardUpdate.do", new QnaBoardUpdate()); // 문의글 수정
+//		map.put("/qnaBoardDelete.do", new QnaBoardDelete()); // 문의글 삭제
+//		map.put("/ajaxQnaBoardList.do", new AjaxQnaBoardSearch()); // 문의글 검색
+		
+		map.put("/adoptReviewList.do", new AdoptReviewList());//공지 리스트
+		map.put("/adoptReviewSelect.do", new AdoptReviewSelect());//공지 상세보기
+		map.put("/adoptReviewForm.do", new AdoptReviewForm());//공지 입력폼 호출
+		map.put("/adoptReviewInsert.do", new AdoptReviewInsert()); //공지 등록
+		map.put("/noticeUpdate.do", new AdoptReviewUpdate());//공지 수정 폼
+		map.put("/AdoptReviewSearch.do", new AdoptReviewSearch());//공지 검색
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
