@@ -10,8 +10,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import co.yedam.puppy.comm.Command;
+import co.yedam.puppy.heart.service.HeartService;
+import co.yedam.puppy.heart.service.HeartServiceImpl;
 import co.yedam.puppy.petList.service.PetListService;
 import co.yedam.puppy.petList.service.PetListServiceImpl;
+import co.yedam.puppy.vo.HeartVO;
 import co.yedam.puppy.vo.PetListVO;
 
 public class PetListSearch implements Command {
@@ -25,7 +28,9 @@ public class PetListSearch implements Command {
 		String key = request.getParameter("key");
 		String val = request.getParameter("val");
 		
-		list = dao.petListSearchList(key, val);
+		list = dao.petListSearchList(key, val); //pet_list
+		
+		
 		String josnList = null;
 		try {
 			josnList = mapper.writeValueAsString(list);
