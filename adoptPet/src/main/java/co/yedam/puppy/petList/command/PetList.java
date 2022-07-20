@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.puppy.comm.Command;
 import co.yedam.puppy.heart.service.HeartService;
@@ -38,6 +39,11 @@ public class PetList implements Command {
 		request.setAttribute("cnt", cnt);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageNum", pageNum);
+		
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		String author = (String) session.getAttribute("author");
+		request.setAttribute("author", author);
 		
 		//첫행번호를 계산
 		int currentPage = Integer.parseInt(pageNum);
@@ -83,7 +89,7 @@ public class PetList implements Command {
 			int heartNum = heartDao.heartCount(petListNo);
 			vo.setHeartNum(heartNum);
 			
-			heartVo.setMemberId("lee");
+			heartVo.setMemberId(id);
 			heartVo.setPetListNo(petListNo);
 			int check = heartDao.heartCheck(heartVo); //하트클릭여부 체크(1이면 체크되어있는거 0이면 체크안되어있는거)
 			vo.setHeartCheck(check);

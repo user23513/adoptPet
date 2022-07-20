@@ -17,7 +17,12 @@
 </head>
 <body>
 <div align="center">
-<div>게시판 목록</div>
+<section class="notice">
+<div class="page-title">
+        	<div class="container">
+            	<h3>게시판 목록</h3>
+        	</div>
+    	</div>
 
 	<div>
 		<form id="frm">
