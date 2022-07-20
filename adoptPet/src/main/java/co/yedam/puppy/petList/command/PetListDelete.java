@@ -1,4 +1,4 @@
-package co.yedam.puppy.petAdd.command;
+package co.yedam.puppy.petList.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +15,7 @@ public class PetListDelete implements Command {
 		PetListService dao = new PetListServiceImpl();
 		String petListNo = request.getParameter("petListNo");
 		int r = dao.petListDelete(Integer.parseInt(petListNo));
+		System.out.println(r);
 		String json = "0";
 		if(r>0) {json="1";}
 		return "ajax:"+ json;

@@ -7,9 +7,8 @@
 <meta charset="UTF-8">
 <title>문의게시판 목록</title>
 <script type="js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.js"></script>
 <style>
-	option,table{
+	option{
 		border: 1px solid black;
 		border-radius: 10px;
 	}
@@ -35,7 +34,6 @@
 		<thead>
 			<tr>
 				<th width="50">no.</th>
-				<th width="50">유형</th>
 				<th width="100">작성자</th>
 				<th width="250">제목</th>
 				<th width="70">작성일</th>
@@ -68,7 +66,22 @@
 	</table>
 	</div>
 	<br>
-		
+	<div>
+	<button type="button" onclick="location.href='qnaBoardForm.do'">글 작성</button>
+	</div>	
 </div>
+
+	<div>
+		<% 	int pageCount = (int)request.getAttribute("pageCount");
+			int pageBlock = (int)request.getAttribute("pageBlock");
+			int startPage = (int)request.getAttribute("startPage"); //게시글이 하나도 없을때 0이다.
+			int endPage = (int)request.getAttribute("endPage");
+			
+			for (int i = startPage; i<=endPage; i++) { %>
+				<a href="volReviewList.do?pageNum=<%=i%>"><%=i %></a>
+			<% } %>
+	</div>	
+	
+
 </body>
 </html>

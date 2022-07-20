@@ -684,7 +684,8 @@ public class BoardServiceImpl implements BoardService {
 				+ "          FROM BOARD A\r\n"
 				+ "         ORDER BY BOARD_NO DESC\r\n"
 				+ "        ) \r\n"
-				+ " WHERE NUM BETWEEN ? AND ?";
+				+ " WHERE NUM BETWEEN ? AND ?"
+				+ "AND BOARD_ID = 30";
 		
 		try {
 			conn = dao.getConnection();
@@ -723,7 +724,7 @@ public class BoardServiceImpl implements BoardService {
 	public int qnaBoardCount() {
 		// db 갯수 확인
 		int n = 0;
-		String sql = "SELECT * FROM BOARD WHERE BOARD_ID=30"; // ! ! 쿼리문 확인해보기 ! !
+		String sql = "SELECT * FROM BOARD"; // ! ! 쿼리문 확인해보기 ! !
 		
 		try {
 			conn = dao.getConnection();
@@ -772,16 +773,15 @@ public class BoardServiceImpl implements BoardService {
 	public int qnaBoardInsert(BoardVO vo) {
 		// 문의게시판 글 쓰기
 		int n = 0;
-		String sql = "INSERT INTO BOARD VALUES(notice_seq.nextval,?,?,?,?,0,?,?)";
+		String sql = "INSERT INTO BOARD VALUES(notice_seq.nextval,30,?,?,?,SYSDATE,0)";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getBoardNo());
-//			psmt.setString(2, vo.getNoticeTitle());
-//			psmt.setString(3, vo.getNoticeSubject());
-//			psmt.setDate(4, vo.getNoticeDate());
-//			psmt.setString(5, vo.getNoticeAttech());
-//			psmt.setString(6, vo.getNoticeAttechDir());
+//			psmt.setInt(1, vo.getBoardId());
+			psmt.setString(1, vo.getBoardTitle());
+			psmt.setString(2, vo.getBoardWriter());
+			psmt.setString(3, vo.getBoardContent());
+
 			n = psmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();

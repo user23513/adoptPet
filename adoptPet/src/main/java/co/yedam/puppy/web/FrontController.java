@@ -50,10 +50,8 @@ import co.yedam.puppy.petAdd.command.PetAddInsert;
 import co.yedam.puppy.petAdd.command.PetAddList;
 import co.yedam.puppy.petAdd.command.PetAddUpdate;
 import co.yedam.puppy.petAdd.command.PetAddUpdateForm;
-import co.yedam.puppy.petAdd.command.PetListDelete;
 import co.yedam.puppy.petList.command.PetList;
-
-
+import co.yedam.puppy.petList.command.PetListDelete;
 import co.yedam.puppy.member.command.AjaxMemberIdCheck;
 import co.yedam.puppy.member.command.MemberAdopt;
 import co.yedam.puppy.petList.command.PetListForm;
@@ -157,8 +155,13 @@ public class FrontController extends HttpServlet {
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 등록
 		map.put("/volReviewUpdateForm.do", new VolReviewUpdateForm()); //봉사활동 후기 수정 폼
 		map.put("/volReviewUpdate.do", new VolReviewUpdate()); // 봉사활동후기 수정
+
 		map.put("/ajaxVolReviewDelete.do", new AjaxVolReviewDelete()); // 봉사활동 후기 삭제
 		
+
+		map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
+		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
+
 	
 
 		map.put("/memberList.do", new MemberList()); //모든회원리스트
@@ -173,18 +176,11 @@ public class FrontController extends HttpServlet {
 
 		map.put("/qnaBoardList.do", new QnaBoardList()); // 문의게시판 리스트
 		map.put("/qnaBoardSelect.do", new QnaBoardSelect()); // 문의글 보기
-
+		map.put("/qnaBoardForm.do", new QnaBoardForm());// 문의글 입력폼 호출
 		map.put("/qnaBoardInsert.do", new QnaBoardInsert()); // 문의글 등록
-		map.put("/qnaBoardUpdate.do", new QnaBoardUpdate()); // 문의글 수정
+		map.put("/qnaBoardUpdateForm.do", new QnaBoardUpdate()); // 문의글 수정
 		map.put("/ajaxQnaBoardList.do", new AjaxQnaBoardSearch()); // 문의글 검색
 
-//		map.put("/qnaBoardDelete.do", new QnaBoardDelete()); // 문의글 삭제
-
-//		map.put("/qnaBoardForm.do", new QnaBoardForm()); // 문의글 입력폼 호출
-//		map.put("/qnaBoardInsert.do", new QnaBoardInsert()); // 문의글 등록
-//		map.put("/qnaBoardUpdate.do", new QnaBoardUpdate()); // 문의글 수정
-//		map.put("/qnaBoardDelete.do", new QnaBoardDelete()); // 문의글 삭제
-//		map.put("/ajaxQnaBoardList.do", new AjaxQnaBoardSearch()); // 문의글 검색
 		
 		map.put("/adoptReviewList.do", new AdoptReviewList());//공지 리스트
 		map.put("/adoptReviewSelect.do", new AdoptReviewSelect());//공지 상세보기
