@@ -8,6 +8,8 @@
 <title>입양동물 소개 게시판</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
+<link href="css/adoptpet.css" rel="stylesheet" />   
+      
 <style>
 
 /* @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap'); */
@@ -27,35 +29,11 @@ button {
 	 text-align : center;
 }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
-}
 
-th, td {
-  text-align: left;
-  padding: 16px;
-}
-
-tbody>tr:nth-child(even) {
-  background-color: #e7e7e5;
-}
-
-tbody>tr:nth-child(odd) {
-  background-color: #bed4cf;
-}
-
-thead {
-	background-color: #bcccc9;
-}
 </style>
 </head>
 <body>
-<div>
-		
-	</div>
+
 	<div id="list">
 		<h2>입양동물 소개 리스트</h2>
 		<button type="button" style="float: left;" onclick="location.href='petAddList.do'">입양등록</button>
