@@ -159,8 +159,10 @@ div {
 			<c:if test="${check == true}">
 				<button type="button" class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" style="width:auto; float: right;">입양신청</button>
 			</c:if>
-			<button type="button" class="btn btn-primary" style="float: right;" onclick="petListDeleteFnc(${vo.petListNo})">삭제</button>
-			<button type="button" class="btn btn-primary" style="float: right;" onclick="location.href = 'petListUpdateForm.do?petListNo=${vo.petListNo}'">수정</button>
+			<c:if test="${author eq 'author'}">
+					<button type="button" class="btn btn-primary" style="float: right;" onclick="petListDeleteFnc(${vo.petListNo})">삭제</button>
+					<button type="button" class="btn btn-primary" style="float: right;" onclick="location.href = 'petListUpdateForm.do?petListNo=${vo.petListNo}'">수정</button>
+			</c:if>
 		</div>
 	</div>
 

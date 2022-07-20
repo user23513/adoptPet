@@ -30,6 +30,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="vo" items="${petAddList}">
+					<input id="petAddCheck" name="petAddCheck" type="hidden" value="${vo.petAddCheck}">
 					<tr id="${vo.petAddNo }">
 						<td>${vo.petAddNo }</td>
 						<td><a href="petAddUpdate.do?petAddNo=${vo.petAddNo }">${vo.petAddName }</a></td>
@@ -39,8 +40,7 @@
 						<td>${vo.petAddHealth }</td>
 						<td>${vo.petAddAdoptState }</td>
 						<td>${vo.petAddType }</td>
-						<c:if test=""></c:if>
-						<td><button type="button" onclick="location.href='petListForm.do?petAddNo=${vo.petAddNo }&petAddName=${vo.petAddName }'">글쓰기</button> </td>
+						<td><button type="button" id="writeBtn" onclick="location.href='petListForm.do?petAddNo=${vo.petAddNo }&petAddName=${vo.petAddName }'">글쓰기</button> </td>
 						<td><button type="button" onclick="petAddDeleteFnc(${vo.petAddNo })">삭제</button></td>
 					</tr>
 				</c:forEach>
@@ -62,8 +62,16 @@
 			<% } %>
 		</div>
 	</div>	
-	
+
 	<script>
+		let writeBtn = document.querySelectorAll('#writeBtn');
+		let check = document.querySelectorAll('#petAddCheck') //check가 true면 보이고 false면 안보이게
+		writeBtn.forEach((element,idx) => {
+			if(check[idx].value == 'false') {
+				element.setAttribute('disabled','disabled');
+			}	
+		});
+
 		function petAddDeleteFnc(petAddNo) {
 			fetch('petAddDelete.do',{
 				method: 'post',

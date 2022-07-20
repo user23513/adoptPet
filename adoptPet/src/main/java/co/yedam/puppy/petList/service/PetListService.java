@@ -17,5 +17,6 @@ public interface PetListService {
 	List<PetListVO> petListSort(String petType); //입양동물소개게시판 동물유형으로 정렬해서 보여주기
 	int petListCount(); //입양동물소개게시판에 있는 글 개수 확인
 	List<PetListVO> petListFiles(List<PetListVO> list); //담아온 list_no를  뽑아서 파일을 찾아서 다시 vo객체에 담기
+	boolean ispetAddNoCheck(int petAddNo);//petAddNo게시글이 있는지 확인
 	
 }
