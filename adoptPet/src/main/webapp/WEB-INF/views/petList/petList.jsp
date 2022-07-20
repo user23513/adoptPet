@@ -33,6 +33,7 @@
 </head>
 <body>
 
+
 <div>
 	<div id="list">
 	
@@ -47,6 +48,7 @@
 	</c:if>
     	<div id="search" align="right">
 			<form id="frm" action="petListSearch.do" method="post">
+
 				<select id="key" name="key" >
 					<option value="pet_list_title">제목</option>
 					<option value="pet_list_content">내용</option>
@@ -55,6 +57,7 @@
 				<input type="submit" value="검색"  >
 			</form>
 		</div>
+
 		<table>
 			<thead>
 				  <tr>
