@@ -10,7 +10,7 @@
 
 <body>
 <footer>
-	<h1>copywrite@2022</h1>
+	<h7>copywrite@2022</h7>
 </footer>
 
 </body>
