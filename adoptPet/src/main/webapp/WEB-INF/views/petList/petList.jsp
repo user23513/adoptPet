@@ -165,6 +165,7 @@ thead {
 					$('tbody').remove();
 					var tbody = $("<tbody />");
 					
+					
 					$.each(result, function(index, item) {
 						var row = $("<tr />").append(
 								$("<td />").text(item.petListNo),
@@ -179,19 +180,6 @@ thead {
 					});
 					
 					$('table').append(tbody);
-// 					$('tbody').remove();
-// 					$('<tbody />').append(
-// 						$.each(result, (inx,vo)=>{
-// 							$('<tr />').append($('<td />').text(vo.petListNo),
-// 											   $('<td />').text('이미지'),
-// 											   $('<td />').text(vo.petListTitle),
-// 											   $('<td />').text(vo.petListState),
-// 											   $('<td />').text(vo.petListType),
-// 											   $('<td />').text(vo.filesPath1),
-// 											   $('<td />').text(vo.heartNum)
-// 								)
-// 						})		
-// 					);
 					
 				},
 				error : function(error) {
