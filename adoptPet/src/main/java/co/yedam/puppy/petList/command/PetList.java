@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.puppy.comm.Command;
 import co.yedam.puppy.heart.service.HeartService;
@@ -35,10 +36,15 @@ public class PetList implements Command {
 			pageNum = "1";
 		}
 		
-		request.setAttribute("totalSize", cnt);
+		request.setAttribute("cnt", cnt);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("pageNum", pageNum);
-		 
+		
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		String author = (String) session.getAttribute("author");
+		request.setAttribute("author", author);
+		
 		//첫행번호를 계산
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1)*pageSize+1;
@@ -47,7 +53,7 @@ public class PetList implements Command {
 		
 		//다시 파일을 담은 list
 		List<PetListVO> nList = petListDao.petListFiles(petListDao.petListSelectList(currentPage, startRow, pageSize));
-		request.setAttribute("listSize", nList.size());
+		
 		//=================페이징처리=============================
 		int pageCount=0;
 		int pageBlock=0;
@@ -70,10 +76,10 @@ public class PetList implements Command {
 			}
 			
 		}
-		request.setAttribute("pageCount", pageCount); //전체 페이지수 계산
-		request.setAttribute("pageBlock", pageBlock); //한 페이지에 보여줄 페이지 블럭
-		request.setAttribute("startPage", startPage); //한 페이지에 보여줄 페이지 블럭 시작번호 계산
-		request.setAttribute("endPage", endPage); //한 페이지에 보여줄 페이지 블럭 끝 번호 계산
+		request.setAttribute("pageCount", pageCount);
+		request.setAttribute("pageBlock", pageBlock);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
 		
 		HeartService heartDao = new HeartServiceImpl();
 		HeartVO heartVo = new HeartVO();
@@ -83,7 +89,7 @@ public class PetList implements Command {
 			int heartNum = heartDao.heartCount(petListNo);
 			vo.setHeartNum(heartNum);
 			
-			heartVo.setMemberId("lee");
+			heartVo.setMemberId(id);
 			heartVo.setPetListNo(petListNo);
 			int check = heartDao.heartCheck(heartVo); //하트클릭여부 체크(1이면 체크되어있는거 0이면 체크안되어있는거)
 			vo.setHeartCheck(check);

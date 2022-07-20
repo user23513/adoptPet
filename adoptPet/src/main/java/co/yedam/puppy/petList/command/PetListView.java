@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import co.yedam.puppy.adoptSubscription.service.AdoptSubscriptionService;
 import co.yedam.puppy.adoptSubscription.service.AdoptSubscriptionServiceImpl;
@@ -33,12 +36,19 @@ public class PetListView implements Command {
 		FilesService fdao = new FilesServiceImpl();
 		List<String> filePathList = fdao.filesSelect(vo);
 		
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		String author = (String) session.getAttribute("author");
+		
 		//같은게시글에 입양신청한 적이 있는지 확인(세션으로 멤버아이디받아와야함)
 		AdoptSubscriptionService adoptDao = new AdoptSubscriptionServiceImpl();
-		boolean check = adoptDao.isAdoptSubCheck("lee", Integer.parseInt(petAddNo)); //true면 입양신청버튼이 보이게
+
+		boolean check = adoptDao.isAdoptSubCheck(id, Integer.parseInt(petAddNo)); //true면 입양신청버튼이 보이게
+
 		request.setAttribute("vo", vo);
 		request.setAttribute("filePathList", filePathList);
 		request.setAttribute("check", check);
+		request.setAttribute("author", author);
 		
 		return "petList/petListView";
 	}

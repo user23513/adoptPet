@@ -95,10 +95,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int memberUpdate(MemberVO vo) {
 		// 한명정보수정하기
+		int r = 0;
 		String sql = "UPDATE MEMBER SET  "
 				+ "MEMBER_TEL= ? , MEMBER_EMAIL= ? , MEMBER_JOB= ? "
 				+ "WHERE MEMBER_ID= ? ";
-		int r = 0;
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);

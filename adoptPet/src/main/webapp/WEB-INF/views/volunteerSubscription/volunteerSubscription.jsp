@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>봉사활동 신청폼</title>
 </head>
 <body>
-${memberUpdateComplete}
-${memberDeleteComplete}
+
 </body>
 </html>

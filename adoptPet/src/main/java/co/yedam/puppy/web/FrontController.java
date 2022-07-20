@@ -23,8 +23,13 @@ import co.yedam.puppy.admin.command.MemberList;
 import co.yedam.puppy.admin.command.UpdateMemberList;
 import co.yedam.puppy.admin.command.VolunteerList;
 import co.yedam.puppy.admin.command.VolunteerStateSearch;
+import co.yedam.puppy.adoptReview.command.AdoptReviewForm;
+import co.yedam.puppy.adoptReview.command.AdoptReviewInsert;
+import co.yedam.puppy.adoptReview.command.AdoptReviewList;
+import co.yedam.puppy.adoptReview.command.AdoptReviewSearch;
+import co.yedam.puppy.adoptReview.command.AdoptReviewSelect;
+import co.yedam.puppy.adoptReview.command.AdoptReviewUpdate;
 import co.yedam.puppy.adoptSubscription.command.AdoptSubScription;
-import co.yedam.puppy.adoptSubscription.command.AdoptSubscriptionForm;
 import co.yedam.puppy.board.command.AjaxNoticeSearch;
 import co.yedam.puppy.board.command.NoticeForm;
 import co.yedam.puppy.board.command.NoticeInsert;
@@ -45,10 +50,8 @@ import co.yedam.puppy.petAdd.command.PetAddInsert;
 import co.yedam.puppy.petAdd.command.PetAddList;
 import co.yedam.puppy.petAdd.command.PetAddUpdate;
 import co.yedam.puppy.petAdd.command.PetAddUpdateForm;
-import co.yedam.puppy.petAdd.command.PetListDelete;
 import co.yedam.puppy.petList.command.PetList;
-
-
+import co.yedam.puppy.petList.command.PetListDelete;
 import co.yedam.puppy.member.command.AjaxMemberIdCheck;
 import co.yedam.puppy.member.command.MemberAdopt;
 import co.yedam.puppy.petList.command.PetListForm;
@@ -62,11 +65,16 @@ import co.yedam.puppy.volunteerReview.command.VolReviewList;
 import co.yedam.puppy.volunteerReview.command.VolReviewSelectOne;
 import co.yedam.puppy.volunteerReview.command.VolReviewUpdate;
 import co.yedam.puppy.volunteerReview.command.VolReviewUpdateForm;
-import co.yedam.puppy.volunteerReview.command.VolReviewDelete;
+import co.yedam.puppy.volunteerReview.command.AjaxVolReviewDelete;
 import co.yedam.puppy.volunteerReview.command.VolReviewForm;
 import co.yedam.puppy.petList.command.PetListView;
+import co.yedam.puppy.qnaBoard.command.AjaxQnaBoardSearch;
+import co.yedam.puppy.qnaBoard.command.QnaBoardDelete;
+import co.yedam.puppy.qnaBoard.command.QnaBoardForm;
+import co.yedam.puppy.qnaBoard.command.QnaBoardInsert;
 import co.yedam.puppy.qnaBoard.command.QnaBoardList;
 import co.yedam.puppy.qnaBoard.command.QnaBoardSelect;
+import co.yedam.puppy.qnaBoard.command.QnaBoardUpdate;
 import co.yedam.puppy.member.command.MemberDelete;
 import co.yedam.puppy.member.command.MemberJoin;
 import co.yedam.puppy.member.command.MemberJoinForm;
@@ -132,7 +140,6 @@ public class FrontController extends HttpServlet {
 		map.put("/heartCheck.do", new HeartCheck()); //게시글 좋아요버튼 눌렀을때 처리
 		map.put("/petListSearch.do", new PetListSearch()); //게시글 검색
 		
-		map.put("/adoptSubscriptionForm.do", new AdoptSubscriptionForm()); //입양신청폼으로 이동
 		map.put("/adoptSubScription.do", new AdoptSubScription()); //입양신청눌렀을때 처리해주는
 		
 		map.put("/noticeList.do", new NoticeList());//공지 리스트
@@ -143,14 +150,18 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxNoticeInsert.do", new AjaxNoticeSearch());//공지 검색
 		
 		map.put("/volReviewList.do", new VolReviewList()); // 봉사활동후기 리스트
-
 		map.put("/volReviewSelectOne", new VolReviewSelectOne()); // 봉사활동후기 단건조회
 		map.put("/volReviewForm.do", new VolReviewForm()); // 봉사활동 후기 등록 폼 페이지로 이동
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 등록
 		map.put("/volReviewUpdateForm.do", new VolReviewUpdateForm()); //봉사활동 후기 수정 폼
 		map.put("/volReviewUpdate.do", new VolReviewUpdate()); // 봉사활동후기 수정
+
+		map.put("/ajaxVolReviewDelete.do", new AjaxVolReviewDelete()); // 봉사활동 후기 삭제
+		
+
 		map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
+
 	
 
 		map.put("/memberList.do", new MemberList()); //모든회원리스트
@@ -165,11 +176,18 @@ public class FrontController extends HttpServlet {
 
 		map.put("/qnaBoardList.do", new QnaBoardList()); // 문의게시판 리스트
 		map.put("/qnaBoardSelect.do", new QnaBoardSelect()); // 문의글 보기
-//		map.put("/qnaBoardForm.do", new QnaBoardForm()); // 문의글 입력폼 호출
-//		map.put("/qnaBoardInsert.do", new QnaBoardInsert()); // 문의글 등록
-//		map.put("/qnaBoardUpdate.do", new QnaBoardUpdate()); // 문의글 수정
-//		map.put("/qnaBoardDelete.do", new QnaBoardDelete()); // 문의글 삭제
-//		map.put("/ajaxQnaBoardList.do", new AjaxQnaBoardSearch()); // 문의글 검색
+		map.put("/qnaBoardForm.do", new QnaBoardForm());// 문의글 입력폼 호출
+		map.put("/qnaBoardInsert.do", new QnaBoardInsert()); // 문의글 등록
+		map.put("/qnaBoardUpdateForm.do", new QnaBoardUpdate()); // 문의글 수정
+		map.put("/ajaxQnaBoardList.do", new AjaxQnaBoardSearch()); // 문의글 검색
+
+		
+		map.put("/adoptReviewList.do", new AdoptReviewList());//공지 리스트
+		map.put("/adoptReviewSelect.do", new AdoptReviewSelect());//공지 상세보기
+		map.put("/adoptReviewForm.do", new AdoptReviewForm());//공지 입력폼 호출
+		map.put("/adoptReviewInsert.do", new AdoptReviewInsert()); //공지 등록
+		map.put("/noticeUpdate.do", new AdoptReviewUpdate());//공지 수정 폼
+		map.put("/AdoptReviewSearch.do", new AdoptReviewSearch());//공지 검색
 
 	}
 

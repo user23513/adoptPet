@@ -46,8 +46,6 @@ public class AdoptSubscriptionServiceImpl implements AdoptSubscriptionService {
 	}
 
 
-
-
 	@Override
 	public int AdoptSubInsert(AdoptSubscriptionVO vo) {
 		//입양동물 신청 form내용 db에 등록

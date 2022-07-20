@@ -32,7 +32,7 @@ public class PetListServiceImpl implements PetListService {
 				+ "          FROM PET_LIST A\r\n"
 				+ "         ORDER BY PET_LIST_NO DESC\r\n"
 				+ "        ) \r\n"
-				+ " WHERE NUM BETWEEN ? AND ? ";
+				+ " WHERE NUM BETWEEN ? AND ?";
 		
 		try {
 			conn = dao.getConnection();
@@ -257,10 +257,11 @@ public class PetListServiceImpl implements PetListService {
 		//입양동물소개게시판 검색조회
 		List<PetListVO> list = new ArrayList<PetListVO>();
 		PetListVO vo;
-		String sql = "SELECT * FROM PET_LIST WHERE " + key + " LIKE '%"+val+"%'";
+		String sql = "SELECT * FROM PET_LIST WHERE " + key + " LIKE ? ";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, "%"+val+"%");
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -272,10 +273,8 @@ public class PetListServiceImpl implements PetListService {
 				vo.setPetListWriter(rs.getString("PET_LIST_WRITER"));
 				vo.setPetListState(rs.getString("PET_LIST_STATE"));
 				vo.setPetListType(rs.getString("PET_LIST_TYPE"));
-				vo.setPetAddNo(rs.getInt("PET_ADD_NO"));
 				list.add(vo);
 			}
-			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -289,6 +288,31 @@ public class PetListServiceImpl implements PetListService {
 		//입양동물소개게시판 동물유형으로 정렬해서 보여주기
 		
 		return null;
+	}
+	
+	@Override
+	public boolean ispetAddNoCheck(int petAddNo) {
+		//petAddNo게시글이 있는지 확인(데이터가 있으면 false. true면 글쓰기 버튼보이게)
+		boolean b = true;
+		String sql = "select pet_list_no from pet_list where pet_add_no = ?";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, petAddNo);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				b = false;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		
+		return b;
 	}
 	
 	private void close() {

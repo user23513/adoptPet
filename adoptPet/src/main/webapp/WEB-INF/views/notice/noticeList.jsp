@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 목록</title>
+<title>공지사항</title>
 <script type="js/jquery-3.6.0.min.js"></script>
+<link href="css/adoptpet.css" rel="stylesheet" />   
 <style>
-	option,table{
+	option{
 		border: 1px solid black;
 		border-radius: 10px;
 	}
@@ -16,7 +17,13 @@
 </head>
 <body>
 <div align="center">
-<div>게시판 목록</div>
+<section class="notice">
+<div class="page-title">
+        	<div class="container">
+            	<h3>게시판 목록</h3>
+        	</div>
+    	</div>
+
 	<div>
 		<form id="frm">
 		<select id="key" name="cars">

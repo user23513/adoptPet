@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -7,12 +7,18 @@
 <meta charset="UTF-8">
 <title>입양동물 등록 리스트</title>
 <script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
+<link href="css/adoptpet.css" rel="stylesheet" />    
 </head>
 <body>
 <%-- 	${message} 입양등록처리 되었습니다 메세지 --%>
 
-	<div align="center" >
-		<div >
+	<section class="notice">
+  		<div class="page-title">
+        	<div class="container">
+            	<h3>입양 등록</h3>
+        	</div>
+    	</div>
+	<div align="center">
 		<table border="1">
 			<thead>
 				<tr>
@@ -30,6 +36,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="vo" items="${petAddList}">
+					<input id="petAddCheck" name="petAddCheck" type="hidden" value="${vo.petAddCheck}">
 					<tr id="${vo.petAddNo }">
 						<td>${vo.petAddNo }</td>
 						<td><a href="petAddUpdate.do?petAddNo=${vo.petAddNo }">${vo.petAddName }</a></td>
@@ -39,17 +46,14 @@
 						<td>${vo.petAddHealth }</td>
 						<td>${vo.petAddAdoptState }</td>
 						<td>${vo.petAddType }</td>
-						<c:if test=""></c:if>
-						<td><button type="button" onclick="location.href='petListForm.do?petAddNo=${vo.petAddNo }&petAddName=${vo.petAddName }'">글쓰기</button> </td>
-						<td><button type="button" onclick="petAddDeleteFnc(${vo.petAddNo })">삭제</button></td>
+						<td><button type="button" class="btn btn-primary btn-xl" id="writeBtn" onclick="location.href='petListForm.do?petAddNo=${vo.petAddNo }&petAddName=${vo.petAddName }'">글쓰기</button> </td>
+						<td><button type="button" class="btn btn-primary btn-xl" onclick="petAddDeleteFnc(${vo.petAddNo })">삭제</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		</div>
 		<div>
-			<button type="button" onclick="location.href='petList.do'" >글목록</button>
-			<button type="button" onclick="location.href='petAddForm.do'">등록</button>
+			<button type="button" class="btn btn-primary btn-xl" onclick="location.href='petAddForm.do'">등록</button>
 		</div>
 		<div>
 			<% 	int pageCount = (int)request.getAttribute("pageCount");
@@ -62,8 +66,16 @@
 			<% } %>
 		</div>
 	</div>	
-	
+
 	<script>
+		let writeBtn = document.querySelectorAll('#writeBtn');
+		let check = document.querySelectorAll('#petAddCheck') //check가 true면 보이고 false면 안보이게
+		writeBtn.forEach((element,idx) => {
+			if(check[idx].value == 'false') {
+				element.setAttribute('disabled','disabled');
+			}	
+		});
+
 		function petAddDeleteFnc(petAddNo) {
 			fetch('petAddDelete.do',{
 				method: 'post',

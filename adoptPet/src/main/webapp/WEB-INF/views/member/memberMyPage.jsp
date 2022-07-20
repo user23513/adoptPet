@@ -7,8 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/jquery-3.6.0.min.js"/></script>
+<link href="css/adoptpet.css" rel="stylesheet" /> 
 </head>
 <body>
+<div id="myPageDiv">
 	<p>${member.memberId}</p>
 	<p>${member.memberPassword}</p>
 	<p>${member.memberName }</p>
@@ -17,13 +19,13 @@
 	<p>${member.memberJob}</p>
 	<p>${member.memberGender }</p>
 	<p>${member.memberAuthor }</p>
-	
+	<br>
+	<button class="btn btn-primary btn-xl" onclick="location.href='memberUpdateForm.do'">내정보수정하기</button>
 	<form id="frm" action="memberDelete.do" method="post">
 		<input type="hidden" id="memberId" name="memberId" value="${member.memberId}">
-		<button type="button" onclick="memberDeleteCall()">탈퇴하기</button>
+		<button class="btn btn-primary btn-xl" type="button" onclick="memberDeleteCall()">탈퇴하기</button>
 	</form>
-		<button onclick="location.href='memberUpdateForm.do'">내정보수정하기</button>
-	
+</div>	
 <script type="text/javascript">
 
 function memberDeleteCall(){
