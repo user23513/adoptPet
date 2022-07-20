@@ -48,6 +48,9 @@ public class BoardServiceImpl implements BoardService {
 				vo.setBoardContent(rs.getNString("board_content"));
 				vo.setBoardDate(rs.getDate("board_date"));
 				vo.setBoardHit(rs.getInt("board_hit"));
+				
+				System.out.println(rs.getInt("board_no")+rs.getInt("board_id"));
+				
 				list.add(vo);
 			}
 			System.out.println("DAO: 봉사활동후기 저장완료!" + list.size());
@@ -64,7 +67,7 @@ public class BoardServiceImpl implements BoardService {
 	public int volReviewCount() {
 		// DB에 있는 봉사후기 list 글 갯수 확인하여 페이징 처리할때 사용
 		int n = 0;
-		String sql = "SELECT * FROM BOARD WHERE BOARD_ID = 40";
+		String sql = "SELECT * FROM BOARD";
 
 		try {
 			conn = dao.getConnection();

@@ -44,6 +44,7 @@
 								<td>${b.boardDate }</td>
 								<%-- 	<td>${b.boardAttech }</td> --%>
 								<td>${b.boardHit }</td>
+		
 							</tr>
 						</c:forEach>
 					</c:when>                           

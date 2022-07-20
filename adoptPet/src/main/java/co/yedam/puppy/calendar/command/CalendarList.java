@@ -29,6 +29,7 @@ public class CalendarList implements Command {
       CalendarVO vo = new CalendarVO();
       
       String title = request.getParameter("title");
+      System.out.println(title + "========================");
       vo.setCalendarTitle(title);
       String start = request.getParameter("start");
       vo.setCalendarStartDate(Date.valueOf(start));
