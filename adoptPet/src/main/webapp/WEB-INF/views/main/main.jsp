@@ -11,7 +11,7 @@
 </script>
 </head>
 <body>
-
+<a href="memberMyPage.do"><%=session.getAttribute("id") %></a>
  <!-- Masthead-->
 <header class="masthead">
     <div class="container px-4 px-lg-5 h-100">
@@ -55,7 +55,12 @@
  					<br>
  					
 					<p class="text-white-75 mb-4">오시는길</p>
- 					
+ 					<p class="text-white-75">주     소 : 대구광역시 중구 중앙대로 403 (남일동 135-1, 5층) 태왕 아너스 타워</p>
+					<p class="text-white-75">버  스(도보 1~2분)</p>
+					<p class="text-white-75">- 약령시앞 : 204, 304, 349, 401, 410-1, 503, 518, 650, 706, 730, 909, 급행2, 북구2</p>
+					<p class="text-white-75">- 약령시건너(동성로입구) : 204, 304, 349, 401, 410, 503, 518, 650, 706, 730, 급행2</p>
+					<p class="text-white-75">전화번호 : 053-421-2460</p>
+					<p class="text-white-75">F  A  X : 053-356-3939</p>
  					<br> <a class="btn btn-light btn-xl" target="_blank"
 						href="https://www.google.co.kr/maps/place/%EC%98%88%EB%8B%B4%EC%A7%81%EC%97%85%EC%A0%84%EB%AC%B8%ED%95%99%EA%B5%90/data=!3m1!4b1!4m5!3m4!1s0x3565e3c264a0f67b:0x6f6af951f8677f92!8m2!3d35.8690802!4d128.5932219?hl=ko">찾아가기</a>
 				</div>
@@ -169,7 +174,7 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-4 text-center mb-5 mb-lg-0">
                         <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                        <div>+1 (555) 123-4567</div>
+                        <div>+82 (053) 421-2460</div>
                     </div>
                 </div>
             </div>

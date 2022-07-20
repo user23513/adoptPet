@@ -36,12 +36,7 @@ button {
 </style>
 </head>
 <body>
-
-<div>
-
-
-	<div id="list">
-		<h2>입양동물 소개 리스트</h2>
+	<div>
 		<button type="button" style="float: left;" onclick="location.href='petAddList.do'">입양등록</button>
 
 		<div align="right">
@@ -54,7 +49,6 @@ button {
 				<input type="button" value="검색" onclick="petListSearch()">
 			</form>
 		</div>
-		
 	</div>
 	<div id="list">
 		<h2>입양동물 소개 리스트</h2>

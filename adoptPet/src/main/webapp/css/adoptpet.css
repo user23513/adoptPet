@@ -1,15 +1,49 @@
 @charset "UTF-8";
 body > div{
 
-   margin: 0 auto;
-   font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-      "Noto Color Emoji";
-   font-weight: 700;
-   font-size: 1rem;
-   padding: 0.75rem 0;
-   line-height: 1.5;
-   color: #122550;
-  
+	padding-top: 20px;
+	width: 80%;
+	margin: 0 auto;
+	font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+		"Noto Color Emoji";
+	font-weight: 700;
+	font-size: 1rem;
+	padding: 0.75rem 0;
+	line-height: 1.5;
+	color: #122550;
 } 
+#myPageDiv{
+	padding-top: 50px;
+	height: 800px;
+	line-height: 1.5;
+	width: 80%;
+	padding-left:400px;
+	border:1px solid red;
+	margin: 0 auto;
+}
+#myPageDiv p{
+	padding :10px;
+}
+#myPageDiv button{
+	float: left;
+	margin:10px;
+}
+#memUpdateDiv{
+	border:1px solid blue;
+	padding-top:10px;
+	margin:0 auto;
+	width:500px;
+	height: 800px;
+}
+#memUpdateDiv input{
+	padding-top:10px;
+	padding-bottom:15px;
+	margin-top:10px;
+	
+}
+#memUpdateDiv div{
+	padding-left: 150px;
+}
+
