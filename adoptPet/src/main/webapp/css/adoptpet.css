@@ -1,9 +1,11 @@
 @charset "UTF-8";
 
 
+
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
 body > div{
+
 
 	padding-top: 20px;
 	width: 80%;
@@ -182,4 +184,5 @@ table tbody th p{
 	padding-left: 150px;
 
 }
+
 

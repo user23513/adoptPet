@@ -65,10 +65,10 @@ public class VolReviewList implements Command {
 		request.setAttribute("pageSize", pageSize); // 페이지당보여지는 게시물수
 		request.setAttribute("pageNum", pageNum); // 현재페이지
 		
-//		request.setAttribute("pageCount", pageCount);
-//		request.setAttribute("pageBlock", pageBlock);
-//		request.setAttribute("startPage", startPage);
-//		request.setAttribute("endPage", endPage);
+		request.setAttribute("pageCount", pageCount);
+		request.setAttribute("pageBlock", pageBlock);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
 		
 		
 		return "volReview/volReviewList";

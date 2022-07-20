@@ -29,6 +29,7 @@ public class MemberMyPage implements Command {
 
 		vo.setMemberAuthor(author);
 		
+
 		vo = memberDao.memberSelectOne(vo);
 		
 		request.setAttribute("member", vo);

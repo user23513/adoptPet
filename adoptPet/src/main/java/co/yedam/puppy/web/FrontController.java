@@ -65,7 +65,7 @@ import co.yedam.puppy.volunteerReview.command.VolReviewList;
 import co.yedam.puppy.volunteerReview.command.VolReviewSelectOne;
 import co.yedam.puppy.volunteerReview.command.VolReviewUpdate;
 import co.yedam.puppy.volunteerReview.command.VolReviewUpdateForm;
-import co.yedam.puppy.volunteerReview.command.VolReviewDelete;
+import co.yedam.puppy.volunteerReview.command.AjaxVolReviewDelete;
 import co.yedam.puppy.volunteerReview.command.VolReviewForm;
 import co.yedam.puppy.petList.command.PetListView;
 import co.yedam.puppy.qnaBoard.command.AjaxQnaBoardSearch;
@@ -150,14 +150,18 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxNoticeInsert.do", new AjaxNoticeSearch());//공지 검색
 		
 		map.put("/volReviewList.do", new VolReviewList()); // 봉사활동후기 리스트
-
 		map.put("/volReviewSelectOne", new VolReviewSelectOne()); // 봉사활동후기 단건조회
 		map.put("/volReviewForm.do", new VolReviewForm()); // 봉사활동 후기 등록 폼 페이지로 이동
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 등록
 		map.put("/volReviewUpdateForm.do", new VolReviewUpdateForm()); //봉사활동 후기 수정 폼
 		map.put("/volReviewUpdate.do", new VolReviewUpdate()); // 봉사활동후기 수정
+
+		map.put("/ajaxVolReviewDelete.do", new AjaxVolReviewDelete()); // 봉사활동 후기 삭제
+		
+
 		map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
+
 	
 
 		map.put("/memberList.do", new MemberList()); //모든회원리스트
