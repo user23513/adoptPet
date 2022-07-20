@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
-body > div{
+#vFrm {
+	border : 1px solid red;
+}
+
+
+/* body > div{
 	padding-top: 20px;
 	width: 80%;
 	margin: 0 auto;
@@ -38,4 +43,4 @@ tbody>tr:nth-child(even) {
 
 tbody>tr:nth-child(odd) {
   background-color: #bed4cf;
-}
+} */

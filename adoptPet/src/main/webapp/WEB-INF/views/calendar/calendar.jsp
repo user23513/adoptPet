@@ -10,15 +10,21 @@
 <link href='../adoptPet/fullcalendar/lib/main.css' rel='stylesheet' />
 <script src='../adoptPet/fullcalendar/lib/main.js'></script>
 </head>
-<body>
-	<div id='calendar'></div>
-	<button type="button" onclick="location.href='noticeForm.do'"></button>
 
 	<script>
 		//let schedules = [];
 		//데이터 가져와서
 
 		document.addEventListener('DOMContentLoaded', function() {
+			$(function () {
+				var request = $.ajax({
+					url:"/full-calendar/calendar-admin", // 변경하기
+					method: "GET",
+					dataType:"json"
+				});
+				request.done(function (data) {
+	                    console.log(data); // log 로 데이터 찍어주기.
+	 
 
 			var calendarEl = document.getElementById('calendar');
 			var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -161,6 +167,10 @@
 
 		// }); // document.addEventListener('DOMContentLoaded', function ()
 	</script>
+	<body>
+	<div id='calendar'></div>
+	<button type="button" onclick="location.href='volReviewForm.do'"></button>
+	
 	<style>
 body {
 	margin: 40px 10px;

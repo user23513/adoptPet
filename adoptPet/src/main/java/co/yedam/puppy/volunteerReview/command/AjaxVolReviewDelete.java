@@ -8,26 +8,22 @@ import co.yedam.puppy.board.service.BoardServiceImpl;
 import co.yedam.puppy.comm.Command;
 import co.yedam.puppy.vo.BoardVO;
 
-public class VolReviewDelete implements Command {
+public class AjaxVolReviewDelete implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 봉사활동후기 삭제 페이지
 		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
+		String boardNo = request.getParameter("boardNo");
+		vo.setBoardNo(Integer.parseInt("boardNo"));
 		int r = dao.volReviewDelete(vo);
-		
-		vo.setBoardNo(Integer.parseInt(request.getParameter("boardNo")));
-		
-		
-		if (r > 0) {
-			System.out.println("DB에 1건이 삭제되었습니다.");
-		} else {
-			System.out.println("삭제 실패~!");
+		String json = "0";
+		if(r>0) {
+			json = "1";
 		}
 		
-		
-		return "volReviewList.do";
+		return "ajax:"+ json;
 	}
 
 }

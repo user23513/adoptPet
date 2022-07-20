@@ -2,6 +2,7 @@ package co.yedam.puppy.member.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.yedam.puppy.comm.Command;
 import co.yedam.puppy.member.service.MemberService;
@@ -16,10 +17,14 @@ public class MemberMyPage implements Command {
 		MemberService memberDao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
 		
-		//로그인한 계정가져오기 -수정해야됨
-		vo.setMemberId(request.getParameter("memberId"));
-		//vo.setMemberId("kim");
-
+		//로그인한 계정가져오기
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		String author = (String) session.getAttribute("author");
+		
+		vo.setMemberId(id);
+		vo.setMemberAuthor(author);
+	
 		vo = memberDao.memberSelectOne(vo);
 		
 		request.setAttribute("member", vo);
