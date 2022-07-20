@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 목록</title>
+<title>공지사항</title>
 <script type="js/jquery-3.6.0.min.js"></script>
 <style>
 	option,table{
@@ -17,6 +17,7 @@
 <body>
 <div align="center">
 <div>게시판 목록</div>
+
 	<div>
 		<form id="frm">
 		<select id="key" name="cars">

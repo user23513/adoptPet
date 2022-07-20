@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지 입력폼 </title>
 </head>
 <body>
-${memberUpdateComplete}
-${memberDeleteComplete}
+<h5>공지입력폼</h5>
 </body>
 </html>
