@@ -30,7 +30,6 @@ import co.yedam.puppy.adoptReview.command.AdoptReviewSearch;
 import co.yedam.puppy.adoptReview.command.AdoptReviewSelect;
 import co.yedam.puppy.adoptReview.command.AdoptReviewUpdate;
 import co.yedam.puppy.adoptSubscription.command.AdoptSubScription;
-import co.yedam.puppy.adoptSubscription.command.AdoptSubscriptionForm;
 import co.yedam.puppy.board.command.AjaxNoticeSearch;
 import co.yedam.puppy.board.command.NoticeForm;
 import co.yedam.puppy.board.command.NoticeInsert;
@@ -138,7 +137,6 @@ public class FrontController extends HttpServlet {
 		map.put("/heartCheck.do", new HeartCheck()); //게시글 좋아요버튼 눌렀을때 처리
 		map.put("/petListSearch.do", new PetListSearch()); //게시글 검색
 		
-		map.put("/adoptSubscriptionForm.do", new AdoptSubscriptionForm()); //입양신청폼으로 이동
 		map.put("/adoptSubScription.do", new AdoptSubScription()); //입양신청눌렀을때 처리해주는
 		
 		map.put("/noticeList.do", new NoticeList());//공지 리스트

@@ -2,6 +2,7 @@ package co.yedam.puppy.heart.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,7 +19,11 @@ public class HeartCheck implements Command {
 		//게시글 좋아요버튼 눌렀을때 처리
 		HeartService dao = new HeartServiceImpl();
 		HeartVO vo = new HeartVO();
-		vo.setMemberId(request.getParameter("memberId"));
+		
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		
+		vo.setMemberId(id);
 		vo.setPetListNo(Integer.parseInt(request.getParameter("petListNo")));
 		
 		int r = dao.heartCheck(vo); //좋아요 누른적이 있는지 확인 

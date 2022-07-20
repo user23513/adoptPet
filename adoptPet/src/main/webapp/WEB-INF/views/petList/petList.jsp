@@ -11,6 +11,20 @@
 <link href="css/adoptpet.css" rel="stylesheet" />   
       
 <style>
+
+/* @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap'); */
+
+/* body, h2 { */
+/* 	font-family: 'Gowun Dodum', sans-serif; */
+/* } */
+
+button {
+	background-color:transparent;
+	padding: 0;
+	border: none;
+	background: none;
+}
+
 #list {
 	 text-align : center;
 }
@@ -36,7 +50,7 @@
 		<table id="tb">
 			<thead>
 				  <tr>
-				    <th>게시물번호</th>
+				  	<th>No</th>
 				 	<th>이미지</th>
 					<th>제목</th>
 					<th>입양여부</th>
@@ -47,9 +61,9 @@
 			 <tbody>
 			 	<c:choose>
 				<c:when test="${not empty petList}">
-						<c:forEach var="list" items="${petList}">
+						<c:forEach var="list" items="${petList}" varStatus="i">
 							<tr>
-								<td>${list.petListNo}</td>
+								<td>${cnt-(pageNum-1)*pageSize - i.index }</td>
 								<c:if test="${not empty list.filesPath1}">
 									<td><img width="70" height="70" src="fileup/${list.filesPath1}"></td>
 								</c:if>
@@ -63,10 +77,10 @@
 								<button id="heartBtn" type="button" onclick="heartCheckFnc(${list.petListNo},${list.heartNum })">
 									<c:choose>
 										<c:when test="${list.heartCheck == 1}">
-											<img id="img${list.petListNo}" width="15" height="15" src="images/redHeart.png">
+											<img id="img${list.petListNo}" width="20" height="20" src="images/redHeart.png">
 										</c:when>
 										<c:otherwise>
-											<img id="img${list.petListNo}" width="15" height="15" src="images/whiteHeart.png">
+											<img id="img${list.petListNo}" width="20" height="20" src="images/whiteHeart.png">
 										</c:otherwise>
 									</c:choose>
 								</button>
@@ -104,7 +118,7 @@
 				headers: {
 					'Content-type': 'application/x-www-form-urlencoded'
 				},  
-				body: "memberId=lee"+"&petListNo="+petListNo
+				body: "petListNo="+petListNo
 			})
 				.then(function(result){
 					return result.json();
@@ -141,6 +155,7 @@
 					$('tbody').remove();
 					var tbody = $("<tbody />");
 					
+					
 					$.each(result, function(index, item) {
 						var row = $("<tr />").append(
 								$("<td />").text(item.petListNo),
@@ -148,7 +163,7 @@
 								$("<td />").text(item.petListTitle),
 								$("<td />").text(item.petListState),
 								$("<td />").text(item.petListType),
-								$("<td />").text(item.heartNum)
+								$("<td />").append($('<button /').attr('type','button'))
 								);
 								tbody.append(row);
 							});
