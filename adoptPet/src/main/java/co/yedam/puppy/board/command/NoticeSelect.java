@@ -16,7 +16,7 @@ public class NoticeSelect implements Command{
 		BoardService noticeDao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
 		vo.setBoardNo(Integer.valueOf(request.getParameter("no")));
-		vo = noticeDao.boardSelectOne(vo);
+		vo = noticeDao.boardSelect(vo);
 		return "notice/noticeSelect";
 	}
 
