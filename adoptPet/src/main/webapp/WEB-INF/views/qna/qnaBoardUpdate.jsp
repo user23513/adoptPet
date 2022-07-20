@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지 수정 폼</title>
+<title>문의 글 수정/등록</title>
 </head>
 <body>
 <div align="center">
-	<div><h1>게시글 수정 등록</h1></div>
+	<div><h1>문의 글 수정/등록</h1></div>
 	<div>
 		<form id="frm" action="noticeUpdateForm.do" method="post" enctype="multipart/form-data">
 			순번<input type="number" id="boardNo" name="boardNo" value="${boardVO.boardNo}">
@@ -21,5 +21,7 @@
 		</form>
 	</div>
 </div>
+</body>
+</html>
 </body>
 </html>

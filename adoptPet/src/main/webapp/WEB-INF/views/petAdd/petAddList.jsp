@@ -11,8 +11,7 @@
 <body>
 <%-- 	${message} 입양등록처리 되었습니다 메세지 --%>
 
-	<div align="center" >
-		<div >
+	<div align="center">
 		<table border="1">
 			<thead>
 				<tr>
@@ -46,9 +45,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		</div>
 		<div>
-			<button type="button" onclick="location.href='petList.do'" >글목록</button>
 			<button type="button" onclick="location.href='petAddForm.do'">등록</button>
 		</div>
 		<div>

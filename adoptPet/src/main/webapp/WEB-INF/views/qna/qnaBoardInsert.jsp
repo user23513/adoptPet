@@ -4,18 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지글 적는 폼</title>
+<title>문의글 작성/등록</title>
 </head>
 <body>
 <div align="center">
-	<div><h1>게시글등록</h1></div>
+	<div><h1>문의글 작성/등록</h1></div>
 	<div>
 		<form id="frm" action="noticeInsert.do" method="post" enctype="multipart/form-data">
 			<div>
 				<table border="1">
 					<tr>
-						<%-- <th width="150">작성자</th>
-						<td width="200">${board.boardWriter}</td> --%>
+						<th width="150">작성자</th>
+						<td width="200">${board.boardWriter}</td> 
 							
 					<tr>
 						<th>제목</th>
@@ -35,12 +35,7 @@
 							<textarea rows="6" cols="75" id="boardContent" name="boardContect"></textarea>
 						</td>
 					</tr>
-					<tr>
-						<th>첨부파일</th>
-						<td colspan="3">
-							<input type="file" id="filesName" name="filesName">
-						</td>
-					</tr>
+
 				</table>
 			</div><br>
 			<div>

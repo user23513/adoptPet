@@ -6,9 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css" integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
 <title>Insert title here</title>
+<script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
@@ -34,7 +33,7 @@ button {
   background-color: #83c0ae;
   color: white;
   padding: 14px 20px;
-  margin: 8px 2px;
+  margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100px;
@@ -119,10 +118,6 @@ hr {
      width: 100%;
   }
 }
-
-div {
-	 text-align : center;
-}
 </style>
 </head>
 <body>
@@ -155,14 +150,16 @@ div {
 		</table>
 		<div><input type="hidden" name="petAddNo" value="${vo.petAddNo}"> </div>
 		<div>
-			<button type="button" class="btn btn-primary" style="float: left;" onclick="location.href = 'petList.do'">목록</button>
+			<button type="button" style="float: left;" onclick="location.href = 'petList.do'">목록</button>
 			<c:if test="${check == true}">
-				<button type="button" class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" style="width:auto; float: right;">입양신청</button>
+				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto; float: right;">입양신청</button>
 			</c:if>
+
 			<c:if test="${author eq 'author'}">
 					<button type="button" class="btn btn-primary" style="float: right;" onclick="petListDeleteFnc(${vo.petListNo})">삭제</button>
 					<button type="button" class="btn btn-primary" style="float: right;" onclick="location.href = 'petListUpdateForm.do?petListNo=${vo.petListNo}'">수정</button>
 			</c:if>
+
 		</div>
 	</div>
 

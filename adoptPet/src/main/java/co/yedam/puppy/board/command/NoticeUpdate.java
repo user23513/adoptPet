@@ -17,7 +17,10 @@ public class NoticeUpdate implements Command{
 		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
 		vo.setBoardNo(Integer.parseInt(request.getParameter("boardNo")));
-		
+
+
+//		vo = dao.noticeSelectOne(vo);
+
 		request.setAttribute("boardVO", vo);
 		
 		return "notice/noticeList";

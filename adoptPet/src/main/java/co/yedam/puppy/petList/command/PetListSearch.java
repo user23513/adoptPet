@@ -10,11 +10,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import co.yedam.puppy.comm.Command;
-import co.yedam.puppy.heart.service.HeartService;
-import co.yedam.puppy.heart.service.HeartServiceImpl;
 import co.yedam.puppy.petList.service.PetListService;
 import co.yedam.puppy.petList.service.PetListServiceImpl;
-import co.yedam.puppy.vo.HeartVO;
 import co.yedam.puppy.vo.PetListVO;
 
 public class PetListSearch implements Command {
@@ -28,6 +25,7 @@ public class PetListSearch implements Command {
 		String key = request.getParameter("key");
 		String val = request.getParameter("val");
 		
+
 		list = dao.petListSearchList(key, val); //pet_list
 		List<PetListVO> nList = dao.petListFiles(list);
 		
@@ -44,7 +42,7 @@ public class PetListSearch implements Command {
 			int check = heartDao.heartCheck(heartVo); //하트클릭여부 체크(1이면 체크되어있는거 0이면 체크안되어있는거)
 			vo.setHeartCheck(check);
 		}
-		
+
 		String josnList = null;
 		try {
 			josnList = mapper.writeValueAsString(list);

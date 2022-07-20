@@ -42,7 +42,9 @@ public class PetListView implements Command {
 		
 		//같은게시글에 입양신청한 적이 있는지 확인(세션으로 멤버아이디받아와야함)
 		AdoptSubscriptionService adoptDao = new AdoptSubscriptionServiceImpl();
+
 		boolean check = adoptDao.isAdoptSubCheck(id, Integer.parseInt(petAddNo)); //true면 입양신청버튼이 보이게
+
 		request.setAttribute("vo", vo);
 		request.setAttribute("filePathList", filePathList);
 		request.setAttribute("check", check);
