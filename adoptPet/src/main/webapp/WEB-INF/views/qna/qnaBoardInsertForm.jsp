@@ -10,12 +10,12 @@
 <div align="center">
 	<div><h1>문의글 작성/등록</h1></div>
 	<div>
-		<form id="frm" action="noticeInsert.do" method="post" enctype="multipart/form-data">
+		<form id="frm" action="qnaBoardInsert.do" method="post" enctype="form-data">
 			<div>
 				<table border="1">
 					<tr>
-						<th width="150">작성자</th>
-						<td width="200">${board.boardWriter}</td> 
+						<%-- <th width="150">작성자</th>
+						<td width="200">${board.boardWriter}</td> --%>
 							
 					<tr>
 						<th>제목</th>

@@ -174,18 +174,11 @@ public class FrontController extends HttpServlet {
 
 		map.put("/qnaBoardList.do", new QnaBoardList()); // 문의게시판 리스트
 		map.put("/qnaBoardSelect.do", new QnaBoardSelect()); // 문의글 보기
-
+		map.put("/qnaBoardForm.do", new QnaBoardForm());// 문의글 입력폼 호출
 		map.put("/qnaBoardInsert.do", new QnaBoardInsert()); // 문의글 등록
-		map.put("/qnaBoardUpdate.do", new QnaBoardUpdate()); // 문의글 수정
+		map.put("/qnaBoardUpdateForm.do", new QnaBoardUpdate()); // 문의글 수정
 		map.put("/ajaxQnaBoardList.do", new AjaxQnaBoardSearch()); // 문의글 검색
 
-//		map.put("/qnaBoardDelete.do", new QnaBoardDelete()); // 문의글 삭제
-
-//		map.put("/qnaBoardForm.do", new QnaBoardForm()); // 문의글 입력폼 호출
-//		map.put("/qnaBoardInsert.do", new QnaBoardInsert()); // 문의글 등록
-//		map.put("/qnaBoardUpdate.do", new QnaBoardUpdate()); // 문의글 수정
-//		map.put("/qnaBoardDelete.do", new QnaBoardDelete()); // 문의글 삭제
-//		map.put("/ajaxQnaBoardList.do", new AjaxQnaBoardSearch()); // 문의글 검색
 		
 		map.put("/adoptReviewList.do", new AdoptReviewList());//공지 리스트
 		map.put("/adoptReviewSelect.do", new AdoptReviewSelect());//공지 상세보기
