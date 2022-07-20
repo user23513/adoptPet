@@ -40,6 +40,11 @@ thead {
 </head>
 <body>
 <div>
+	<% 	int pageCount = (int)request.getAttribute("pageCount");
+		int pageBlock = (int)request.getAttribute("pageBlock");
+		int startPage = (int)request.getAttribute("startPage"); //게시글이 하나도 없을때 0이다.
+		int endPage = (int)request.getAttribute("endPage");
+	%>
 		
 	</div>
 	<div id="list">
@@ -58,6 +63,7 @@ thead {
 		<table id="tb">
 			<thead>
 				  <tr>
+				  	<th>No</th>
 				    <th>게시물번호</th>
 				 	<th>이미지</th>
 					<th>제목</th>
@@ -71,6 +77,7 @@ thead {
 				<c:when test="${not empty petList}">
 						<c:forEach var="list" items="${petList}">
 							<tr>
+								<td>1</td>
 								<td>${list.petListNo}</td>
 								<c:if test="${not empty list.filesPath1}">
 									<td><img width="70" height="70" src="fileup/${list.filesPath1}"></td>
@@ -107,12 +114,8 @@ thead {
 		</table>
 	</div>
 	<div align="center">
-			<% 	int pageCount = (int)request.getAttribute("pageCount");
-				int pageBlock = (int)request.getAttribute("pageBlock");
-				int startPage = (int)request.getAttribute("startPage"); //게시글이 하나도 없을때 0이다.
-				int endPage = (int)request.getAttribute("endPage");
 				
-				for (int i = startPage; i<=endPage; i++) { %>
+				<%for (int i = startPage; i<=endPage; i++) { %>
 					<a href="petList.do?pageNum=<%=i%>"><%=i %></a>
 				<% } %>
 		</div>	

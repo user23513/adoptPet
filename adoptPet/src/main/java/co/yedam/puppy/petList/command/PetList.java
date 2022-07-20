@@ -35,6 +35,10 @@ public class PetList implements Command {
 			pageNum = "1";
 		}
 		
+		request.setAttribute("totalSize", cnt);
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("pageNum", pageNum);
+		 
 		//첫행번호를 계산
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1)*pageSize+1;
@@ -43,7 +47,7 @@ public class PetList implements Command {
 		
 		//다시 파일을 담은 list
 		List<PetListVO> nList = petListDao.petListFiles(petListDao.petListSelectList(currentPage, startRow, pageSize));
-		
+		request.setAttribute("listSize", nList.size());
 		//=================페이징처리=============================
 		int pageCount=0;
 		int pageBlock=0;
@@ -66,10 +70,10 @@ public class PetList implements Command {
 			}
 			
 		}
-		request.setAttribute("pageCount", pageCount);
-		request.setAttribute("pageBlock", pageBlock);
-		request.setAttribute("startPage", startPage);
-		request.setAttribute("endPage", endPage);
+		request.setAttribute("pageCount", pageCount); //전체 페이지수 계산
+		request.setAttribute("pageBlock", pageBlock); //한 페이지에 보여줄 페이지 블럭
+		request.setAttribute("startPage", startPage); //한 페이지에 보여줄 페이지 블럭 시작번호 계산
+		request.setAttribute("endPage", endPage); //한 페이지에 보여줄 페이지 블럭 끝 번호 계산
 		
 		HeartService heartDao = new HeartServiceImpl();
 		HeartVO heartVo = new HeartVO();
