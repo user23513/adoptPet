@@ -150,7 +150,7 @@ public class FrontController extends HttpServlet {
 		map.put("/volReviewUpdateForm.do", new VolReviewUpdateForm()); //봉사활동 후기 수정 폼
 		map.put("/volReviewUpdate.do", new VolReviewUpdate()); // 봉사활동후기 수정
 		map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
-  	map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
+		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
 	
 
 		map.put("/memberList.do", new MemberList()); //모든회원리스트

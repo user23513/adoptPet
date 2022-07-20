@@ -32,7 +32,7 @@ public class PetListServiceImpl implements PetListService {
 				+ "          FROM PET_LIST A\r\n"
 				+ "         ORDER BY PET_LIST_NO DESC\r\n"
 				+ "        ) \r\n"
-				+ " WHERE NUM BETWEEN ? AND ?";
+				+ " WHERE NUM BETWEEN ? AND ? ";
 		
 		try {
 			conn = dao.getConnection();
@@ -257,11 +257,10 @@ public class PetListServiceImpl implements PetListService {
 		//입양동물소개게시판 검색조회
 		List<PetListVO> list = new ArrayList<PetListVO>();
 		PetListVO vo;
-		String sql = "SELECT * FROM PET_LIST WHERE " + key + " LIKE ? ";
+		String sql = "SELECT * FROM PET_LIST WHERE " + key + " LIKE '%"+val+"%'";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, "%"+val+"%");
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -273,8 +272,10 @@ public class PetListServiceImpl implements PetListService {
 				vo.setPetListWriter(rs.getString("PET_LIST_WRITER"));
 				vo.setPetListState(rs.getString("PET_LIST_STATE"));
 				vo.setPetListType(rs.getString("PET_LIST_TYPE"));
+				vo.setPetAddNo(rs.getInt("PET_ADD_NO"));
 				list.add(vo);
 			}
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
