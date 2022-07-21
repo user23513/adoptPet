@@ -1,7 +1,4 @@
 @charset "UTF-8";
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
 body > div{
@@ -151,24 +148,17 @@ table tbody th p{
   height: 1px;
 
 } 
-#myPageDiv{
+#myPageDiv {
 	padding-top: 50px;
 	height: 800px;
 	line-height: 1.5;
-	width: 80%;
-	padding-left:400px;
-	border:1px solid red;
+	width: 70%;
 	margin: 0 auto;
 }
-#myPageDiv p{
-	padding :10px;
-}
 #myPageDiv button{
-	float: left;
 	margin:10px;
 }
 #memUpdateDiv{
-	border:1px solid blue;
 	padding-top:10px;
 	margin:0 auto;
 	width:500px;

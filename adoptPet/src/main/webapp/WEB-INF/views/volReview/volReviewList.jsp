@@ -42,7 +42,6 @@
 								<td>${b.boardWriter }</td>
 								<td><a href="volReviewSelectOne.do"></a> ${b.boardTitle }</td>
 								<td>${b.boardDate }</td>
-								<%-- 	<td>${b.boardAttech }</td> --%>
 								<td>${b.boardHit }</td>
 								<td><button type="button" id="writeBtn" onclick="location.href='volReviewList.do?boardNo=${vo.boardNo }&boardTitle=${vo.boardTitle }'">글쓰기</button> </td>
 								<td><button type="button" onclick="volReviewDeleteFnc(${vo.boardNo })">삭제</button></td>

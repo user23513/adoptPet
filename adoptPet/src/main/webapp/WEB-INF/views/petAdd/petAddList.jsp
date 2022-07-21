@@ -7,18 +7,34 @@
 <meta charset="UTF-8">
 <title>입양동물 등록 리스트</title>
 <script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
-<link href="css/adoptpet.css" rel="stylesheet" />    
+<link href="css/adoptpet.css" rel="stylesheet" />   
+
+<style>
+	#insertBtn {
+		float: right;
+		margin-top: 15px;
+		margin-right: 20px
+	}
+	
+	#ListBtn {
+		float: left;
+		margin-top: 15px;
+	}
+	
+	#paging {
+		margin-top: 35px;
+	}
+</style>
+ 
 </head>
 <body>
-<%-- 	${message} 입양등록처리 되었습니다 메세지 --%>
-
 	<section class="notice">
   		<div class="page-title">
         	<div class="container">
-            	<h3>입양 등록</h3>
+            	<h3>입양 동물 등록</h3>
         	</div>
     	</div>
-	<div align="center">
+	<div>
 		<table border="1">
 			<thead>
 				<tr>
@@ -46,16 +62,17 @@
 						<td>${vo.petAddHealth }</td>
 						<td>${vo.petAddAdoptState }</td>
 						<td>${vo.petAddType }</td>
-						<td><button type="button" class="btn btn-primary btn-xl" id="writeBtn" onclick="location.href='petListForm.do?petAddNo=${vo.petAddNo }&petAddName=${vo.petAddName }'">글쓰기</button> </td>
+						<td><button type="button" class="btn btn-primary btn-xl" id="writeBtn" onclick="location.href='petListForm.do?petAddNo=${vo.petAddNo }'">글쓰기</button> </td>
 						<td><button type="button" class="btn btn-primary btn-xl" onclick="petAddDeleteFnc(${vo.petAddNo })">삭제</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<div>
-			<button type="button" class="btn btn-primary btn-xl" onclick="location.href='petAddForm.do'">등록</button>
+			<button id="insertBtn" type="button" class="btn btn-primary btn-xl" onclick="location.href='petAddForm.do'">동물 등록</button>
+			<button id="ListBtn" type="button" class="btn btn-primary btn-xl" onclick="location.href='petList.do'">소개글 목록</button>
 		</div>
-		<div>
+		<div id="paging" align="center">
 			<% 	int pageCount = (int)request.getAttribute("pageCount");
 			int pageBlock = (int)request.getAttribute("pageBlock");
 			int startPage = (int)request.getAttribute("startPage"); //게시글이 하나도 없을때 0이다.

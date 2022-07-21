@@ -75,11 +75,11 @@ public class PetListInsert implements Command {
 			}
 			
 			
-		} catch (IOException e) {
+		} catch (IOException e) { 
 			e.printStackTrace();
 		}
 		
-		if(r>0) {request.setAttribute("r", r);}
+		request.setAttribute("r", r);
 		
 		return "petList/petListForm";
 	}
