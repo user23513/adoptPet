@@ -26,6 +26,7 @@ public class QnaBoardInsert implements Command {
 		vo.setBoardNo(Integer.parseInt(no));
 		String id = request.getParameter("boardId");
 		vo.setBoardId(Integer.parseInt(id));
+		
 		vo.setBoardTitle(request.getParameter("boardTitle"));
 		vo.setBoardWriter(request.getParameter("boardWriter"));
 		vo.setBoardContent(request.getParameter("boardContent"));
@@ -34,12 +35,14 @@ public class QnaBoardInsert implements Command {
 		String hit = request.getParameter("boardHit");
 		vo.setBoardHit(Integer.parseInt(hit));
 		
-		int r = Dao.volReviewInsert(vo); // int 타입 0건입력 1건입력
+		
+		
+		int r = Dao.qnaBoardInsert(vo); // int 타입 0건입력 1건입력
 		
 		if(r > 0) {
-			System.out.println("DB에 1건 입력되었습니다.");
+			request.setAttribute("message", "등록처리가 되었습니다.");
 		} else {
-			System.out.println("입력 실패!");
+			request.setAttribute("message", "등록처리가 실패했습니다.");
 		}
 		return "qna/qnaBoardList"; 
 	}
