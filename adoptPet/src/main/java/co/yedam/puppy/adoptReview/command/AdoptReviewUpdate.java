@@ -15,12 +15,7 @@ public class AdoptReviewUpdate implements Command{
 		// 입양 후기 수정
 		BoardService dao = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
-		
-		
 		vo.setBoardNo(Integer.parseInt(request.getParameter("boardNo")));
-
-//		vo = dao.noticeSelectOne(vo);
-		
 		request.setAttribute("boardVO", vo);
 		
 		return "adoptReview/adoptReviewList";

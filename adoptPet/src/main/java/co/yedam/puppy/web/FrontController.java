@@ -31,6 +31,7 @@ import co.yedam.puppy.adoptReview.command.AdoptReviewSelect;
 import co.yedam.puppy.adoptReview.command.AdoptReviewUpdate;
 import co.yedam.puppy.adoptSubscription.command.AdoptSubScription;
 import co.yedam.puppy.board.command.AjaxNoticeSearch;
+import co.yedam.puppy.board.command.NoticeDelete;
 import co.yedam.puppy.board.command.NoticeForm;
 import co.yedam.puppy.board.command.NoticeInsert;
 import co.yedam.puppy.board.command.NoticeList;
@@ -147,7 +148,8 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeForm.do", new NoticeForm());//공지 입력폼 호출
 		map.put("/noticeInsert.do", new NoticeInsert()); //공지 등록
 		map.put("/noticeUpdateForm.do", new NoticeUpdate());//공지 수정 폼
-		map.put("/ajaxNoticeInsert.do", new AjaxNoticeSearch());//공지 검색
+		map.put("/noticeSearch.do", new AjaxNoticeSearch());//공지 검색
+		map.put("/noticeDelete.do", new NoticeDelete());
 		
 		map.put("/volReviewList.do", new VolReviewList()); // 봉사활동후기 리스트
 		map.put("/volReviewSelectOne", new VolReviewSelectOne()); // 봉사활동후기 단건조회
@@ -188,12 +190,12 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxQnaBoardList.do", new AjaxQnaBoardSearch()); // 문의글 검색
 
 		
-		map.put("/adoptReviewList.do", new AdoptReviewList());//공지 리스트
-		map.put("/adoptReviewSelect.do", new AdoptReviewSelect());//공지 상세보기
-		map.put("/adoptReviewForm.do", new AdoptReviewForm());//공지 입력폼 호출
-		map.put("/adoptReviewInsert.do", new AdoptReviewInsert()); //공지 등록
-		map.put("/noticeUpdate.do", new AdoptReviewUpdate());//공지 수정 폼
-		map.put("/AdoptReviewSearch.do", new AdoptReviewSearch());//공지 검색
+		map.put("/adoptReviewList.do", new AdoptReviewList());//입양후기 리스트
+		map.put("/adoptReviewSelect.do", new AdoptReviewSelect());//입양후기 상세보기
+		map.put("/adoptReviewForm.do", new AdoptReviewForm());//입양후기 입력폼 호출
+		map.put("/adoptReviewInsert.do", new AdoptReviewInsert()); //입양후기 등록
+		map.put("/adoptReviewUpdate.do", new AdoptReviewUpdate());//입양후기 수정 폼
+		map.put("/AdoptReviewSearch.do", new AdoptReviewSearch());//입양후기 검색
 		
 
 	}

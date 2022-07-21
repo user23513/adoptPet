@@ -10,7 +10,7 @@ public class AdoptReviewForm implements Command{
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 입양후기 등록
-		return "adopt/adoptReviewForm";
+		return "adoptReview/adoptReviewForm";
 	}
 
 }

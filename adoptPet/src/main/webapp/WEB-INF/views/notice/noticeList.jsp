@@ -13,6 +13,14 @@
 		border: 1px solid black;
 		border-radius: 10px;
 	}
+	
+	section.notice {
+  		padding: 80px 20px 20px 20px;
+	}
+	
+	button {
+  		float: right;
+	}
 </style>
 </head>
 <body>
@@ -24,9 +32,9 @@
         	</div>
     	</div>
 
-	<div>
-		<form id="frm">
-		<select id="key" name="cars">
+	<div style="float: right; margin: 10px">
+		<form id="frm" >
+		<select id="key" name="key">
 			  <!-- <option value="1">전체</option> -->
 			  <option value="board_title">제목</option>
 			  <option value="board_subject">내용</option>
@@ -54,9 +62,8 @@
 				<c:forEach items="${list }" var="b">
 					<tr>
 						<td>${b.boardNo }</td>
-						<%-- <td>${board_part.boardName }</td> --%>
 						<td>${b.boardWriter }</td>
-						<td><a href="noticeSelect.do">${b.boardTitle }</a></td>
+						<td><a href="noticeSelect.do?no=${b.boardNo }">${b.boardTitle }</a></td>
 						<td>${b.boardDate }</td>
 						<td>${b.boardHit }</td>
 					</tr>
@@ -72,20 +79,36 @@
 	</table>
 	
 </div>
-<br>
+	</div>
+	<div id="paging" style="clear:both; text-align: center;">
+	<% 	int pageCount = (int)request.getAttribute("pageCount");
+		int pageBlock = (int)request.getAttribute("pageBlock");
+		int startPage = (int)request.getAttribute("startPage"); //게시글이 하나도 없을때 0이다.
+		int endPage = (int)request.getAttribute("endPage");
+	%>
+				
+				<%for (int i = startPage; i<=endPage; i++) { %>
+					<a href="noticeList.do?pageNum=<%=i%>"><%=i %></a>
+				<% } %>
+		</div>	
+
+
+
+
 <div>
 	<c:if test="${author == 'ADMIN' }"><!-- 접근권한  -->
-	<button type="button" onclick="location.href='noticeForm.do'">글등록</button>
+	<button class="btn btn-primary btn-l" type="button" onclick="location.href='noticeForm.do'">글등록</button>
 	</c:if>
 </div>
-</div>
+
+
 <script type="text/javascript">
-<!-- 	function noticeSerarch() {
-		let key = $("#key").val();//$("#key").val();
-;		let val = $("#val").val();//$("#val").val();
+ 	function noticeSerarch() {
+		let key = $("#key").val();
+;		let val = $("#val").val();
 		//ajax function Call
 		$.ajax({
-			url : "ajaxBoardSearch.do",
+			url : "noticeSearch.do",
 			type : "post",
 			data : {key:key, val:val},
 			dataType : "json",
@@ -101,7 +124,9 @@
 
 	}
 });
-	} -->
+	} 
+ 	
+ 	
 	function jsonHtmlConvert(data){
 		$('tbody').remove();
 		var tbody = $("<tbody />");
@@ -120,11 +145,11 @@
 		$("table").append(tbody);
 	}
 	
-	function noticeSerarch(){
+/* 	function noticeSerarch(){
 		const ajax = new XMLHttpRequest();
 		let key = document.getElementById('key').value;
 		let val = document.getElementById('val').value;
-		const url = "ajaxNoticeSearche.do";
+		const url = "noticeSearch.do";
 		const data = {"key" : key,"val" : val};
 		ajax.onload = function(){
 			if(ajax.status >= 200 && ajax.status < 300){
@@ -139,7 +164,7 @@
 		ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		ajax.responseType='json';
 		ajax.send(Object.keys(data).map(key => key+"="+data[key]).join('&')); //   
-	}
+	} */
 	
 	function errorCallback(err){
 		console.log('error : '+err.message);
@@ -151,7 +176,7 @@
 		let id = $(td).html();		
 		
 			const xhr = new XMLHttpRequest();
-		const url = "ajaxNoticeDelte.do?id="+id;
+		const url = "NoticeDelete.do?id="+id;
 		xhr.onload = function(){
 			if(xhr.status >= 200 && xhr.status < 300){
 				if(xhr.response == 1) {

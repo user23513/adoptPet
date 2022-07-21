@@ -59,6 +59,7 @@ public class AdoptReviewList implements Command{
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
+		
 		return "adoptReview/adoptReviewList";
 	}
 
