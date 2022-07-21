@@ -11,14 +11,40 @@
 </head>
 <body>
 <div id="myPageDiv">
-	<p>${member.memberId}</p>
-	<p>${member.memberPassword}</p>
-	<p>${member.memberName }</p>
-	<p>${member.memberTel}</p>
-	<p>${member.memberEmail }</p>
-	<p>${member.memberJob}</p>
-	<p>${member.memberGender }</p>
-	<p>${member.memberAuthor }</p>
+	<table>
+		<tr>
+			<th>아이디</th>
+			<td>${member.memberId}</td>
+		</tr>
+		<tr>
+			<th>비밀번호</th>
+			<td>${member.memberPassword}</td>
+		</tr>
+		<tr>
+			<th>이름</th>
+			<td>${member.memberName}</td>
+		</tr>
+		<tr>
+			<th>전화번호</th>
+			<td>${member.memberTel}</td>
+		</tr>
+		<tr>
+			<th>이메일</th>
+			<td>${member.memberEmail}</td>
+		</tr>
+		<tr>
+			<th>직업</th>
+			<td>${member.memberJob}</td>
+		</tr>
+		<tr>
+			<th>성별</th>
+			<td>${member.memberGender}</td>
+		</tr>
+		<tr>
+			<th>권한</th>
+			<td>${member.memberAuthor}</td>
+		</tr>
+	</table>
 	<br>
 	<button class="btn btn-primary btn-xl" onclick="location.href='memberUpdateForm.do'">내정보수정하기</button>
 	<form id="frm" action="memberDelete.do" method="post">
