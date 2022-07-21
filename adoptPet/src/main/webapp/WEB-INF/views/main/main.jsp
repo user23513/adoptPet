@@ -116,7 +116,7 @@
                     <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
                     <h3 class="h4 mb-2">Community</h3>
                     <a class="text-muted mb-0" href="#">공지사항</a><br>
-                    <a class="text-muted mb-0" href="#">문의게시판</a>
+                    <a class="text-muted mb-0" href="qnaBoardList.do">Q&A</a>
                 </div>
             </div>
              <div class="col-lg-3 col-md-6 text-center">
