@@ -11,7 +11,7 @@
 </script>
 </head>
 <body>
-<a href="memberMyPage.do"><%=session.getAttribute("id") %></a>
+
  <!-- Masthead-->
 <header class="masthead">
     <div class="container px-4 px-lg-5 h-100">
@@ -90,7 +90,7 @@
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
                     <h3 class="h4 mb-2">My page</h3>
-                    <a class="text-muted mb-0" href="#">내 정보 보기</a><br>
+                    <a class="text-muted mb-0" href="memberMyPage.do"><%=session.getAttribute("id") %>내 정보 보기</a><br>
                     <a class="text-muted mb-0" href="#">입양 신청 현황</a><br>
                     <a class="text-muted mb-0" href="#">나의 봉사참여 신청현황</a>
                 </div>

@@ -159,13 +159,11 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxVolReviewDelete.do", new AjaxVolReviewDelete()); // 봉사활동 후기 삭제
 		
 
-<<<<<<< HEAD
+
 //		map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가 
 
 	
-=======
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
 
 		map.put("/memberList.do", new MemberList()); //모든회원리스트
 		map.put("/adoptList.do", new AdoptList());//모든입양신청리스트
