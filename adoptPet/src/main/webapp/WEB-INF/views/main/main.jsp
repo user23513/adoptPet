@@ -21,7 +21,7 @@
                 <hr class="divider" />
             </div>
             <div class="col-lg-8 align-self-baseline">
-                <p class="text-white-75 mb-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p>
+                <p class="text-white-75 mb-5">Help us give a happy home to thousands of stray and abandoned dogs. Don't buy a pet, adopt one!</p>
                 <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
             </div>
         </div>
@@ -49,7 +49,20 @@
 							};
 
 							var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
-						}
+							
+						    var subMarkerPoint = { lat: 35.86911582324232, lng: 128.59325935232815};
+							var subMarker = new google.maps.Marker({
+							      position: subMarkerPoint,
+							      map: map,
+							      label:"데려가줘",
+							      icon: {
+							        url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+							        labelOrigin: new google.maps.Point(15, -10),
+							        anchor: new google.maps.Point(-10,40)
+							      }
+							    });
+							}
+						
 					</script>
 					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD2hrjGpgsEXIDgmQ2lk2h7-eEBH-XiRc&callback=myMap"></script>
  					<br>
@@ -76,29 +89,42 @@
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2"></h3>
-                    <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+                    <h3 class="h4 mb-2">My page</h3>
+                    <a class="text-muted mb-0" href="#">내 정보 보기</a><br>
+                    <a class="text-muted mb-0" href="#">입양 신청 현황</a><br>
+                    <a class="text-muted mb-0" href="#">나의 봉사참여 신청현황</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Up to Date</h3>
-                    <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
+                    <h3 class="h4 mb-2">Adopt Page</h3>
+                    <a class="text-muted mb-0" href="#">동물 보러 가기</a><br>
+                    <a class="text-muted mb-0" href="#">입양 동물 후기</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Ready to Publish</h3>
-                    <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
+                    <h3 class="h4 mb-2">Volunteer</h3>
+                    <a class="text-muted mb-0" href="#">봉사 일정</a><br>
+                    <a class="text-muted mb-0" href="#">봉사 후기</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Made with Love</h3>
-                    <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
+                    <h3 class="h4 mb-2">Community</h3>
+                    <a class="text-muted mb-0" href="#">공지사항</a><br>
+                    <a class="text-muted mb-0" href="#">문의게시판</a>
+                </div>
+            </div>
+             <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
+                    <h3 class="h4 mb-2">관리자페이지</h3>
+                    <a class="text-muted mb-0" href="#">회원 리스트</a><br>
+                    <a class="text-muted mb-0" href="#">입양신청 내역</a>
                 </div>
             </div>
         </div>

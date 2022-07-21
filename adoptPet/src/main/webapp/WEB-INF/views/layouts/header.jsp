@@ -33,18 +33,18 @@
 	        <div class="collapse navbar-collapse" id="navbarResponsive">
 	           
 	            <ul class="navbar-nav ms-auto my-2 my-lg-0">
-	                <li class="nav-item"><a class="nav-link" href="petList.do">MY PAGE</a></li>
+	                <li class="nav-item"><a class="nav-link" href="#services">MY PAGE</a></li>
 	                	<!-- <ul>
 	                		<li><a href="#" >내 정보 보기</a></li>
 	                		<li><a href="#" >입양신청 현황</a></li>
 	                		<li><a href="#" >나의 봉사신청 현황</a></li>
 	                	</ul> -->
-	                <li class="nav-item"><a class="nav-link" href="#">ADOPT PAGE</a></li>
+	                <li class="nav-item"><a class="nav-link" href="#services">ADOPT PAGE</a></li>
 	                	<!-- <ul>
 	                		<li><a href="#" >입양동물 소개</a></li>
 	                		<li><a href="#" >입양동물 후기</a></li>
 	                	</ul> -->
-	                <li class="nav-item"><a class="nav-link" href="#">VOLUNTEER</a></li>
+	                <li class="nav-item"><a class="nav-link" href="#services">VOLUNTEER</a></li>
 	                <!-- 	<ul>
 	                		<li><a href="#" >봉사 일정</a></li>
 	                		<li><a href="#" >봉사 후기</a></li>
@@ -54,7 +54,10 @@
 	                		<li><a href="#" >봉사 일정</a></li>
 	                		<li><a href="#" >봉사 후기</a></li>
 	                	</ul> -->
-	                <li class="nav-item"><a class="nav-link" href="#">관리자페이지</a></li>
+	                	
+	                <li class="nav-item"><a class="nav-link" href="#services">Login</a></li>
+	                
+	                <li class="nav-item"><a class="nav-link" href="#services">관리자페이지</a></li>
 	                	<!-- <ul>
 	                		<li><a href="#" >회원 리스트</a></li>
 	                		<li><a href="#" >입양신청 내역</a></li>
