@@ -1,9 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
-
+/* 
 body > div{
-
-
 	padding-top: 20px;
 	width: 80%;
 	margin: 0 auto;
@@ -12,7 +10,7 @@ body > div{
 	color: #122550;
 
 	}
-
+ */
 div, td, th {
 	font-family: 'Gowun Dodum', sans-serif;
 	font-size: 20px;
@@ -148,15 +146,19 @@ table tbody th p{
   height: 1px;
 
 } 
-#myPageDiv {
+.myDiv {
 	padding-top: 50px;
 	height: 800px;
 	line-height: 1.5;
-	width: 70%;
+	width: 750px;
 	margin: 0 auto;
 }
-#myPageDiv button{
+.myDiv #btnDiv{
+	padding-left: 230px;
+} 
+.myDiv button{
 	margin:10px;
+	float: left;
 }
 #memUpdateDiv{
 	padding-top:10px;
@@ -174,5 +176,11 @@ table tbody th p{
 	padding-left: 150px;
 
 }
-
+.AdoptDiv{
+	padding-top: 50px;
+	height: 800px;
+	line-height: 1.5;
+	width: 70%;
+	margin: 0 auto;
+}
 

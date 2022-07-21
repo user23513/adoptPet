@@ -26,6 +26,7 @@ public interface AdminService {
 	int updateVolunteerList(VolunteerSubscriptionVO vo); //봉사신청상태 수정
 	int volunteerListCount();//봉사신청페이지수
 	List<VolunteerSubscriptionVO> volunteerSubscriptionSearchList(String key, String val);//봉사신청상태 검색
+	PetListVO petListSelectOne(PetListVO vo);
 	
 	
 	

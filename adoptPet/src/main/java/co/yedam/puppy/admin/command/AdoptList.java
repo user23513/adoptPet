@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.puppy.admin.service.AdminService;
 import co.yedam.puppy.admin.service.AdminServiceImple;
 import co.yedam.puppy.comm.Command;
+import co.yedam.puppy.petList.service.PetListService;
+import co.yedam.puppy.petList.service.PetListServiceImpl;
 import co.yedam.puppy.vo.AdoptSubscriptionVO;
+import co.yedam.puppy.vo.PetListVO;
 
 public class AdoptList implements Command {
 
@@ -31,6 +34,9 @@ public class AdoptList implements Command {
 
 		List<AdoptSubscriptionVO> list = adminDao.allAdoptList(currentPage, startRow, pageSize);
 		request.setAttribute("adoptList", list);
+		
+	
+		
 		
 		// =================페이징처리=============================
 		int pageCount = 0;

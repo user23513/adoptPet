@@ -8,27 +8,36 @@
 <title>Insert title here</title>
 <script src="js/jquery-3.6.0.min.js" /></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
+<link rel="stylesheet" href="css/adoptpet.css">
 </head>
 <body>
-<div align="center">
+<div class="AdoptDiv">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-8 col-xl-6 text-center">
+            <h2 class="mt-0">VOLUNTEER LIST</h2>
+            <hr class="divider" />
+        </div>
+    </div>
 	<div>
 		<form id="frm">
 		<select id="val" name="val">
 			  <option value="봉사">전체</option>
-			  <option value="봉사참여승인대기">봉사참여승인대기</option>
-			  <option value="봉사참여승인완료">봉사참여승인완료</option>
-			  <option value="봉사참여승인불가">봉사참여승인불가</option>
+			  <option value="봉사승인대기">봉사참여승인대기</option>
+			  <option value="봉사승인완료">봉사참여승인완료</option>
+			  <option value="봉사승인불가">봉사참여승인불가</option>
 		</select>&nbsp;
 			<input type="hidden" id="key" name="key" value="volunteer_subscription_ok">
-			<input type="button" value="검색" onclick="volunteerStateSerarch()">
+			<input type="button" class="btn btn-primary btn-l" value="검색" onclick="volunteerStateSerarch()">
 		</form>	
 	</div>
+	<br>
 <table border="1">
 		<thead>
 			<tr>
 				<th>회원아이디</th>
 				<th>봉사신청번호</th>
 				<th>상태</th>
+				<th>수정하기</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,7 +48,7 @@
 							<td>${list.memberId }</td>
 							<td>${list.calendarNo }</td>
 							<td>${list.volunteerSubscriptionOk }</td>
-							<td id=""><input type="button" value="수정" id="modify"></td>
+							<td><input type="button" value="수정" class="btn btn-primary btn-l" id="modify"></td>
 						</tr>
 					</c:forEach>
 				</c:when>
@@ -52,7 +61,7 @@
 		</tbody>
 	</table>
 
-<div>
+<div style="text-align:center;">
 	<%
 	int pageCount = (int) request.getAttribute("pageCount");
 	int pageBlock = (int) request.getAttribute("pageBlock");
@@ -76,7 +85,7 @@ function jsonHtmlConvert(data) {
 					$("<td />").text(item.memberId),
 					$("<td />").text(item.calendarNo),
 					$("<td />").text(item.volunteerSubscriptionOk),
-					$("<td />").append($("<button onclick=updateVolunteerState(this) /> ").text("수정"))
+					$("<td />").append($("<button class='btn btn-primary btn-l' /> ").text("수정"))
 				);
 		tbody.append(row);
 	});

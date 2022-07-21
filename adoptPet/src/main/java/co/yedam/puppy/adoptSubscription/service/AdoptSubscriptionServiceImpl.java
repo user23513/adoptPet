@@ -22,7 +22,7 @@ public class AdoptSubscriptionServiceImpl implements AdoptSubscriptionService {
 	public List<AdoptSubscriptionVO> myAdoptSubList(AdoptSubscriptionVO vo) {
 		//나의입양신청
 		List<AdoptSubscriptionVO> list = new ArrayList<AdoptSubscriptionVO>();
-		String sql = "select * from adopt_subscription where member_id=?";
+		String sql = "SELECT * FROM ADOPT_SUBSCRIPTION WHERE MEMBER_ID=?";
 		
 		try {
 			conn = dao.getConnection();
@@ -71,13 +71,6 @@ public class AdoptSubscriptionServiceImpl implements AdoptSubscriptionService {
 		return r;
 	}
 
-	@Override
-	public int myAdoptSubUpdate(AdoptSubscriptionVO vo) {
-
-		// 나의 입양신청 수정
-
-		return 0;
-	}
 
 	@Override
 	public int myAdoptSubDelete(AdoptSubscriptionVO vo) {

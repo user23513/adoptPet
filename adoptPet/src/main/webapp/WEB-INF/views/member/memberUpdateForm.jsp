@@ -9,21 +9,13 @@
 <link href="css/styles.css" rel="stylesheet" />  
 </head>
 <body>
-
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-lg-8 col-xl-6 text-center">
             <h2 class="mt-0">MYPAGE</h2>
             <hr class="divider" />
         </div>
     </div>
-
-
 <div id="memUpdateDiv">
-
-
-
-
-
 	<input type="text" value="${member.memberId}" id="memberId" name="memberId" readonly="readonly" class="form-control"><br>
 	<input type="password" value="${member.memberPassword}" readonly="readonly" class="form-control"><br>
 	<input type="text" value="${member.memberName}" id="memberName" name="memberName" class="form-control"><br>

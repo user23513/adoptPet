@@ -5,10 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/adoptpet.css">
 </head>
 <body>
-<div align="center">
-입양신청 상세보기
+<div class="myDiv">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-8 col-xl-6 text-center">
+            <h2 class="mt-0">ADOPT SUBSCRIPTION DETAIL</h2>
+            <hr class="divider" />
+        </div>
+    </div>
 <table border="1">
 		<tr>
 			<th>아이디</th>
@@ -51,7 +57,7 @@
 			<td colspan="5">${vo.adoptSubscriptionOk }</td>
 		</tr>
 </table>
-<button onclick="location.href='adoptList.do'">뒤로가기</button>
+<button onclick="location.href='adoptList.do'" class="btn btn-primary btn-xl">뒤로가기</button>
 </div>
 </body>
 </html>

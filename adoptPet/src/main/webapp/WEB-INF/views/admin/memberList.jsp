@@ -8,12 +8,18 @@
 <title>Insert title here</title>
 <script src="js/jquery-3.6.0.min.js" /></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
-<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="css/adoptpet.css">
 </head>
 <body>
-<div align="center">
-회원리스트
-<table border="1">
+<div class="AdoptDiv">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-8 col-xl-6 text-center">
+            <h2 class="mt-0">MEMBER LIST</h2>
+            <hr class="divider" />
+        </div>
+    </div>
+
+<table>
 	<thead>
 		<tr>
 			<th>아이디</th>
@@ -31,7 +37,7 @@
 			<c:when test="${not empty memberList }">
 				<c:forEach var="list" items="${memberList }">
 					<tr>
-						<td>${list.memberId }</td>
+						<th>${list.memberId }</th>
 						<td>${list.memberName }</td>
 						<td>${list.memberEmail }</td>
 						<td>${list.memberGender }</td>
@@ -39,7 +45,7 @@
 						<td>${list.memberTel }</td>
 						<td>${list.memberAuthor }</td>
 						<td id="${list.memberId }">
-						<input type="button" value="수정" id="modify" onclick="modifyFnc('${list.memberId }')" name="${list.memberId }">
+						<input type="button" class="btn btn-primary btn-l" value="수정" id="modify" onclick="modifyFnc('${list.memberId }')" name="${list.memberId }">
 						</td>
 					</tr>
 				</c:forEach>
@@ -52,7 +58,7 @@
 		</c:choose>
 	</tbody>
 </table> 
-<div>
+<div style="text-align:center;">
 	<%
 	int pageCount = (int) request.getAttribute("pageCount");
 	int pageBlock = (int) request.getAttribute("pageBlock");

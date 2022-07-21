@@ -85,19 +85,33 @@
         <h2 class="text-center mt-0">At Your Service</h2>
         <hr class="divider" />
         <div class="row gx-4 gx-lg-5">
+        
+        
+            <% if(session.getAttribute("author").equals("ADMIN")){%>
+             <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
+                    <h3 class="h4 mb-2">ADMIN PAGE</h3>
+                    <a class="text-muted mb-0" href="memberList.do">회원 리스트</a><br>
+                    <a class="text-muted mb-0" href="#">입양신청 내역</a>
+                </div>
+            </div>
+            <%} else{ %>
+        
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">My page</h3>
-                    <a class="text-muted mb-0" href="memberMyPage.do"><%=session.getAttribute("id") %>내 정보 보기</a><br>
-                    <a class="text-muted mb-0" href="#">입양 신청 현황</a><br>
+                    <h3 class="h4 mb-2">MY PAGE</h3>
+                    <a class="text-muted mb-0" href="memberMyPage.do">내 정보 보기</a><br>
+                    <a class="text-muted mb-0" href="memberAdopt.do">입양 신청 현황</a><br>
                     <a class="text-muted mb-0" href="#">나의 봉사참여 신청현황</a>
                 </div>
             </div>
+            <%} %>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Adopt Page</h3>
+                    <h3 class="h4 mb-2">ADOPT PAGE</h3>
                     <a class="text-muted mb-0" href="#">동물 보러 가기</a><br>
                     <a class="text-muted mb-0" href="#">입양 동물 후기</a>
                 </div>
@@ -105,7 +119,7 @@
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Volunteer</h3>
+                    <h3 class="h4 mb-2">VOLUNTEER</h3>
                     <a class="text-muted mb-0" href="#">봉사 일정</a><br>
                     <a class="text-muted mb-0" href="#">봉사 후기</a>
                 </div>
@@ -113,17 +127,9 @@
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">Community</h3>
+                    <h3 class="h4 mb-2">COMMUNITY</h3>
                     <a class="text-muted mb-0" href="#">공지사항</a><br>
                     <a class="text-muted mb-0" href="qnaBoardList.do">Q&A</a>
-                </div>
-            </div>
-             <div class="col-lg-3 col-md-6 text-center">
-                <div class="mt-5">
-                    <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">관리자페이지</h3>
-                    <a class="text-muted mb-0" href="#">회원 리스트</a><br>
-                    <a class="text-muted mb-0" href="#">입양신청 내역</a>
                 </div>
             </div>
         </div>

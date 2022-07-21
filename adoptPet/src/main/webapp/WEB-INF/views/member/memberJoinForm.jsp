@@ -14,7 +14,7 @@
 		</div>
 		<div>
 			<form id="frm" action="memberJoin.do"
-				onsubmit="return formCheck() method="post">
+				onsubmit="return formCheck()" method="post">
 				<div>
 					<table border="1">
 						<tr>

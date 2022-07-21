@@ -9,6 +9,7 @@ import java.util.List;
 import co.yedam.puppy.comm.DataSource;
 import co.yedam.puppy.vo.AdoptSubscriptionVO;
 import co.yedam.puppy.vo.MemberVO;
+import co.yedam.puppy.vo.PetListVO;
 import co.yedam.puppy.vo.VolunteerSubscriptionVO;
 
 public class AdminServiceImple implements AdminService {
@@ -89,9 +90,7 @@ public class AdminServiceImple implements AdminService {
 			while(rs.next()) {
 				vo = new AdoptSubscriptionVO();
 				vo.setMemberId(rs.getString("member_id"));
-
 				vo.setPetAddNo(rs.getInt("pet_add_no"));
-
 				vo.setAdoptSubscriptionOk(rs.getString("adopt_subscription_ok"));
 				vo.setAdoptSubscriptionReason(rs.getString("adopt_subscription_reason"));
 				list.add(vo);
@@ -230,9 +229,7 @@ public class AdminServiceImple implements AdminService {
 			while(rs.next()) {
 				vo = new AdoptSubscriptionVO();
 				vo.setMemberId(rs.getString("member_id"));
-
 				vo.setPetAddNo(rs.getInt("pet_add_no"));
-
 				vo.setAdoptSubscriptionOk(rs.getString("adopt_subscription_ok"));
 				vo.setAdoptSubscriptionReason(rs.getString("adopt_subscription_reason"));
 				list.add(vo);
@@ -321,6 +318,36 @@ public class AdminServiceImple implements AdminService {
 	}
 
 
+	@Override
+	public PetListVO petListSelectOne(PetListVO vo) {
+		//입양동물소개게시판 단건조회
+		String sql = "SELECT * FROM PET_LIST WHERE PET_ADD_NO=?";
+		try {
+			conn = dao.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getPetAddNo());
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+					vo.setPetListNo(rs.getInt("PET_LIST_NO"));
+					vo.setBoardId(rs.getInt("BOARD_ID"));
+					vo.setPetListTitle(rs.getString("PET_LIST_TITLE"));
+					vo.setPetListContent(rs.getString("PET_LIST_CONTENT"));
+					vo.setPetListWriter(rs.getString("PET_LIST_WRITER"));
+					vo.setPetListState(rs.getString("PET_LIST_STATE"));
+					vo.setPetListType(rs.getString("PET_LIST_TYPE"));
+					vo.setPetAddNo(rs.getInt("PET_ADD_NO"));
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return vo;
+	}
 
 	private void close() {
 		try {

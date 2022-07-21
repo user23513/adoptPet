@@ -13,24 +13,14 @@
 	height: 75px;
 	background-color: #f4623a;
 	}
-	#bd{
-/* 	margin:0 auto;
-	width: 80%;
-	padding-top:20px; */
-	}
 </style>
 </head>
 <body>
-
 	<tiles:insertAttribute name="header"/>
-	
 	<div id="test"></div>
 	<div id="bd">
 	<tiles:insertAttribute name="body" />
 	</div>
-
 	<tiles:insertAttribute name="footer"/>
-
-
 </body>
 </html>

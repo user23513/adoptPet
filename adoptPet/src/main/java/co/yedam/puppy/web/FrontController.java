@@ -20,6 +20,7 @@ import co.yedam.puppy.admin.command.AdoptListUpdate;
 import co.yedam.puppy.admin.command.AdoptOneView;
 import co.yedam.puppy.admin.command.AdoptStateSearch;
 import co.yedam.puppy.admin.command.MemberList;
+import co.yedam.puppy.admin.command.MemberOnePage;
 import co.yedam.puppy.admin.command.UpdateMemberList;
 import co.yedam.puppy.admin.command.VolunteerList;
 import co.yedam.puppy.admin.command.VolunteerStateSearch;
@@ -68,6 +69,7 @@ import co.yedam.puppy.volunteerReview.command.VolReviewUpdateForm;
 import co.yedam.puppy.volunteerReview.command.AjaxVolReviewDelete;
 import co.yedam.puppy.volunteerReview.command.VolReviewForm;
 import co.yedam.puppy.petList.command.PetListView;
+import co.yedam.puppy.petList.command.PetListView2;
 import co.yedam.puppy.qnaBoard.command.AjaxQnaBoardSearch;
 import co.yedam.puppy.qnaBoard.command.QnaBoardDelete;
 import co.yedam.puppy.qnaBoard.command.QnaBoardForm;
@@ -132,6 +134,7 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/petList.do", new PetList()); //입양동물 소개 게시판 페이지로 이동
 		map.put("/petListView.do", new PetListView()); //리스트에 제목클릭했을때 게시물 보여주는 페이지
+		map.put("/petListView2.do", new PetListView2()); //리스트에 제목클릭했을때 게시물 보여주는 페이지
 		map.put("/petListForm.do", new PetListForm()); //입양동물 소개게시판 게시글 등록페이지로 이동
 		map.put("/petListInsert.do", new PetListInsert()); //입양동물 소개게시판 게시글 등록처리
 		map.put("/petListUpdateForm.do", new PetListUpdateForm()); //입양동물 소개게시판 수정폼으로 이동
@@ -159,17 +162,10 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxVolReviewDelete.do", new AjaxVolReviewDelete()); // 봉사활동 후기 삭제
 		
 
-
 //		map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가 
-
-	
-//	map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
-
-
-		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
-
-
+		
+		map.put("/memberOnePage.do", new MemberOnePage()); //관리자가보는 멤버한명조회
 		map.put("/memberList.do", new MemberList()); //모든회원리스트
 		map.put("/adoptList.do", new AdoptList());//모든입양신청리스트
 		map.put("/adoptListUpdate.do", new AdoptListUpdate());//입양상태수정

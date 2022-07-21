@@ -14,12 +14,13 @@ import co.yedam.puppy.petAdd.service.PetAddServiceImpl;
 import co.yedam.puppy.vo.AdoptSubscriptionVO;
 import co.yedam.puppy.vo.MemberVO;
 import co.yedam.puppy.vo.PetAddVO;
+import co.yedam.puppy.vo.PetListVO;
 
 public class AdoptOneView implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		// 입양신청 1건 상세보기
 		AdminService dao = new AdminServiceImple();
 		AdoptSubscriptionVO vo = new AdoptSubscriptionVO();
 
@@ -28,10 +29,7 @@ public class AdoptOneView implements Command {
 		vo.setAdoptSubscriptionOk(request.getParameter("adoptSubscriptionOk"));
 		vo.setAdoptSubscriptionReason(request.getParameter("adoptSubscriptionReason"));
 		dao.adoptOneView(vo);
-		
-//		vo.setPetAddName(request.getParameter("petAddName"));
-//		vo.setMemberName(request.getParameter("memberName"));
-
+	
 		MemberVO mvo = new MemberVO();
 		mvo.setMemberId(request.getParameter("memberId"));
 		MemberService mdao = new MemberServiceImpl();
@@ -41,6 +39,19 @@ public class AdoptOneView implements Command {
 		pvo.setPetAddNo(Integer.parseInt(request.getParameter("petAddNo")));
 		PetAddService pdao = new PetAddServiceImpl();
 		pdao.petAddSelectOne(pvo);
+		
+
+		
+		//PetListService dao = new PetListServiceImpl();
+//		PetListVO Plvo = new PetListVO();
+//		String petAddNo = request.getParameter("petAddNo");
+//		String petListNo = request.getParameter("petListNo");
+//		System.out.println("동물리스트번호"+petAddNo);
+//		Plvo.setPetAddNo(Integer.parseInt(petAddNo));
+//		Plvo = dao.petListSelectOne(Plvo); //클릭한 동물 단건조회
+//		request.setAttribute("Plvo", Plvo);
+		
+		
 		
 		request.setAttribute("vo", vo);
 		request.setAttribute("mvo", mvo);

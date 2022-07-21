@@ -10,7 +10,13 @@
 <link href="css/adoptpet.css" rel="stylesheet" /> 
 </head>
 <body>
-<div id="myPageDiv">
+<div class="myDiv">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-8 col-xl-6 text-center">
+            <h2 class="mt-0">MYPAGE</h2>
+            <hr class="divider" />
+        </div>
+    </div>
 	<table>
 		<tr>
 			<th>아이디</th>
@@ -46,11 +52,13 @@
 		</tr>
 	</table>
 	<br>
-	<button class="btn btn-primary btn-xl" onclick="location.href='memberUpdateForm.do'">내정보수정하기</button>
-	<form id="frm" action="memberDelete.do" method="post">
-		<input type="hidden" id="memberId" name="memberId" value="${member.memberId}">
-		<button class="btn btn-primary btn-xl" type="button" onclick="memberDeleteCall()">탈퇴하기</button>
-	</form>
+	<div id="btnDiv">
+		<button class="btn btn-primary btn-xl" onclick="location.href='memberUpdateForm.do'">내정보수정하기</button>
+		<form id="frm" action="memberDelete.do" method="post">
+			<input type="hidden" id="memberId" name="memberId" value="${member.memberId}">
+			<button class="btn btn-primary btn-xl" type="button" onclick="memberDeleteCall()">탈퇴하기</button>
+		</form>
+	</div>
 </div>	
 <script type="text/javascript">
 
