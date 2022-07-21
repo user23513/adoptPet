@@ -9,11 +9,11 @@
 <body>
 <div align="left">
 	
-	<!-- ..... -->
+	<!-- 
 	
 	<h2>${message }</h2>
 	<a href = "main.do">홈으로</a><br>
-	<a href = "memberLogout.do">로그아웃</a>  
+	<a href = "memberLogout.do">로그아웃</a>  -->
 	
 	
 </div>
