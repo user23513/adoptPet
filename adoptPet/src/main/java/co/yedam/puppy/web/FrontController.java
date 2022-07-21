@@ -159,7 +159,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxVolReviewDelete.do", new AjaxVolReviewDelete()); // 봉사활동 후기 삭제
 		
 
-		map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
+//		map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
 
 	
@@ -188,6 +188,7 @@ public class FrontController extends HttpServlet {
 		map.put("/adoptReviewInsert.do", new AdoptReviewInsert()); //공지 등록
 		map.put("/noticeUpdate.do", new AdoptReviewUpdate());//공지 수정 폼
 		map.put("/AdoptReviewSearch.do", new AdoptReviewSearch());//공지 검색
+		
 
 	}
 
@@ -204,6 +205,11 @@ public class FrontController extends HttpServlet {
 		String viewPage = command.exec(request, response);
 
 		// 2.결과페이지
+		if(viewPage.endsWith(".jsp")){
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+			dispatcher.forward(request, response);
+			return;
+		}
 		if (!viewPage.endsWith(".do")) {
 			response.setContentType("text/html; charset=UTF-8");
 			if (viewPage.startsWith("ajax:")) {

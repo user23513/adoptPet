@@ -124,8 +124,6 @@ img {
 	margin-bottom: 30px;
 }
 
-tr:nth-child(odd){background-color: #f2f2f2;}
-tr:nth-child(even){background-color: white;}
 
 </style>
 </head>
@@ -138,7 +136,7 @@ tr:nth-child(even){background-color: white;}
         	</div>
     	</div>
 		<table border="1">
-				<tr>
+				<tr style="background: #f2f2f2;">
 					<th width="200">동물유형</th>
 					<td width="200">${vo.petListType}</td>
 					<th width="200">입양여부</th>
@@ -146,7 +144,7 @@ tr:nth-child(even){background-color: white;}
 					<th width="200">작성자</th>
 					<td width="200">${vo.petListWriter}</td>
 				</tr>
-				<tr>
+				<tr style="background: #FCFCFC;">
 					<td colspan="6">
 						<div style="text-align : center;">
 							<c:forEach var="filePath" items="${filePathList}">
@@ -163,12 +161,12 @@ tr:nth-child(even){background-color: white;}
 		<div>
 			<button type="button" class="btn btn-primary btn-xl" style="float: left; margin-top: 20px" onclick="location.href = 'petList.do'">목록</button>
 			<c:if test="${check == true}">
-				<button type="button" class="btn btn-primary btn-xl" onclick="document.getElementById('id01').style.display='block'" style="width:auto; float: right; margin-top: 20px">입양신청</button>
+				<button type="button" class="btn btn-primary btn-xl" onclick="document.getElementById('id01').style.display='block'" style="width:auto; float: right; margin-top: 20px;">입양신청</button>
 			</c:if>
 
 			<c:if test="${author eq 'ADMIN'}">
-					<button type="button" class="btn btn-primary btn-xl" style="float: right;" onclick="petListDeleteFnc(${vo.petListNo})">삭제</button>
-					<button type="button" class="btn btn-primary btn-xl" style="float: right;" onclick="location.href = 'petListUpdateForm.do?petListNo=${vo.petListNo}'">수정</button>
+					<button type="button" class="btn btn-primary btn-xl" style="float: right; margin-top: 20px; margin-right: 10px" onclick="petListDeleteFnc(${vo.petListNo})">삭제</button>
+					<button type="button" class="btn btn-primary btn-xl" style="float: right; margin-top: 20px; margin-right: 10px" onclick="location.href = 'petListUpdateForm.do?petListNo=${vo.petListNo}'">수정</button>
 			</c:if>
 
 		</div>
