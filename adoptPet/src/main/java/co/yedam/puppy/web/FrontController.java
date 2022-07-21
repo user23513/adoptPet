@@ -159,7 +159,7 @@ public class FrontController extends HttpServlet {
 		map.put("/ajaxVolReviewDelete.do", new AjaxVolReviewDelete()); // 봉사활동 후기 삭제
 		
 
-		map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
+	//	map.put("/volReviewDelete.do", new VolReviewDelete()); // 봉사활동 후기 삭제
 		map.put("/volReviewInsert.do", new VolReviewInsert()); // 봉사활동후기 추가
 
 	
