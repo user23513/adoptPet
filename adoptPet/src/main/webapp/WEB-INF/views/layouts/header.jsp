@@ -33,8 +33,7 @@
 </head>
 <body id="page-top">
 	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
-		id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
 		<div class="container px-4 px-lg-5">
 			<a class="navbar-brand" href="main.do">데려가줘 PICK ME</a>
 
@@ -50,6 +49,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 
 				<% if(session.getAttribute("id") == null){ // 로그인 안 한 상태 = 비회원 %>
+
 				<ul class="navbar-nav ms-auto my-2 my-lg-0">
 				    <li class="nav-item"><a class="nav-link" href="#services">MY PAGE</a></li>
 	                <li class="nav-item"><a class="nav-link" href="#services">ADOPT PAGE</a></li>
@@ -78,6 +78,7 @@
 	                <li class="nav-item"><a class="nav-link" href="#services">COMMUNITY</a></li>
 	                <li class="nav-item"><a class="nav-link" href="memberLogout.do">LogOut</a></li>
 				</ul>
+
 				<%}%>
 				<%}%>
 
