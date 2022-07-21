@@ -9,7 +9,7 @@
 </head>
 <body>
 <div align="center">
-${message }
+${message}
 	<div><h1>로 그 인 해 보 자 </h1></div>
 	<div>
 		<form id="frm" action="memberLogin.do" method="post">

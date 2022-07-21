@@ -70,6 +70,7 @@
             	<h3>입양동물 소개</h3>
             	<c:if test="${author eq 'ADMIN' }">
             	<div id="search" align="right">
+            	
 			<form id="frm" action="petListSearch.do" method="post">
 				<select id="key" name="key" >
 					<option value="pet_list_title">제목</option>

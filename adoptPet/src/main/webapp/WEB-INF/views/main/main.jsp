@@ -90,7 +90,7 @@
                     <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
                     <h3 class="h4 mb-2">My page</h3>
                     <a class="text-muted mb-0" href="memberMyPage.do"><%=session.getAttribute("id") %>내 정보 보기</a><br>
-                    <a class="text-muted mb-0" href="#">입양 신청 현황</a><br>
+                    <a class="text-muted mb-0" href="memberAdopt.do">입양 신청 현황</a><br>
                     <a class="text-muted mb-0" href="#">나의 봉사참여 신청현황</a>
                 </div>
             </div>
@@ -98,23 +98,23 @@
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
                     <h3 class="h4 mb-2">Adopt Page</h3>
-                    <a class="text-muted mb-0" href="#">동물 보러 가기</a><br>
-                    <a class="text-muted mb-0" href="#">입양 동물 후기</a>
+                    <a class="text-muted mb-0" href="petListView.do">동물 보러 가기</a><br>
+                    <a class="text-muted mb-0" href="adoptReviewList.do">입양 동물 후기</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
                     <h3 class="h4 mb-2">Volunteer</h3>
-                    <a class="text-muted mb-0" href="#">봉사 일정</a><br>
-                    <a class="text-muted mb-0" href="#">봉사 후기</a>
+                    <a class="text-muted mb-0" href="calendar.do">봉사 일정</a><br>
+                    <a class="text-muted mb-0" href="volReviewList.do">봉사 후기</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
                     <h3 class="h4 mb-2">Community</h3>
-                    <a class="text-muted mb-0" href="#">공지사항</a><br>
+                    <a class="text-muted mb-0" href="noticeList.do">공지사항</a><br>
                     <a class="text-muted mb-0" href="qnaBoardList.do">Q&A</a>
                 </div>
             </div>
@@ -122,8 +122,8 @@
                 <div class="mt-5">
                     <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
                     <h3 class="h4 mb-2">관리자페이지</h3>
-                    <a class="text-muted mb-0" href="#">회원 리스트</a><br>
-                    <a class="text-muted mb-0" href="#">입양신청 내역</a>
+                    <a class="text-muted mb-0" href="memberList.do">회원 리스트</a><br>
+                    <a class="text-muted mb-0" href="adoptList.do">입양신청 내역</a>
                 </div>
             </div>
         </div>

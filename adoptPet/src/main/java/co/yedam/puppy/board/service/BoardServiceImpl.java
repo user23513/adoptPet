@@ -416,7 +416,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> noticeSerarchList(String key, String val) {
 		// 공지 검색
-		List<BoardVO> list = new ArrayList<BoardVO>();
+		List<BoardVO> noticeSerarchList = new ArrayList<BoardVO>();
 		BoardVO vo;
 		String sql = "select * from where" + key + "like'%" + val + "%'";
 
@@ -434,14 +434,14 @@ public class BoardServiceImpl implements BoardService {
 				vo.setBoardContent(rs.getString("board_content"));
 				vo.setBoardDate(rs.getDate("board_date"));
 				vo.setBoardHit(rs.getInt("board_hit"));
-				list.add(vo);
+				noticeSerarchList.add(vo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return list;
+		return noticeSerarchList;
 	}
 
 	@Override

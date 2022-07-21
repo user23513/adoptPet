@@ -17,6 +17,8 @@ public class NoticeSelect implements Command{
 		BoardVO vo = new BoardVO();
 		vo.setBoardNo(Integer.valueOf(request.getParameter("no")));
 		vo = noticeDao.boardSelectOne(vo);
+		System.out.println(request.getParameter("no"));
+		request.setAttribute("board", vo);
 		return "notice/noticeSelect";
 	}
 

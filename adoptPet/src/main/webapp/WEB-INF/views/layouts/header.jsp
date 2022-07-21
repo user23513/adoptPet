@@ -55,7 +55,7 @@
 	                <li class="nav-item"><a class="nav-link" href="#services">ADOPT PAGE</a></li>
 	                <li class="nav-item"><a class="nav-link" href="#services">VOLUNTEER</a></li>
 	                <li class="nav-item"><a class="nav-link" href="#services">COMMUNITY</a></li>
-	                <li class="nav-item"><a class="nav-link" href="#memberLoginForm.do">Login</a></li>
+	                <li class="nav-item"><a class="nav-link" href="memberLoginForm.do">Login</a></li>
 					<li class="nav-item"><a class="nav-link" href="memberJoinForm.do">회원가입</a></li>
 				</ul>
 			

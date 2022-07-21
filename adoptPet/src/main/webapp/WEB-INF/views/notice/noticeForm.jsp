@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지 입력폼 </title>
+<title>공지 글쓰기 </title>
 </head>
 <body>
  <section class="page-section" id="contact">
@@ -18,13 +18,6 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
                     <div class="col-lg-6">
         		
-                        <!-- * * * * * * * * * * * * * * *-->
-                <!-- * * SB Forms Contact Form * *-->
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- This form is pre-integrated with SB Forms.-->
-                <!-- To make this form functional, sign up at-->
-                <!-- https://startbootstrap.com/solution/contact-forms-->
-                <!-- to get an API token!-->
                 <form id="contactForm" action="noticeInsert.do" method="post">
                     <!-- Name input-->
                     <div class="form-floating mb-3">
@@ -44,12 +37,8 @@
                     </div>
                     <div class="form-floating mb-3">
                         <input class="form-control" id="files" type="file" />
-                        
                     </div>
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
+                    
                     <div class="d-none" id="submitSuccessMessage">
                         <div class="text-center mb-3">
                             <div class="fw-bolder">공지 올리기 성공!</div>
@@ -57,15 +46,16 @@
                             <a href="https://startbootstrap.com/solution/contact-forms">공지페이지로 가기</a>
                         </div>
                     </div>
-                    <!-- Submit error message-->
-                    <!---->
-                    <!-- This is what your users will see when there is-->
-                    <!-- an error submitting the form-->
-                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    
+                    <div class="d-none" id="submitErrorMessage">
+                    	<div class="text-center text-danger mb-3">Error sending message!</div>
+                    </div>
                     
                     
-                    <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary btn-xl" id="submitButton" type="submit">Submit</button></div>
+                     <div class="d-grid"><button class="btn btn-primary btn-xl" id="submitButton" type="submit">Submit</button>
+                     </div>
+                       
+                       
                         </form>
                     </div>
                 </div>

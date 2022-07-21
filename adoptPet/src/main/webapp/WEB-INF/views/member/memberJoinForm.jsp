@@ -5,73 +5,95 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 </head>
 <body>
-	<div align="center">
-		<div>
-			<h1>회원가입 해보자</h1>
+<section class="page-section" id="contact">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6 text-center">
+                        <h2 class="mt-0">JOIN!</h2>
+                        <hr class="divider" />
+                        
+                    </div>
+                </div>
+                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+                    <div class="col-lg-6">
+                        <!-- * * * * * * * * * * * * * * *-->
+               
+                <form id="frm" action="memberJoin.do" onsubmit="return formCheck()" method="post">
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control"id="memberId" name="memberId" type="text" placeholder="Enter your ID..." data-sb-validations="required" />
+                        <label for="name">아이디</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">아이디를 입력하세요.</div><br>
+						
+						<div class="d-grid">
+							<button class="btn btn-primary btn-xl" type="button" id="btn" onclick="idCheck()">중복체크</button>
+						</div>
+                    </div>
+		
+		<div class="form-floating mb-3">
+                        <input class="form-control" type="password" id="memberPassword" name="memberPassword" placeholder="Enter your Password..." data-sb-validations="required" />
+                        <label for="name">비밀번호</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">비밀번호를 입력하세요.</div>
+		
+                   	 </div>
+
+		<div class="form-floating mb-3">
+                        <input class="form-control" type="password" id="memberPassword" name="memberPassword" placeholder="Enter your Password..." data-sb-validations="required" />
+                        <label for="name">비밀번호 확인</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">비밀번호를 한번 더 입력하세요.</div>
+		
+                   	 </div>
+
+ 		<div class="form-floating mb-3">
+                        <input class="form-control" id="memberName" name="memberName" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                        <label for="name">이름</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">이름을 입력하세요.</div>
 		</div>
-		<div>
-			<form id="frm" action="memberJoin.do"
-				onsubmit="return formCheck() method="post">
-				<div>
-					<table border="1">
-						<tr>
-							<th width="150">아이디</th>
-							<td width="300">
-							<input type="text" id="memberId" name="memberId" size="20" required> 
-							<input type="hidden" id="checkId" value="No">
-							<button type="button" id="btn" onclick="idCheck()">중복체크</button>
-							</td>
-						</tr>
-						<tr>
-							<th width="150">패스워드</th>
-							<td width="300"><input type="password" id="memberPassword"
-								name="memberPassword" size=20 required></td>
-						</tr>
-						<tr>
-							<th width="150">패스워드 확인</th>
-							<td width="300"><input type="password" id="memberPassword"
-								name="memberPassword" size=20></td>
-						</tr>
-						<tr>
-							<th width="150">이름</th>
-							<td width="300"><input type="text" id="memberName"
-								name="memberName" size="20" required></td>
-						</tr>
-						<tr>
-							<th width="150">연락처</th>
-							<td width="300"><input type="text" id="memberTel"
-								name="memberTel" size="20" required></td>
-						</tr>
-						<tr>
-							<th width="150">이메일</th>
-							<td width="300"><input type="text" id="memberEmail"
-								name="memberEmail" size="20" required></td>
-						</tr>
-						<tr>
-							<th width="150">직업</th>
-							<td width="300"><input type="text" id="memberJob"
-								name="memberJob" size="20" required></td>
-						</tr>
-						<tr>
-							<th width="150">성별</th>
-							<td width="300"><input type="radio" id="memberGender"
-								name="memberGender" size="20" value="여">여
-								<input type="radio" id="memberGender"
-								name="memberGender" size="20" value="남">남</td>
-						</tr>
-					</table>
-					</div><br>
-					<div>
-						<input type="submit" value="회원가입">
-						<input type="reset" value="내용 지우기">
-						<input type="submit" value="홈으로" onclick="location.href='main.do'">
+		
+		<div class="form-floating mb-3">
+                        <input class="form-control" id="memberTel" name="memberTel" type="text" placeholder="Enter your tel..." data-sb-validations="required" />
+                        <label for="name">연락처</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">연락처 입력하세요.</div>
+		
+                   	 </div>
+		
+                    <!-- Email address input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control"type="text" id="memberEmail" name="memberEmail"  data-sb-validations="required,email" />
+                        <label for="email">이메일</label>
+                        <div class="invalid-feedback" data-sb-feedback="email:required">이메일 주소가 필요합니다</div>
+                     </div>   
+					<div class="form-floating mb-3">
+                        <input class="form-control"id="memberJob" name="memberJob" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                        <label for="name">집업</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">직업을 입력하세요.</div>
 					</div>
-			</form>
+		
+		<div class="form-floating mb-3">
+			<select class="form-control" id="memberGender" name="memberGender"  >
+			<option>--선택--</option>
+			<option value="여자">여자</option>
+			<option value="남자">남자</option>
+			</select> <label for="petAddGender">성별</label>
 		</div>
-	</div>
+		
+		<div class="d-grid">
+		<input class="btn btn-primary btn-xl" type="submit" value="회원가입"><br>
+		<input class="btn btn-primary btn-xl" type="reset" value="내용 지우기"><br>
+		<input class="btn btn-primary btn-xl" type="submit" value="홈으로" onclick="location.href='main.do'">
+		</div>
+		
+		</form>
+		</div>
+		</div>
+		</div>
+		</section>
+		
+
+
 <script type="text/javascript">
 	function formCheck() {
 		if(frm.memberId.value == "") {

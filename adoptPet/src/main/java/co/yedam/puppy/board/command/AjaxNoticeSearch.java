@@ -20,16 +20,16 @@ public class AjaxNoticeSearch implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 공지 검색
 		BoardService noticeDao = new BoardServiceImpl();
-		List<BoardVO> list = new ArrayList<BoardVO>();
+		List<BoardVO> noticeSerarchList = new ArrayList<BoardVO>();
 		ObjectMapper mapper = new ObjectMapper();
 		String key = request.getParameter("key");
 		String val = request.getParameter("val");
 		
-		list = noticeDao.noticeSerarchList(key, val);
+		noticeSerarchList = noticeDao.noticeSerarchList(key, val);
 		String jsonList = null;
 		
 		try {
-			jsonList = mapper.writeValueAsString(list);
+			jsonList = mapper.writeValueAsString(noticeSerarchList);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
