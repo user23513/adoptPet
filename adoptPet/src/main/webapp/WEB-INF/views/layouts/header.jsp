@@ -45,6 +45,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
+
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 
 				<% if(session.getAttribute("id") == null){ // 로그인 안 한 상태 = 비회원 %>
