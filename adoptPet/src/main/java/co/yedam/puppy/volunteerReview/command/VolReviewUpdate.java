@@ -19,6 +19,7 @@ public class VolReviewUpdate implements Command {
 		
 		String no = request.getParameter("boardNo");
 		vo.setBoardNo(Integer.parseInt(no));
+		
 		vo = dao.volReviewSelectOne(vo);
 		
 		request.setAttribute("BoardVO", vo);

@@ -96,7 +96,7 @@ public class BoardServiceImpl implements BoardService {
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				vo.setBoardNo(rs.getInt("board_no"));
-				vo.setBoardId(rs.getInt("board_id"));
+				vo.setBoardId(rs.getInt("board_Id"));
 				vo.setBoardTitle(rs.getString("board_title"));
 				vo.setBoardWriter(rs.getString("board_writer"));
 				vo.setBoardContent(rs.getString("board_content"));
@@ -138,18 +138,15 @@ public class BoardServiceImpl implements BoardService {
 	public int volReviewUpdate(BoardVO vo) {
 		// 수정
 		int r = 0;
-		String sql = "UPDATE BOARD SET BOARD_ID=?, BOARD_TITLE=?, BOARD_WRITER=?, BOARD_CONTENT=?, BOARD_DATE=?, BOARD_HIT=? WHERE BOARD_NO=?";
+		String sql = "UPDATE BOARD SET BOARD_TITLE=?, BOARD_CONTENT=?  WHERE BOARD_NO=?";
 
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getBoardId());
-			psmt.setString(2, vo.getBoardTitle());
-			psmt.setString(3, vo.getBoardWriter());
-			psmt.setString(4, vo.getBoardContent());
-			psmt.setDate(5, vo.getBoardDate());
-			psmt.setInt(6, vo.getBoardHit());
-			psmt.setInt(7, vo.getBoardNo());
+
+			psmt.setString(1, vo.getBoardTitle());
+			psmt.setString(2, vo.getBoardContent());
+			psmt.setInt(3, vo.getBoardNo());
 			psmt.executeUpdate();
 			
 			r = 1;
