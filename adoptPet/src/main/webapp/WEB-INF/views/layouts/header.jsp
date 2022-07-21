@@ -98,7 +98,6 @@
 				
 			</div>
 		</div>
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
 
 	</nav>
 </body>
