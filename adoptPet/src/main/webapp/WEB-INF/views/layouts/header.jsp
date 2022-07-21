@@ -20,6 +20,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="css/styles.css" rel="stylesheet" />  
+
 </head>
 <body id="page-top">
 	<!-- Navigation-->
@@ -39,7 +40,6 @@
 	                		<li><a href="#" >입양신청 현황</a></li>
 	                		<li><a href="#" >나의 봉사신청 현황</a></li>
 	                	</ul> -->
-	                <li class="nav-item"><a class="nav-link" href="#">ADOPT PAGE</a></li>
 	                	<!-- <ul>
 	                		<li><a href="#" >입양동물 소개</a></li>
 	                		<li><a href="#" >입양동물 후기</a></li>
