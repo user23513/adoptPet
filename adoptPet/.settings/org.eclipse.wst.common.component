@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-<<<<<<< HEAD
-            
-=======
                 
     
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
     
     
     
     <wb-module deploy-name="adoptPet">
-<<<<<<< HEAD
-                                        
-        
-        
-        
-        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-                                                        
-        
-=======
                                                 
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
         
         
         
@@ -34,11 +20,7 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-<<<<<<< HEAD
-                                                                                        
-=======
                                                                                                 
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
 
 
         
@@ -50,60 +32,32 @@
         
         
         
-<<<<<<< HEAD
-=======
         
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-<<<<<<< HEAD
-                                                        
-=======
                                                                 
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
         
 
         
         
         
         
-<<<<<<< HEAD
-=======
         
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-<<<<<<< HEAD
-                                        
-
-
-=======
                                                 
 
 
 
- 
+        
+        
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-
+                                
+        
+        
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                                        
-
-
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
                                                 
         
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
-
         
-<<<<<<< HEAD
-        
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-                        
-        
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                                        
-        
-=======
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
         
         
         
@@ -112,23 +66,15 @@
         
         
         <property name="context-root" value="adoptPet"/>
-<<<<<<< HEAD
-                                        
-=======
                                                 
         
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
         
         
         
         
         <property name="java-output-path" value="/adoptPet/target/classes"/>
-<<<<<<< HEAD
-                                    
-=======
                                             
     
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
     
     
     
@@ -136,12 +82,8 @@
     
     
     </wb-module>
-<<<<<<< HEAD
-                
-=======
                     
 
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
 
 
 
