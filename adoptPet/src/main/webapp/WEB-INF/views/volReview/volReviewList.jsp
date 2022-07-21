@@ -9,16 +9,18 @@
 <script src="js/jquery-3.6.0.min.js"></script> <!-- 제이쿼리 라이브러리 쓰겠다. -->
 </head>
 <body>
-	<div align="center">
+	<div id="list" align="center">
+	
 		<div>봉사활동후기 목록</div>
 		<div>
 			<form id="vFrm">
-				<select id="key" name="vol">
+				<select id="key" name="key">
 					<option value="board_title">제목</option>
 					<option value="board_subject">내용</option>
 					<option value="board_writer">작성자</option>
-				</select>&nbsp; <input type="text" id="val" name="val">&nbsp;&nbsp; <input
-					type="button" value="검색" onclick="volReviewSelectOne()">
+				</select>&nbsp; 
+				<input type="text" id="val" name="val">&nbsp;&nbsp; 
+				<input type="button" value="검색" onclick=volReviewSearchList()>
 			</form>
 		</div>
 		<div>
@@ -26,27 +28,28 @@
 				<thead>
 					<tr>
 						<th width="50">No</th>
+						<th width="50">게시판순서</th>
 						<th width="100">작성자</th>
-						<th width="250">제목</th>
-						<th width="70">작성일자</th>
+						<th width="150">제목</th>
+						<th width="150">작성일자</th>
 						<th width="50">조회수</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="tb">
 				<c:choose>
 					<c:when test="${not empty volReviewList }">
 						<c:forEach var="b" items="${volReviewList }" varStatus="i" >
 							<tr id="${b.boardNo }">
+								<td>${b.boardNo }</td>
 								<td>${cnt-(pageNum-1)*pageSize - i.index }</td>
-								<td><a href="volReviewUpdate.do?boardNo=${b.boardNo }"></a></td>
+								<%-- <td><a href="volReviewUpdate.do?boardNo=${b.boardNo }"></a></td> --%>
 								<td>${b.boardWriter }</td>
-								<td><a href="volReviewSelectOne.do"></a> ${b.boardTitle }</td>
+								<td><a href="volReviewSelectOne.do?boardNo=${b.boardNo}"> ${b.boardTitle }</a></td>
 								<td>${b.boardDate }</td>
-								<%-- 	<td>${b.boardAttech }</td> --%>
 								<td>${b.boardHit }</td>
-								<td><button type="button" id="writeBtn" onclick="location.href='volReviewList.do?boardNo=${vo.boardNo }&boardTitle=${vo.boardTitle }'">글쓰기</button> </td>
-								<td><button type="button" onclick="volReviewDeleteFnc(${vo.boardNo })">삭제</button></td>
-		
+								<!-- <td><button type="button" class="btn btn-primary btn-xl" id="writeBtn" onclick="location.href='volReviewUpdateForm.do?'">수정</button> </td> -->
+								<td><button type="button" class="btn btn-primary btn-xl" onclick="volReviewDeleteFnc(${b.boardNo })">삭제</button></td>
+
 							</tr>
 						</c:forEach>
 					</c:when>                           
@@ -61,9 +64,9 @@
 </div>
 <br>
 <div>
-	<c:if test="${author != 'ADMIN' }"><!-- 접근권한  -->
-	<button type="button" onclick="location.href='volReviewForm.do'">글등록</button>
-	</c:if>
+	<%-- <c:if test="${author != 'ADMIN' }"> --%><!-- 접근권한  -->
+	<button type="button" onclick="location.href='volReviewForm.do'">후기글등록</button>
+	<%-- </c:if> --%>
 </div>
 </div>
 	<div>
@@ -77,16 +80,47 @@
 			<% } %>
 	</div>	
 	
-<script>
-		let writeBtn = document.querySelectorAll('#writeBtn');
-		writeBtn.forEach((element,idx) => {
-			if(check[idx].value == 'false') {
-				element.setAttribute('disabled','disabled');
-			}	
-		});
+<script type="text/javascript">
+		function volReviewSearchList(){
+			let key = $("#key").val();
+			let val = $("#val").val();
+			$.ajax({
+				url : "volReviewSearchList.do",
+				type : "post",
+				data : {key : key, val : val},
+				dataType : "Json",
+				success : function(result){
+					console.log(result);
+					if(result.length > 0){
+						jsonHtmlConvert(result);
+					} else {
+						alert("검색한 결과가 없습니다.");
+					}console.log(result);
+			},
+			error:function(){	
+			}
+			})
+		}	
+			
+		function jsonHtmlConvert(data) {
+			$("#tb").remove();
+			var tbody = $("<tbody id />");
+			$.each(data, function (index, item){
+				var row = $("<tr />").append(
+						   $("<td />").text(item.boardNo),
+						   $("<td />").text(item.boardNo),
+						   $("<td />").text(item.boardWriter),	
+						   $("<td />").text(item.boardTitle),	
+						   $("<td />").text(item.boardDate),	
+						   $("<td />").text(item.boardHit),
+						);
+				tbody.appen(row);
+			});
+			$('table').append(tbody);
+		}
 
 		function volReviewDeleteFnc(boardNo) {
-			fetch('AjaxVolReviewDelete.do',{
+			fetch('volReviewDelete.do',{
 				method: 'post',
 				headers: {
 					'Content-type': 'application/x-www-form-urlencoded'
@@ -95,6 +129,7 @@
 			})
 			.then(function(result){
 						return result.json();
+						console.log(result);
 					})
 			.then(function(result){
 				console.log(result)
@@ -106,9 +141,7 @@
 					location.href = "volReviewList.do";
 				}
 			})
-			.catch(function(err){
-						console.error(err);
-				})
+		
 		}
 	</script>	
 		

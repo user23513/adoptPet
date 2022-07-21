@@ -45,7 +45,7 @@ public class BoardServiceImpl implements BoardService {
 				vo.setBoardId(rs.getInt("board_id"));
 				vo.setBoardTitle(rs.getString("board_title"));
 				vo.setBoardWriter(rs.getString("board_writer"));
-				vo.setBoardContent(rs.getNString("board_content"));
+				vo.setBoardContent(rs.getString("board_content"));
 				vo.setBoardDate(rs.getDate("board_date"));
 				vo.setBoardHit(rs.getInt("board_hit"));
 				
@@ -92,13 +92,14 @@ public class BoardServiceImpl implements BoardService {
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getBoardNo());
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				vo.setBoardNo(rs.getInt("board_no"));
 				vo.setBoardId(rs.getInt("board_id"));
 				vo.setBoardTitle(rs.getString("board_title"));
-				vo.setBoardWriter(rs.getString("boart_writer"));
-				vo.setBoardContent(rs.getNString("board_content"));
+				vo.setBoardWriter(rs.getString("board_writer"));
+				vo.setBoardContent(rs.getString("board_content"));
 				vo.setBoardDate(rs.getDate("board_date"));
 				vo.setBoardHit(rs.getInt("board_hit"));
 			}
@@ -113,7 +114,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int volReviewInsert(BoardVO vo) {
 		// 등록
-		int n = 0;
+		int r = 0;
 		String sql = "INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL,40,?,?,?,SYSDATE,0)";
 
 		try {
@@ -123,21 +124,21 @@ public class BoardServiceImpl implements BoardService {
 			psmt.setString(2, vo.getBoardWriter());
 			psmt.setString(3, vo.getBoardContent());
 
-			n = psmt.executeUpdate();
+			r = psmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return n;
+		return r;
 	}
 
 	@Override
 	public int volReviewUpdate(BoardVO vo) {
 		// 수정
-		int n = 0;
-		String sql = "UPDATE BOARD SET BOARD_ID=?, BOARD_TITLE=?, BOARD_CONTENT=? WHERE BOARD_NO=?";
+		int r = 0;
+		String sql = "UPDATE BOARD SET BOARD_ID=?, BOARD_TITLE=?, BOARD_WRITER=?, BOARD_CONTENT=?, BOARD_DATE=?, BOARD_HIT=? WHERE BOARD_NO=?";
 
 		try {
 			conn = dao.getConnection();
@@ -146,31 +147,41 @@ public class BoardServiceImpl implements BoardService {
 			psmt.setString(2, vo.getBoardTitle());
 			psmt.setString(3, vo.getBoardWriter());
 			psmt.setString(4, vo.getBoardContent());
+			psmt.setDate(5, vo.getBoardDate());
+			psmt.setInt(6, vo.getBoardHit());
+			psmt.setInt(7, vo.getBoardNo());
+			psmt.executeUpdate();
+			
+			r = 1;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return n;
+		return r;
 	}
 
 	@Override
-	public int volReviewDelete(BoardVO vo) {
+	public int volReviewDelete(int boardNo) {
 		// 봉사 삭제
-		int n = 0;
+		int r = 0;
 		String sql = "DELETE FROM BOARD WHERE BOARD_NO=?";
 
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getBoardNo());
+			psmt.setInt(1, boardNo);
+			psmt.executeUpdate();
+			r = 1;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
 
-		return n;
+		return r;
 	}
 
 	@Override
@@ -179,17 +190,28 @@ public class BoardServiceImpl implements BoardService {
 
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		BoardVO vo;
-		String sql = "SELECT * FROM WHERE" + key + "LIKE'%" + val + "%'";
+		String sql = "SELECT * FROM BOARD WHERE " + key + " LIKE '%" + val + "%'";
 		try {
 			conn = dao.getConnection();
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
+			while (rs.next()) {
+				vo = new BoardVO();
+				vo.setBoardNo(rs.getInt("board_no"));
+				vo.setBoardId(rs.getInt("board_id"));
+				vo.setBoardTitle(rs.getString("board_Title"));
+				vo.setBoardWriter(rs.getString("board_Writer"));
+				vo.setBoardContent(rs.getString("board_content"));
+				vo.setBoardDate(rs.getDate("board_date"));
+				vo.setBoardHit(rs.getInt("board_hit"));
+				list.add(vo);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return null;
+		return list;
 	}
 
 

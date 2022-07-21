@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link href="css/adoptpet.css" rel="stylesheet" />
 <meta charset="UTF-8">
 <title>공지글 상세페이</title>
 <style>
@@ -35,9 +37,16 @@
 			<td colspan="3">${files.filesName}</td>
 		</tr>
 	</table>
-	<button type="submit">수정</button>
-	<button type="submit">삭제</button>
+	<button type="submit" onclick="update()">수정</button>
+	<button type="submit" onclick="delete()">삭제</button>
  </div>
  
+ <script type="text/javascript">
+ 	function 
+ 
+ 
+ 
+ 
+ </script>
 </body>
 </html>

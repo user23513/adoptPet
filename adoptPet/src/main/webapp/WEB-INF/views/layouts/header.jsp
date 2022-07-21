@@ -44,7 +44,7 @@
 	                		<li><a href="#" >입양동물 소개</a></li>
 	                		<li><a href="#" >입양동물 후기</a></li>
 	                	</ul> -->
-	                <li class="nav-item"><a class="nav-link" href="#">VOLUNTEER</a></li>
+	                <li class="nav-item"><a class="nav-link" href="volList.do">VOLUNTEER</a></li>
 	                <!-- 	<ul>
 	                		<li><a href="#" >봉사 일정</a></li>
 	                		<li><a href="#" >봉사 후기</a></li>

@@ -40,18 +40,17 @@
 						<tr>
 							<th>내용
 							<th>
-							<td colspan="3"><textarea rows="6" cols="75"
-									id="boardContent" name="boardContent"></textarea>></td>
+							<td colspan="3"><input type="text" id="boardContent" name="boardContent" value="${boardVO.boardContent}"></textarea>></td>
 						</tr>
 
 						<tr>
 							<th width="150">작성일자</th>
-							<td width="200"><input type="date" id="boardDate" name="boardDate"></td>
+							<td width="200"><input type="date" id="boardDate" name="boardDate" value="${boardVO.boardDate }"></td>
 						</tr>
 
 						<tr>
 							<th>조회수</th>
-							<td><input type="number" id="boaardHit" name="boaardHit">
+							<td><input type="number" id="boardHit" name="boardHit" value="${boardVO.boardHit }">
 							</td>
 						</tr>
 					</table>
