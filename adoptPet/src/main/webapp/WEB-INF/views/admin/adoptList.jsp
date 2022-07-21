@@ -35,7 +35,7 @@
 			<th>상태</th>
 			<th>이유</th>
 			<th>상태변경</th>
-			<th>상세보기</th>
+			<th>상세보기</th> 
 		</tr>
 	</thead>
 	<tbody>
