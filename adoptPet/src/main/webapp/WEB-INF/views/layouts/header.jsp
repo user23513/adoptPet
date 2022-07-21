@@ -45,20 +45,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-	        <div class="collapse navbar-collapse" id="navbarResponsive">
-	           
-	            <ul class="navbar-nav ms-auto my-2 my-lg-0">
-	                <li class="nav-item"><a class="nav-link" href="#services">MY PAGE</a></li>
-	                <li class="nav-item"><a class="nav-link" href="#services">ADOPT PAGE</a></li>
-	                <li class="nav-item"><a class="nav-link" href="#services">VOLUNTEER</a></li>
-	                <li class="nav-item"><a class="nav-link" href="#services">COMMUNITY</a></li>
-	                <li class="nav-item"><a class="nav-link" href="#services">Login</a></li>
-	                <li class="nav-item"><a class="nav-link" href="#services">관리자페이지</a></li>
-	                	
-	               
-	            </ul>
-	            </div>
-	    </div>
+	     
 
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 

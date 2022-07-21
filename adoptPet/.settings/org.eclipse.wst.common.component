@@ -45,10 +45,6 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'main' of https://github.com/user23513/adoptPet.git
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                                         
         
