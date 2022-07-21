@@ -33,8 +33,7 @@
 </head>
 <body id="page-top">
 	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
-		id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
 		<div class="container px-4 px-lg-5">
 			<a class="navbar-brand" href="main.do">데려가줘 PICK ME</a>
 
@@ -49,8 +48,8 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 
 				<% if(session.getAttribute("id") == null){ // 로그인 안 한 상태 = 비회원 %>
-				<nav>
-					<ul class="navbar-nav ms-auto my-2 my-lg-0">
+				
+				<ul class="navbar-nav ms-auto my-2 my-lg-0">
 					<li class="nav-item"><a class="nav-link" href="#">ADOPTPAGE</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">VOLUNTEER</a></li>
 					<li class="nav-item"><a class="nav-link" href="#services">COMMUNITY</a></li>
@@ -58,12 +57,12 @@
 					<li class="nav-item"><a class="nav-link" href="memberLoginForm.do">로그인</a></li>
 					<li class="nav-item"><a class="nav-link" href="memberJoinForm.do">회원가입</a></li>
 				</ul>
-				</nav>
+				
 				<%} else { // 로그인 한 상태 
 		String author = (String) session.getAttribute("author");
 		if(author.equals("ADMIN")) { // 로그인 함-> 권한:admin %>
-				<nav>
-					<ul class="navbar-nav ms-auto my-2 my-lg-0">
+				
+				<ul class="navbar-nav ms-auto my-2 my-lg-0">
 					<li class="nav-item"><a class="nav-link" href="#">ADOPTPAGE</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">VOLUNTEER</a></li>
 					<li class="nav-item"><a class="nav-link" href="#services">COMMUNITY</a></li>
@@ -71,10 +70,10 @@
 					<li class="nav-item"><a class="nav-link" href="#">관리자페이지</a></li>
 					<li class="nav-item"><a class="nav-link" href="memberLogout.do">로그아웃</a></li>
 				</ul>
-				</nav>
+				
 				<%} else { // 로그인 함-> 권한:USER %>
-				<nav>
-					<ul class="navbar-nav ms-auto my-2 my-lg-0">
+				
+				<ul class="navbar-nav ms-auto my-2 my-lg-0">
 					<li class="nav-item"><a class="nav-link" href="#">ADOPTPAGE</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">VOLUNTEER</a></li>
 					<li class="nav-item"><a class="nav-link" href="#services">COMMUNITY</a></li>
@@ -82,7 +81,7 @@
 					<li class="nav-item"><a class="nav-link" href="memberMyPage.do">MYPAGE</a></li>
 					<li class="nav-item"><a class="nav-link" href="memberLogout.do">로그아웃</a></li>
 				</ul>
-				</nav>
+				
 				<%}%>
 				<%}%>
 

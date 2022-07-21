@@ -11,7 +11,6 @@
 </script>
 </head>
 <body>
-<a href="memberMyPage.do"><%=session.getAttribute("id") %></a>
  <!-- Masthead-->
 <header class="masthead">
     <div class="container px-4 px-lg-5 h-100">
